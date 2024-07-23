@@ -1,0 +1,1232 @@
+﻿<!DOCTYPE html >
+<html lang="ko">
+ <head>
+  <meta charset="utf-8"/>
+  <title> index </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"/>
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans" type="text/css" rel="stylesheet"/>
+  <link rel="shortcut icon" href="img/icon_home.ico"/>
+  <link rel="apple-touch-icon" href="img/icon_home.ico"/>
+  <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+  <link rel="stylesheet" type="text/css" href="css/headerFooter.css"/>
+  <script src="js/jquery-1.12.4.js"></script>
+  <!--http://www.tutorialspoint.com/jqueryui/jqueryui_easings.htm
+	search 모양 참고할 곳
+  -->
+  <style>
+	/*############# visual ##################*/
+      #visual {
+          width: 100%;
+      }
+
+          #visual h2 {
+              width: 100%;
+              height: 570px;
+              line-height: 540px;
+              font-size: 70px;
+              font-weight: 100;
+              color: #fff;
+              letter-spacing: 50px;
+              transition: all 1s;
+          }
+
+          #visual .main {
+              width: 100%;
+              height: 700px;
+              text-align: center;
+              background-image: url("img/main_bg3.jpg");
+              background-repeat: no-repeat;
+              background-position: 55% 0%;
+              background-size: 120%;
+              transition: all 1s;
+          }
+
+              #visual .main img {
+                  width: 100%;
+              }
+
+          #visual .main_text {
+              width: 800px;
+              margin: 0 auto;
+          }
+
+          #visual .main i {
+              font-style: normal;
+          }
+
+          #visual .main p {
+              float: left;
+              width: 170px;
+              height: 40px;
+              font-size: 18px;
+              position: relative;
+              margin: 0 10px;
+              line-height: 40px;
+              border-bottom: 1px solid #86919a;
+          }
+
+              #visual .main p a {
+                  display: block;
+                  color: #86919a;
+              }
+
+              #visual .main p span {
+                  display: block;
+                  width: 2px;
+                  height: 2px;
+                  background-color: rgba(255,255,255,0);
+                  position: absolute;
+                  transition: all 1s;
+              }
+
+              #visual .main p .leftTopH, #visual .main p .leftTopW {
+                  left: 0;
+                  top: 0;
+              }
+
+              #visual .main p .rightBottomH, #visual .main p .rightBottomW {
+                  right: 0;
+                  bottom: 0;
+              }
+
+              #visual .main p:hover .leftTopH, #visual .main p:hover .rightBottomH {
+                  height: 100%;
+                  background-color: rgba(255,255,255,1);
+              }
+
+              #visual .main p:hover .leftTopW, #visual .main p:hover .rightBottomW {
+                  width: 100%;
+                  background-color: rgba(255,255,255,1);
+              }
+
+              #visual .main p:hover a {
+                  color: #fff;
+              }
+
+          #visual .main_text:after {
+              content: "";
+              clear: both;
+              display: block;
+          }
+	
+	/*############# section 1+3 공통 head ##########*/
+		#container h3{height:110px; width:100%; text-align:center; font-size:20px; 
+			line-height:150px; color:#482a1d;}
+		#container .head{width:1200px; height:60px; font-size:14px; text-align:center; margin:0 auto;}
+			#container .head li{width:100%;display:inline; margin:0 auto; }
+			#container .head li span{color:#888; font-size:8px;}
+			#container .head a{padding:0 10px; color:#888;}
+
+	/*############# section_1 ##################*/
+		#section_1{width:100%; height:850px; }
+			#section_1 .specialAll{width:1200px; height:601px; margin:0 auto;}
+				#section_1 .special_img{width:600px; height:601px; float:left; position:relative; overflow:hidden;}
+					#section_1 .special_img img{width:100%;}
+
+				#section_1 .special_desc{width:600px; height:600px; float:left; border-bottom:1px solid #ccc;}
+					#section_1 .special_desc .special{width:299px; height:299px; text-align:center; 
+						border-right:1px solid #ccc; border-top:1px solid #ccc; float:left;}
+					#section_1 .special_desc .special a{transition:all .3s .1s;}
+
+					#section_1 .special_desc .special_line{width:250px; height:250px; margin:25px auto;position:relative;}
+						#section_1 .special_desc .special_line .lines{display:block; width:1px; height:1px; background-color:rgba(255,255,255,0); position:absolute; transition:all .8s;}
+						#section_1 .special_desc .special_line .leftTopH,.leftTopW{left:0;top:0;}
+						#section_1 .special_desc .special_line .rightBottomH,.rightBottomW{right:0;bottom:0;}
+						#section_1 .special_desc .special:hover .leftTopH,#section_1 .special_desc .special:hover .rightBottomH{height:100%;background-color:rgba(255,255,255,1);}
+						#section_1 .special_desc .special:hover .leftTopW,#section_1 .special_desc .special:hover .rightBottomW{width:100%; background-color:rgba(255,255,255,1);}
+
+					#section_1 .special_desc div .line{width:25px; border-bottom:1px solid #000; margin:0 auto;}
+					#section_1 .special_desc div strong{font-size:18px; display:block; padding-top:20px; }
+					#section_1 .special_desc div .text{font-size:14px; color:#8c8c8c; display:block; padding:20px 0 30px;}
+					#section_1 .special_desc div i{font-style:normal; font-size:14px; 
+						font-weight:700; display:block; padding:15px 0;}
+					#section_1 .special_desc a{display:block; color:#000;font-weight:700;
+						border:1px solid #000;width:130px; margin:0 auto; height:40px;
+						line-height:35px; 
+						border-top:1px solid rgba(0,0,0,0);
+						border-left:1px solid rgba(0,0,0,0);
+						border-right:1px solid rgba(0,0,0,0);
+						}
+						#section_1 .mobSide{display:none;}
+
+	/*############# section_2 ##################*/
+		#section_2{width:100%; height:880px; background-color:#efefef;}
+			#section_2 .desc{width:1200px; height:600px; margin:0 auto; overflow:hidden;}
+				#section_2 .desc .descDesc{width:600px; height:300px; float:left;}
+					#section_2 .desc li img{height:100%; }
+				#section_2 .desc .descDesc:first-child{width:600px;height:600px; }
+					#section_2 .desc .desert{width:300px; height:300px; background-color:#222; 
+					text-align:center; font-weight:700;}
+					#section_2 .desc_text strong{font-size:16px; color:#fff; display:block; padding-top:30px; }
+					#section_2 .desc_text .line{width:15px; border-bottom:1px solid #939393; margin:0 auto; }
+					#section_2 .desc_text .text{display:block;font-size:13px; color:#939393;
+						padding:20px 0 40px;line-height:20px;}
+					#section_2 .desc_box a{width:128px; height:38px; color:#fff; 
+						border:1px solid #939393;line-height:36px; margin:0 auto;
+						font-size:14px;
+						display:block;
+						transform: perspective(1px);
+						position: relative;
+						transition:all .5s;
+							}
+					#section_2 .desc_box a:before{content: ""; background-color:#fff;
+					  position: absolute; z-index: -1; top: 0; left: 0; right: 0; bottom: 0; 
+					 transform:scalex(0);
+					  transform-origin: 0 50%;
+					  transition:all 0.3s ease-out;}
+
+	/*############# section_3 ##################*/
+		#section_3{width:100%; height:891px;}
+			#section_3 .desc{width:100%; height:720px; margin:0 auto; overflow:hidden;}
+				#section_3 .desc li{width:50%; height:720px; float:left; }
+					/*#section_3 .desc .mov img{height:100%; }*/
+					#section_3 .desc .mov{background-color:#222;}
+					#section_3 .desc .mov video{width:100%; height:100%; }
+				
+				#section_3 .ul_big li{width:100%; height:360px; }
+					#section_3 .ul_big .li_small{width:60%; height:360px; float:left;}
+							#section_3 .ul_big .li_small img{width:125%;}
+						#section_3 .ul_big .middleImg{width:100%; }
+							#section_3 .ul_big .middleImg img{width:100%; }
+					#section_3 .ul_big .desc_text{width:40%; height:360px; background-color:#222; 
+						text-align:center; font-weight:700;}
+						#section_3 .ul_big .desc_text strong{font-size:16px; color:#fff; display:block; padding:50px 0 20px;}
+						#section_3 .ul_big .desc_text .line{width:15px; border-bottom:1px solid #939393; margin:0 auto; }
+						#section_3 .ul_big .desc_text .text{display:block;font-size:13px; color:#939393;
+							padding:20px 0 40px;line-height:20px;}
+						#section_3 .ul_big .desc_text a{width:128px; height:38px; display:block; color:#fff; border:1px solid #939393;line-height:36px; margin:0 auto;
+						display:block;
+						transform: perspective(1px);
+						position: relative;
+						transition:all .5s;
+						}
+						#section_3 .ul_big .desc_text a:before{content: ""; background-color:#fff;
+						position: absolute; z-index: -1; top: 0; left: 0; right: 0; bottom: 0; 
+						transform:scalex(0);
+						transform-origin: 0 50%;
+						transition:all 0.3s ease-out;}
+
+	/*############# sec_card ##################*/
+		#sec_card{width:100%; height:500px;}
+			#sec_card .rewards{width:100%; height:100%; 
+			background-image:url("img/shila_rewards.jpg");
+			background-position:center 80%;
+			background-repeat:no-repeat; 
+			background-attachment: fixed;
+			background-size:100%;
+			}
+				#sec_card .rewards_bag{width:100%; height:100%;background-color:rgba(0,0,0,0.5)}
+					#sec_card .rewards_desc{text-align:center;}
+					#sec_card .rewards_title{width:100%; height:300px; margin:0 auto;}
+						#sec_card h3{font-size:26px; color:#fff; }
+						#sec_card .line{width:15px; border-bottom:1px solid #fff;margin:0 auto;}
+						#sec_card .rewards_text{display:block;font-size:14px; color:#999;padding:40px 0;}
+						#sec_card .more{display:block;width:128px; height:38px; border:1px solid #fff;  line-height:36px; margin:0 auto; color:#fff;
+						transform: perspective(1px);
+						position: relative;
+						transition:all .5s;
+						}
+						#sec_card .more:before{content: ""; background-color:#fff;
+						position: absolute; z-index: -1; top: 0; left: 0; right: 0; bottom: 0; 
+						transform:scalex(0);
+						transform-origin: 0 50%;
+						transition:all 0.3s ease-out;
+						}
+
+					#sec_card .desc{width:100%; height:200px; margin:0 auto; }
+						#sec_card .desc ul{width:720px; margin:0 auto;}
+						#sec_card .desc li{float:left; width:232px; height:140px; border:2px solid rgba(0,0,0,0); opacity:0.8	;transform:translatey(20px)scale(0.8);transition:all 1s;}
+						#sec_card .desc a{display:block; color:#fff;}
+						#sec_card .desc span{display:block}
+						#sec_card a .icon{width:120px; height:80px; margin:0 auto; }
+						#sec_card a .desc_text{width:120px; height:50px; padding-top:10px; 
+							font-size:14px; margin:0 auto; opacity:0;transition:all 1s;}
+						#sec_card .desc li:hover{opacity:1;transform:translatey(0px)scale(1);}
+						#sec_card .desc li:hover .desc_text{opacity:1;}
+
+	/*############################# 기능 ######################*/
+
+		#section_1 .special_desc .sp_1:hover{background-color:#15a9c8; color:#fff;}
+		#section_1 .special_desc .sp_2:hover{background-color:#d87f7a; color:#fff;}
+		#section_1 .special_desc .sp_3:hover{background-color:#7ba5dc; color:#fff;}
+		#section_1 .special_desc .sp_4:hover{background-color:#496915; color:#fff;}
+
+		#section_1 .special_desc .special:hover .line{border-bottom:1px solid #fff;}
+		#section_1 .special_desc .special:hover .text{color:#fff;}
+		
+		#container .head li:hover a{color:#000; text-decoration:underline;}
+		
+		
+
+		#section_1 .special_desc .special:hover a,#section_1 .special_desc .special:focus a{color:#000; border:1px solid #ffe; background-color:#fff; border-radius:75px;}
+		#section_2 .desc a:hover, #section_2 .desc a:focus{background-color:#222;color:#000;}
+		#section_2 .desc a:hover:before, #section_2 .desc a:focus:before{transform:scalex(1);}
+		#section_3 .desc a:hover, #section_3 .desc a:focus{background-color:#222;color:#000;}
+		#section_3 .desc a:hover:before, #section_3 .desc a:focus:before{transform:scalex(1);}
+		#sec_card .more:hover, #sec_card .more:focus{color:#000; font-weight:700;}
+		#sec_card .more:hover:before, #sec_card .more:focus:before{transform:scalex(1);}
+
+
+
+
+
+	/*##################################################################################*/
+	@media all and (min-width:1025px) and (max-width:1200px){
+		#visual h2{height:350px; line-height:350px; font-size:55px; font-weight:100; letter-spacing:40px;}
+		#visual .main{height:500px; background-size:150%; background-position:50% 0%;}
+		#container .head{width:700px; height:60px; font-size:14px; text-align:center; margin:0 auto;}
+		#container .head li:nth-child(5) span, #container .head li:nth-child(6),#container .head li:nth-child(7){display:none;}
+		#section_1 .specialAll{width:700px;}
+			#section_1 .special_img{width:400px;}
+				#section_1 .special_img img{width:150%; transform:translatex(-50px);}
+			#section_1 .special_desc{width:300px;}
+			#section_1 .special_desc .sp_3{display:none;}
+			#section_1 .special_desc .sp_4{display:none;}
+		#section_2 .desc{width:700px;}
+			#section_2 .desc .descDesc{width:300px;}
+				#section_2 .desc li img{height:100%; }
+			#section_2 .desc .descDesc:first-child{width:400px;}
+			#section_2 .desc .descDesc:last-child{display:none; }
+			#section_3 .desc{width:700px; }
+				#section_3 .desc li{width:100%; }
+					#section_3 .desc .mov{display:none;}
+							#section_3 .ul_big .li_small img{width:170%;}
+		}
+
+	/*##################################################################################*/
+	@media all and (min-width:768px) and (max-width:1024px){
+		#visual h2{width:100%; height:350px; line-height:350px; font-size:40px; font-weight:100; letter-spacing:30px;}
+		#visual .main{height:500px;
+			background-size:150%; 
+			background-position:50% 0%;}
+			#visual .main_text{width:600px;}
+					#visual .main p{width:130px;}
+		#container .head{width:700px; height:60px; font-size:14px; text-align:center; margin:0 auto;}
+		#container .head li:nth-child(5) span, #container .head li:nth-child(6),#container .head li:nth-child(7){display:none;}
+		#section_1 .specialAll{width:700px;}
+			#section_1 .special_img{width:400px;}
+				#section_1 .special_img img{width:150%; transform:translatex(-50px);}
+			#section_1 .special_desc{width:300px;}
+			#section_1 .special_desc .sp_3{display:none;}
+			#section_1 .special_desc .sp_4{display:none;}
+		#section_2 .desc{width:700px;}
+			#section_2 .desc .descDesc{width:300px;}
+				#section_2 .desc li img{height:100%; }
+			#section_2 .desc .descDesc:first-child{width:400px;}
+			#section_2 .desc .descDesc:last-child{display:none; }
+			#section_3 .desc{width:700px; }
+				#section_3 .desc li{width:100%; }
+					#section_3 .desc .mov{display:none;}
+							#section_3 .ul_big .li_small img{width:170%;}
+		}
+
+	/*##################################################################################*/
+	@media all and (min-width:481px) and (max-width:767px){
+		#container .head{width:400px; height:20px; font-size:14px; text-align:center; margin:0 auto; margin-bottom:20px; overflow:hidden; position:relative;}
+		#container .head:before{content:"<"; width:20px; height:20px; position:absolute;left:0;top:0; cursor:pointer;}
+		#container .head:after{content:">"; width:20px; height:20px;position:absolute;right:0;top:0; cursor:pointer;}
+			#container .head li{width:360px; display:block;position:absolute;left:0;right:0; display:none;}
+				#container .head li:first-child{display:block;}
+			#container .head li span{display:none;}
+		#visual h2{height:200px; line-height:50px; font-size:1.7em; font-weight:700; letter-spacing:20px; padding-top:150px;}
+			#visual .main{height:400px;
+			background-size:300%; 
+			background-position:50% 0%;}
+		#visual .main_text{display:none;}
+		#section_1{height:600px; }
+			#section_1 .specialAll{width:400px; height:200px; color:#fff;}
+				#section_1 .special_img{width:100%; height:100%;
+					float:none; background-color:lightblue;}
+					#section_1 .special_img img{transform:translatey(-50px);}
+					#section_1 .mobSide{width:100%; display:block; position:absolute;left:0;top:100px;  
+					text-align-last:justify;}
+					#section_1 .mobSide .left{padding-left:20px;}
+					#section_1 .mobSide .right{padding-right:20px;}
+				#section_1 .special_desc{width:400px; height:300px; float:none; border:none;}
+					#section_1 .special_desc .special{width:398px; height:199px;
+						border-left:1px solid #ccc; float:none;}
+				#section_1 .special_desc .special_line{width:350px;height:148px; border:1px solid #fff;}
+					#section_1 .special_desc .special_line .lines{display:none;}
+				#section_1 .special_desc div .line{display:none;}
+					#section_1 .special_desc div strong{font-size:18px; display:block; padding-top:20px; }
+					#section_1 .special_desc div .text{color:#fff; padding:10px 0 15px;}
+					#section_1 .special_desc div i{display:none;}
+					#section_1 .special_desc a{background-color:#fff;
+						border:none; line-height:35px; border-radius:65px;}
+					#section_1 .special_desc .sp_1{background-color:#15a9c8;}
+					#section_1 .special_desc .sp_2{background-color:#d87f7a; display:none;}
+					#section_1 .special_desc .sp_3{background-color:#7ba5dc; display:none;}
+					#section_1 .special_desc .sp_4{background-color:#496915; display:none;}
+		#sec_card{width:100%; height:350px;}
+			#sec_card .desc{display:none;}
+			#sec_card .more{border:1px solid #fff; color:#000; background-color:#fff; font-weight:700;}
+		#section_2{height:800px; background-color:#efefef;}
+			#section_2 .desc{width:100%; height:600px; overflow:visible; }
+				#section_2 .desc li{margin:0 auto;}
+				#section_2 .desc .descDesc{width:400px; height:200px; float:none;}
+					#section_2 .desc li img{width:100%; height:100%; }
+				#section_2 .desc .descDesc:first-child{width:400px; height:200px; overflow:hidden;}
+					#section_2 .desc .descDesc:first-child img{ height:150%; transform:translatey(-60px);}
+				#section_2 .desc .descDesc:last-child{display:none;}
+					#section_2 .desc .desert{width:400px; height:250px;}
+					#section_2 .desc_text strong{font-size:14px; padding-top:20px; }
+					#section_2 .desc_text .text{padding:10px 0 20px;}
+					#section_2 .desc_box a{color:#000; background-color:#fff;}
+		#section_3{height:850px;}
+			#section_3 .desc{width:100%; height:700px; margin:0 auto; overflow:hidden;}
+				#section_3 .desc li{width:400px; height:156px; background-color:pink; float:none; margin:0 auto;}
+					#section_3 .desc .mov{display:none;}
+				#section_3 .ul_big li{width:100%;}
+				#section_3 .ul_big .li_small{width:100%; height:156px; float:none; overflow:hidden;}
+					#section_3 .ul_big .li_small img{width:100%;}
+				#section_3 .ul_big .desc_text{width:100%; height:250px;}
+				#section_3 .ul_big .desc_text strong{font-size:14px; padding:20px 0 20px;}
+				#section_3 .ul_big .desc_text .text{padding:10px 0 20px;line-height:20px;}
+				#section_3 .ul_big .desc_text a{color:#000; background-color:#fff;}
+		}
+	/*##################################################################################*/
+	@media all and (min-width:0px) and (max-width:480px){
+		#container .head{width:300px; height:20px; font-size:14px; text-align:center; margin:0 auto; margin-bottom:20px; overflow:hidden; position:relative;}
+		#container .head:before{content:"<"; width:20px; height:20px; position:absolute;left:0;top:0; cursor:pointer;}
+		#container .head:after{content:">"; width:20px; height:20px;position:absolute;right:0;top:0; cursor:pointer;}
+			#container .head li{width:260px; display:block; position:absolute;left:0;right:0; display:none;}
+				#container .head li:first-child{display:block;}
+			#container .head li span{display:none;}
+		#visual h2{height:200px; line-height:50px; font-size:1.7em; font-weight:700; letter-spacing:20px; padding-top:85px;}
+			#visual .main{height:300px;
+			background-size:300%; 
+			background-position:50% 0%;}
+		#visual .main_text{display:none;}
+		#section_1{height:600px; }
+			#section_1 .specialAll{width:300px; height:200px; color:#fff;}
+				#section_1 .special_img{width:100%; height:100%;
+					float:none;}
+					#section_1 .special_img img{transform:translatey(-50px);}
+					#section_1 .mobSide{width:100%; display:block; position:absolute;left:0;top:100px;  
+					text-align-last:justify;}
+					#section_1 .mobSide .left{padding-left:20px;}
+					#section_1 .mobSide .right{padding-right:20px;}
+				#section_1 .special_desc{width:300px; height:300px; float:none; border:none;}
+					#section_1 .special_desc .special{width:298px; height:199px;
+						border-left:1px solid #ccc; float:none;}
+				#section_1 .special_desc .special_line{height:148px; border:1px solid #fff;}
+					#section_1 .special_desc .special_line .lines{display:none;}
+				#section_1 .special_desc div .line{display:none;}
+					#section_1 .special_desc div strong{font-size:18px; display:block; padding-top:20px; }
+					#section_1 .special_desc div .text{color:#fff; padding:10px 0 15px;}
+					#section_1 .special_desc div i{display:none;}
+					#section_1 .special_desc a{background-color:#fff;
+						border:none; line-height:35px; border-radius:65px;}
+					#section_1 .special_desc .sp_1{background-color:#15a9c8;}
+					#section_1 .special_desc .sp_2{background-color:#d87f7a; display:none;}
+					#section_1 .special_desc .sp_3{background-color:#7ba5dc; display:none;}
+					#section_1 .special_desc .sp_4{background-color:#496915;  display:none;}
+		#section_2{height:800px;}
+			#section_2 .desc{width:100%; overflow:visible; }
+				#section_2 .desc li{margin:0 auto;}
+				#section_2 .desc .descDesc{width:300px; height:150px; float:none;}
+					#section_2 .desc li img{width:100%; height:100%;}
+				#section_2 .desc .descDesc:first-child{width:300px; height:150px; overflow:hidden;}
+					#section_2 .desc .descDesc:first-child img{ height:150%; transform:translatey(-60px);}
+				#section_2 .desc .descDesc:last-child{display:none;}
+					#section_2 .desc .desert{height:250px;}
+					#section_2 .desc_text strong{font-size:14px; padding-top:20px; }
+					#section_2 .desc_text .text{padding:10px 0 20px;}
+					#section_2 .desc_box a{color:#000; background-color:#fff;}
+		#section_3{height:850px;}
+			#section_3 .desc{height:700px;}
+				#section_3 .desc li{width:300px; height:156px; float:none; margin:0 auto;}
+					#section_3 .desc .mov{display:none;}
+				#section_3 .ul_big .li_small{width:100%; height:156px; float:none;}
+					#section_3 .ul_big .li_small img{width:100%;}
+				#section_3 .ul_big .desc_text{width:100%; height:250px;}
+				#section_3 .ul_big .desc_text strong{font-size:14px; padding:20px 0 20px;}
+				#section_3 .ul_big .desc_text .text{padding:10px 0 20px; line-height:20px;}
+				#section_3 .ul_big .desc_text a{color:#000; background-color:#fff;}
+		#sec_card{width:100%; height:350px;}
+			#sec_card .desc{display:none;}
+			#sec_card .more{border:1px solid #ffe; color:#000; background-color:#fff; font-weight:700;}
+		}
+  </style>
+  <script>
+	/*header 제이쿼리 영역(검색,모바일부분) + (infoNav 위치 변경 부분)*/
+		jQuery(document).ready(function(){
+			jQuery("#search_icon").click(function(){
+				jQuery("#search_box").show().css({"display":"inline","width":"208px","opacity":"1"});
+			});
+			jQuery("#mobHeaderX").hide();
+			jQuery("#mobHeader").click(function(){
+				jQuery("#gnb_area, #infoNav_area").css({"left":"0"});
+				jQuery("#mobHeaderX").show(1000);
+			});
+			jQuery("#mobHeaderX").click(function(){
+				jQuery("#gnb_area, #infoNav_area").css({"left":"-700px"});
+				jQuery("#mobHeaderX").hide();
+			});
+		
+		//창크기 변화 감지
+			$( window ).resize(function() {
+			  var windowWidth = $( window ).width();
+				if(windowWidth < 768) {
+					//창 가로 크기가 500 미만일 경우 
+					$("#gnb_subBg,.gnb_subArea").hide();
+					$("#gnb_area li").mouseover(function(){
+						$(this).children(".gnb_subArea").stop().slideDown(500);
+					}).mouseout(function(){
+						$(this).children(".gnb_subArea").stop().slideUp(500);
+					});
+				} else {
+					//창 가로 크기가 500보다 클 경우
+					$(".gnb_subArea, #gnb_subBg").hide();
+					$("#gnb_area ul").mouseover(function(){
+						$(".gnb_subArea, #gnb_subBg").stop().slideDown(500);
+					}).mouseout(function(){
+						$(".gnb_subArea, #gnb_subBg").stop().slideUp(500);
+					});
+				}
+			}).resize();
+
+		/*########### 적용할 영역 #############*/
+			header = $("#header");
+			gnb = $("#gnb");
+			gnb_area = $("#gnb_area");
+			infoNav = $("#infoNav");
+
+			wrapMarginT = parseInt($("#wrap").css("marginTop"));
+
+			headerH = $("#header").height();
+			headH = wrapMarginT + headerH;
+			infoNavH = $("#infoNav").height();
+
+		/*########### 스크롤의 위치값 ############*/
+
+			$(window).scroll(function(){
+				var nowScroll = $(document).scrollTop();
+
+				if(nowScroll >= headH){
+					header.addClass("fixed");
+				}
+				else{
+					header.removeClass("fixed");
+				}
+				console.log(nowScroll);
+				console.log(infoNavH);
+				if(nowScroll >= infoNavH){
+					$('#infoNav_area').stop().animate({"right":"-450px"},500);
+					$('#scrollHeader').stop().animate({"top":"30px","opacity":"1"},500);
+					$('#scrollHeader').click(function(){
+						$('#infoNav_area').stop().animate({"right":"50px"},500);
+                        $(this).stop().animate({"top":"-130px","opacity":"0"},500);
+					});
+				}
+				else{
+					$('#infoNav_area').stop().animate({"right":"50px"},500);
+					$('#scrollHeader').stop().animate({"top":"-130px","opacity":"0"},500);
+				}
+			});
+		});
+
+	/*#############*/
+		
+
+	/*index_본문 관련 부분*/
+		$(function(){
+			$(".sp_1").hover(function(){
+				$(".special_img .img").children("img").before("<img src='img/section_1.jpg' alt='이미지'/>");
+				$(".special_img .img").children("img:last").remove();
+				return false;
+			});
+			$(".sp_2").hover(function(){
+				$(".special_img .img").children("img").before("<img src='img/section_2.jpg' alt='이미지'/>");
+				$(".special_img .img").children("img:last").remove();
+				return false;
+			});
+			$(".sp_3").hover(function(){
+				$(".special_img .img").children("img").before("<img src='img/section_3.jpg' alt='이미지'/>");
+				$(".special_img .img").children("img:last").remove();
+				return false;
+			});
+			$(".sp_4").hover(function(){
+				$(".special_img .img").children("img").before("<img src='img/section_4.jpg' alt='이미지'/>");
+				$(".special_img .img").children("img:last").remove();
+				return false;
+			});
+		
+			
+			$(".main_text p:eq(0)").hover(function(){
+				$("#visual .main").css({"backgroundImage":"url('img/main_bg1.jpg')"});
+				$("h2").text("THE PLAZA");
+			});
+			$(".main_text p:eq(1)").hover(function(){
+				$("#visual .main").css({"backgroundImage":"url('img/main_bg2.jpg')"});
+				$("h2").text("STAY IN STYLE");
+			});
+			$(".main_text p:eq(2)").hover(function(){
+				$("#visual .main").css({"backgroundImage":"url('img/main_bg3.jpg')"});
+				$("h2").text("DINE IN STYLE");
+			});
+			$(".main_text p:eq(3)").hover(function(){
+				$("#visual .main").css({"backgroundImage":"url('img/main_bg4.jpg')"});
+				$("h2").text("LIFE IN STYLE");
+			});
+		});
+
+
+  </script>
+ </head>
+ <body>
+	<div class="plaza_index">
+		<a class="plaza_link" href="sub_intro_1.html">
+			<span>THE PLAZA</span>
+		</a>
+		<a class="plaza_link" href="reservation.html">
+			<span>RESERVATION</span>
+		</a>
+		<a class="plaza_link" href="sub_special_1.html">
+			<span>SPECIAL</span>
+		</a>
+		<a class="plaza_link" href="sub_room_all.html">
+			<span>ROOM</span>
+		</a>
+		<a class="plaza_link" href="sub_dining_all.html">
+			<span>DINING</span>
+		</a>
+		<a class="plaza_link" href="sub_membership.html">
+			<span>MEMBERSHIP</span>
+		</a>
+	</div>
+	<div id="wrap">
+		<header id="header">
+			<div id="infoNav">
+				<h1>
+					<a href="index.html" title="index">
+						<img src="img/tit_bg_main.png" alt="THE PLAZA"/>
+					</a>
+				</h1>
+				<div id="infoNav_area">
+					<h5>infoNav</h5>
+					<ul class="weather_info">
+						<li><a href="#" title="SEOUL">SEOUL</a></li>
+						<li><a href="#" title="11:09PM">11:09PM</a></li>
+						<li><a href="#" title="흐림 12.7ºC">흐림 12.7ºC</a></li>
+					</ul>
+					<ul class="user_info">
+						<li><a href="login.html" title="LOGIN">LOGIN</a></li>
+						<li><a href="join_form.html" title="JOIN">JOIN</a></li>
+					</ul>
+					<select class="lang_info">
+						<option value="kor">KOREAN</option>
+						<option value="eng">ENGLISH</option>
+					</select>
+				</div>
+			</div>
+			<nav id="gnb">
+				<div id="gnb_area">
+				<h5>gnb</h5>
+					<ul>
+						<li>
+							<h6>더 플라자</h6>
+							<a class="gnb_areaA" href="sub_intro_1.html" title="더 플라자">더 플라자</a>
+							<span class="bar">|</span>
+							<div class="gnb_subArea">
+								<div class="gnb_sub">
+									<a href="sub_intro_1.html" title="브랜드 소개">브랜드 소개</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_intro_2_reward.html" title="수상이력">수상이력</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_ready.html" title="오시는 길">오시는 길</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_ready.html" title="여행 가이드">여행 가이드</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_ready.html" title="공지뉴스">공지뉴스</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<h6>스폐셜 오퍼</h6>
+							<a class="gnb_areaA" href="sub_special_1.html" title="스폐셜 오퍼">스폐셜 오퍼</a>
+							<span class="bar">|</span>
+							<div class="gnb_subArea">
+								<div class="gnb_sub">
+									<a href="sub_special_1.html" title="패키지 and 프로모션">패키지 &amp; 프로모션</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_special_2.html" title="더 플라자 이숍">더 플라자 이숍</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<h6>객실</h6>
+							<a class="gnb_areaA" href="sub_room_all.html" title="객실">객실</a>
+							<span class="bar">|</span>
+							<div class="gnb_subArea">
+								<div class="gnb_sub">
+									<a href="sub_room_all.html" title="전체보기">전체보기</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_room_1_deluxe_room.html" title="룸 and 스위트">룸 &amp; 스위트</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_room_7_royal_room.html" title="클럽라운지">클럽라운지</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<h6>다이닝</h6>
+							<a class="gnb_areaA" href="sub_dining_all.html" title="다이닝">다이닝</a>
+							<span class="bar">|</span>
+							<div class="gnb_subArea">
+								<div class="gnb_sub">
+									<a href="sub_dining_all.html" title="전체보기">전체보기</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_dining_all.html" title="레스토랑 and 바">레스토랑 &amp; 바</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_dining_all.html" title="베이커리">베이커리</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<h6>웨딩 &amp; 연회</h6>
+							<a class="gnb_areaA" href="#none" title="웨딩 n 연회">웨딩 &amp; 연회</a>
+							<span class="bar">|</span>
+							<div class="gnb_subArea">
+								<div class="gnb_sub">
+									<a href="#none" title="전체보기">전체보기</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="웨딩">웨딩</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="연회">연회</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="패밀리 파티">패밀리 파티</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="케이터링 서비스">케이터링 서비스</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<h6>부대시설</h6>
+							<a class="gnb_areaA" href="#none" title="부대시설">부대시설</a>
+							<span class="bar">|</span>
+							<div class="gnb_subArea">
+								<div class="gnb_sub">
+									<a href="#none" title="비즈니스 센터">비즈니스 센터</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="휘트니스클럽">휘트니스클럽</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="더벨스파">더벨스파</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="지스텀">지스텀</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="기프트샵">기프트샵</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<h6>멤버십</h6>
+							<a class="gnb_areaA" href="sub_membership.html" title="멤버십">멤버십</a>
+							<span class="bar">|</span>
+						</li>
+						<li>
+							<h6>온라인 컨시어지</h6>
+							<a class="gnb_areaA" href="sub_online_news.html" title="온라인 컨시어지">온라인 컨시어지</a>
+							<div class="gnb_subArea">
+								<div class="gnb_sub">
+									<a href="#none" title="호텔 연락처">호텔 연락처</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_ready.html" title="층별안내">층별안내</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="자주하는 질문">자주하는 질문</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_ready.html" title="문의하기">문의하기</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="관광 컨시어시">관광 컨시어시</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_ready.html" title="고객의 소리">고객의 소리</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="온라인 뉴스레터">온라인 뉴스레터</a>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div id="gnb_subBg">
+				</div>
+				<!--https://search.naver.com/search.naver?sm=nnf_hty&query={query}&x=0&y=0-->
+				<div id="search_area">
+					<form action="https://www.google.co.kr/search" method="get">
+						<fieldset>
+							<legend>검색부분</legend>
+							<input id="search_box" type="text" name="q" autocomplete="off"  title="search" placeholder="search"/>
+							<input id="search_icon" type="button" name="search_icon" title="serach_icon" value="버튼"/>
+							<a href="reservation.html" title="예약" id="reservation">
+								<span class="img">
+									<img src="img/table_icon.svg" alt="예약 이미지"/>
+								</span>
+								<span class="text">
+									예약하기
+								</span>
+							</a>
+						</fieldset>
+					</form>
+				</div>
+			</nav>
+			<div id="mobHeader">
+				<p>
+					<span>─</span>
+					<span>─</span>
+					<span>─</span>
+				</p>
+			</div>
+			<div id="mobHeaderX">
+			</div>
+			<div id="scrollHeader">
+				<p>
+					<span class="scroll_1">─</span>
+					<span class="scroll_2">─</span>
+					<span class="scroll_3">─</span>
+				</p>
+			</div>
+		</header>
+		<div id="container">
+			<ul id="visual">
+				<li class="main">
+					<h5>CONTAINER</h5>
+					<h2>DINE IN STYLE</h2>
+					<div class="main_text">
+						<p>
+							<a href="#" title="'PLAZA">
+								<span class="leftTopH"></span>
+								<span class="rightBottomH"></span>
+								<span class="leftTopW"></span>
+								<span class="rightBottomW"></span>
+								<i class="off">PLAZA</i>
+							</a>
+						</p>
+						<p>
+							<a href="#" title="'STAY">
+								<span class="leftTopH"></span>
+								<span class="rightBottomH"></span>
+								<span class="leftTopW"></span>
+								<span class="rightBottomW"></span>
+								<i class="off">STAY</i>
+							</a>
+						</p>
+						<p>
+							<a href="#" title="DINE">
+								<span class="leftTopH"></span>
+								<span class="rightBottomH"></span>
+								<span class="leftTopW"></span>
+								<span class="rightBottomW"></span>
+								<i class="on">DINE</i>
+							</a>
+						</p>
+						<p>
+							<a href="#" title="LIFE">
+								<span class="leftTopH"></span>
+								<span class="rightBottomH"></span>
+								<span class="leftTopW"></span>
+								<span class="rightBottomW"></span>
+								<i class="off">LIFE</i>
+							</a>
+						</p>
+					</div>
+				</li>
+			</ul>
+			<div id="section_1">
+				<h3>스폐셜 오퍼</h3>
+				<ul class="head">
+					<li>
+						<h6>전체보기</h6>
+						<a href="#" title="전체보기">
+							전체보기
+						</a><span>|</span>
+					</li>
+					<li>
+						<h6>객실 패키지</h6>
+						<a href="sub_room_all.html" title="객실 패키지">
+							객실 패키지
+						</a><span>|</span>
+					</li>
+					<li>
+						<h6>다이닝 프로모션</h6>
+						<a href="sub_dining_all.html" title="다이닝 프로모션">
+							다이닝 프로모션
+						</a><span>|</span>
+					</li>
+					<li>
+						<h6>웨딩 &amp; 연회</h6>
+						<a href="#none" title="웨딩 n 연회">
+							웨딩 &amp; 연회
+						</a>
+					</li>
+				</ul>
+				<div class="specialAll">
+					<div class="special_img">
+						<p class="img"><img src="img/section_1.jpg" alt="메뉴"/></p>
+						<div class="mobSide">
+							<a href="#none" title="left" class="left">&lt;</a>
+							<a href="#none" title="right" class="right">&gt;</a>
+						</div>
+					</div>
+					<div class="special_desc">
+						<div class="special sp_1">
+							<div class="special_line">
+								<span class="lines leftTopH"></span>
+								<span class="lines rightBottomH"></span>
+								<span class="lines leftTopW"></span>
+								<span class="lines rightBottomW"></span>
+								<i>객실 패키지</i>
+								<p class="line"></p>
+								<strong>얼리 서머 패키지</strong>
+								<span class="text">
+									도심 속 특급호텔에서 스타일리시한<br/>
+									여름휴가를 즐겨보세요.
+								</span>
+								<a href="sub_room_all.html" title="더보기"><span class="more">더 보기</span></a>
+							</div>
+						</div>
+						<div class="special sp_2">
+							<div class="special_line">
+								<span class="lines leftTopH"></span>
+								<span class="lines rightBottomH"></span>
+								<span class="lines leftTopW"></span>
+								<span class="lines rightBottomW"></span>
+								<i>다이닝 프로모션</i>
+								<p class="line"></p>
+								<strong>2018 아이스 디저트 프로모션</strong>
+								<span class="text">
+									도심 속 특급호텔에서 여름 무더위를<br/>
+									달래줄 아이스 디저트를 즐겨보세요.
+								</span>
+								<a href="sub_dining_all.html" title="더보기"><span class="more">더 보기</span></a>
+							</div>
+						</div>
+						<div class="special sp_3">
+							<div class="special_line">
+								<span class="lines leftTopH"></span>
+								<span class="lines rightBottomH"></span>
+								<span class="lines leftTopW"></span>
+								<span class="lines rightBottomW"></span>
+								<i>객실 패키지</i>
+								<p class="line"></p>
+								<strong>어반 라이프</strong>
+								<span class="text">
+									도심 속 특급호텔에서 ‘기대 그 이상의<br/> 
+									휴식’을 경험해보시기 바랍니다.
+								</span>
+								<a href="sub_room_all.html" title="더보기"><span class="more">더 보기</span></a>
+							</div>
+						</div>
+						<div class="special sp_4">
+							<div class="special_line">
+								<span class="lines leftTopH"></span>
+								<span class="lines rightBottomH"></span>
+								<span class="lines leftTopW"></span>
+								<span class="lines rightBottomW"></span>
+								<i>다이닝 프로모션</i>
+								<p class="line"></p>
+								<strong>웹 회원 특별 혜택 (5월)</strong>
+								<span class="text">
+									리뉴얼 오픈한 세븐스퀘어를 웹 회원<br/>
+									특별 혜택과 함께 경험해보세요.
+								</span>
+								<a href="sub_dining_all.html" title="더보기"><span class="more">더 보기</span></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="sec_card">
+				<div class="rewards">
+					<div class="rewards_bag">
+						<div class="rewards_desc">
+							<div class="rewards_title">
+								<h3>플래티넘 멤버십</h3>
+								<p class="line"></p>
+								<span class="rewards_text">
+									더 플라자가 제안하는 PLATINUM 멤버십을 통해<br/>
+									더욱 특별한 서비스를 경험하시기 바랍니다.
+								</span>
+								<h6>가입하기</h6>
+								<a href="sub_membership.html" title="가입하기"><span class="more">가입하기</span></a>
+							</div>
+							<div class="desc">
+								<ul>
+									<li>
+										<a href="#" title="회원을 위한 상품과 이벤트">
+											<span class="icon">
+												<img src="img/icon_1.png" alt="icon1"/>
+											</span>
+											<span class="desc_text">
+												회원을 위한 상품과 이벤트
+											</span>
+										</a>
+									</li>
+									<li>
+										<a href="#" title="다양한 회원특전 상품">
+											<span class="icon">
+												<img src="img/icon_2.png" alt="icon2"/>
+											</span>
+											<span class="desc_text">
+												다양한<br/>회원특전 상품
+											</span>
+										</a>
+									</li>
+									<li>
+										<a href="#" title="현금처럼 사용가능한 포인트">
+											<span class="icon">
+												<img src="img/icon_3.png" alt="icon3"/>
+											</span>
+											<span class="desc_text">
+												현금처럼 사용가능한 포인트
+											</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="section_2">
+				<h3>객실</h3>
+				<ul class="head">
+					<li>
+						<h6>디럭스 룸</h6>
+						<a href="javascript:void(0)" title="디럭스 룸">
+							디럭스 룸
+						</a><span>|</span>
+					</li>
+					<li>
+						<h6>프리미어 스위트</h6>
+						<a href="javascript:void(0)l" title="프리미어 스위트">
+							프리미어 스위트
+						</a><span>|</span>
+					</li>
+					<li>
+						<h6>플라자 스위트</h6>
+						<a href="sub_room_all.html" title="플라자 스위트">
+							플라자 스위트
+						</a><span>|</span>
+					</li>
+					<li>
+						<h6>레지던셜 스위트</h6>
+						<a href="sub_room_all.html" title="레지던셜 스위트">
+							레지던셜 스위트
+						</a><span>|</span>
+					</li>
+					<li>
+						<h6>프레스티지 스위트</h6>
+						<a href="sub_room_all.html" title="프레스티지 스위트">
+							프레스티지 스위트
+						</a><span>|</span>
+					</li>
+					<li>
+						<h6>프레지덴셜 스위트</h6>
+						<a href="sub_room_all.html" title="프레지덴셜 스위트">
+							프레지덴셜 스위트
+						</a><span>|</span>
+					</li>
+					<li>
+						<h6>로열 플라자 스위트</h6>
+						<a href="sub_room_all.html" title="프레스티지 스위트">
+							로열 플라자 스위트
+						</a>
+					</li>
+				</ul>
+				<ul class="desc">
+					<li class="descDesc"><a href="#" title="1"><img src="img/section1_main1.jpg" alt="section mian no.1"/></a></li>
+					<li class="descDesc"><a href="#" title="2"><img src="img/section1_main2.jpg" alt="section mian no.2"/></a></li>
+					<li class="descDesc desert">
+						<ul class="desc_text">
+							<li class="desc_box">
+								<strong>디럭스 룸</strong><br/>
+								<p class="line"></p>
+								<span class="text">
+									디럭스 룸 디자인의 중요한 콘셉트는<br/>
+									‘도시의 조망’입니다.<br/>
+									트윈, 더블, 패밀리 타입의 룸에서는<br/>
+									각각 다른 도시 조망이 펼쳐집니다.
+								</span>
+								<a href="sub_room_1_deluxe_room.html" title="더보기">
+									<span class="more">더 보기</span>
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li class="descDesc desert"><a href="#" title="3"><img src="img/section1_main3.jpg" alt="section mian no.3"/></a></li>
+				</ul>
+			</div>
+			<div id="section_3">
+				<h3>다이닝</h3>
+				<ul class="head">
+					<li>
+						<h6>세븐스퀘어</h6>
+						<a href="sub_dining_all.html" title="세븐스퀘어">
+							세븐스퀘어
+						</a><span>|</span>
+					</li>
+					<li>
+						<h6>도원</h6>
+						<a href="sub_dining_all.html" title="도원">
+							도원
+						</a><span>|</span>
+					</li>
+					<li>
+						<h6>무라사키</h6>
+						<a href="sub_dining_all.html" title="무라사키">
+							무라사키
+						</a><span>|</span>
+					</li>
+					<li>
+						<h6>투스카니</h6>
+						<a href="sub_dining_all.html" title="투스카니">
+							투스카니
+						</a><span>|</span>
+					</li>
+					<li>
+						<h6>더라운지</h6>
+						<a href="sub_dining_all.html" title="더라운지">
+							더라운지
+						</a><span>|</span>
+					</li>
+					<li>
+						<h6>에릭케제르</h6>
+						<a href="sub_dining_all.html" title="에릭케제르">
+							에릭케제르
+						</a>
+					</li>
+				</ul>
+				<ul class="desc">
+					<li>
+						<ul class="ul_big">
+							<li class="middleImg"><a href="#" title="중간이미지"><img src="img/w_04-2_1_5.jpg" alt="주방 이미지"/></a></li>
+							<li>
+								<ul class="ul_middle">
+									<li class="li_small"><a href="#" title="작은이미지"><img src="img/w_04-2_1_8.jpg" alt="닭꼬기"/></a></li>
+									<li class="desc_text">
+										<strong>세븐스퀘어</strong>
+										<p class="line"></p>
+										<span class="text">
+											세븐스퀘어는 세계 각국의 음식을 통해<br/>
+											다양한 세대와 계층이 만나는 <br/>
+											'삶'의 공간을 지향하는 <br/>
+											라이프스타일 뷔페 레스토랑입니다.
+										</span>
+										<a href="#" title="더보기">
+											<span class="more">더 보기</span>
+										</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li class="mov">
+						<video poster="img/w_04-2_1_7.jpg" controls>
+							<source src="video/main_video.mp4" type="video/mp4"/>
+						</video>
+						<!--<img src="img/w_04-2_1_7.jpg" alt="주방"/>-->
+					</li>
+				</ul>
+			</div>
+		</div>
+		<footer id="footer">
+			<div id="footerArea">
+				<div class="footerLogo">
+					<p class="bottomLogo1">
+						<a href="https://www.hoteltheplaza.com/kr/" title="footer logo1">
+							<img src="img/footer_logo1.png" alt="footer logo1"/>
+						</a>
+					</p>
+					<p class="bottomLogo2">
+						<a href="https://autograph-hotels.marriott.com/" title="footer logo2">
+							<img src="img/footer_logo2.png" alt="footer logo2"/>
+						</a>
+					</p>
+					<p class="bottomLogo2">
+						<a href="https://www.marriott.co.kr/rewards/rewards-program.mi" title="footer logo3">
+							<img src="img/footer_logo3.png" alt="footer logo3"/>
+						</a>
+					</p>
+
+				</div>
+				<div class="footerDesc">
+					<div class="footerDesc_fac">
+						<ul class="desc">
+							<li>
+								<a href="https://www.hoteltheplaza.com/kr/footer/sitemap.jsp" title="사이트맵"><span class="text">사이트맵</span></a><span class="bar">|</span>
+							</li>
+							<li>
+								<a href="https://www.hoteltheplaza.com/kr/footer/termsofuse.jsp" title="이용약관"><span class="text">이용약관</span></a><span class="bar">|</span>
+							</li>
+							<li>
+								<a href="https://www.hoteltheplaza.com/kr/footer/personal.jsp" title="개인정보처리방침"><strong class="text">개인정보처리방침</strong></a><span class="bar">|</span>
+							</li>
+							<li>
+								<a href="https://www.hoteltheplaza.com/kr/footer/privacy.jsp" title="영상정보처리기기 운영·관리 방침"><strong class="text">사이트맵</strong></a><span class="bar">|</span>
+							</li>
+							<li>
+								<a href="https://www.hoteltheplaza.com/kr/footer/email_security.jsp" title="이메일무단수집금지"><span class="text">이메일무단수집금지</span></a><span class="bar">|</span>
+							</li>
+							<li>
+								<a href="https://www.hwrc.co.kr/index.asp" title="채용정보"><span class="text">채용정보</span></a><span class="bar">|</span>
+							</li>
+							<li>
+								<a href="https://www.hoteltheplaza.com/_resource/pdf/Sales_Kit_KOR.pdf" title="온라인 브로셔"><span class="text">온라인 브로셔</span></a>
+							</li>
+						</ul>
+						<ul class="sns">
+							<li>
+								<a href="https://www.facebook.com/theplaza.seoul" title="facebook">
+									<span class="icon"><img src="img/facebook.svg" alt="facebook 아이콘"/></span>
+								</a>
+							</li>
+							<li>
+								<a href="https://www.instagram.com/theplazaseoul/" title="instagram">
+									<span class="icon"><img src="img/instagram.svg" alt="instagram 아이콘"/></span>
+								</a>
+							</li>
+							<li>
+								<a href="https://www.tripadvisor.co.kr/Hotel_Review-g294197-d306139-Reviews-THE_PLAZA_Seoul_Autograph_Collection-Seoul.html" title="tripadvisor">
+									<span class="icon"><img src="img/tripadvisor-logotype.svg" alt="tripadvisor 아이콘"/></span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div id="footerCopy">
+				<div class="copyArea">
+					<address class="adress">
+						서울특별시 중구 소공로 119 (우) 04525 TEL 02.771.2200 FAX 02.755.8897 
+					</address>
+					<address class="copy">
+						Copyright © THE PLAZA All Rights Reserved
+					</address>
+				</div>
+			</div>
+		</footer>
+	</div> 
+  
+ </body>
+</html>

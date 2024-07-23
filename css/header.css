@@ -1,0 +1,35 @@
+	/*############# header ##################*/
+		#header{width:100%; height:130px; margin:0 auto; position:fixed; background-color:#fff; z-index:1;}
+			
+			#infoNav{width:100%; height:30px; background-color:#272520;
+				padding:25px 0; position:relative; font-size:13px;}
+			#infoNav h1{width:100%; height:40px; text-align:center;}
+			#infoNav h1 img{height:100%;}
+			#infoNav a{color:#f7f7f7;}
+				#infoNav_area{position:absolute; right:20px; top:30px;}
+				#infoNav_area ul{display:inline;}
+				#infoNav_area li{display:inline; padding:0 10px; }
+				#infoNav_area select{color:#f7f7f7; background-color:#272520; border:none; font-size:13px; }
+				#infoNav_area .user_info li{padding:0 15px; }
+
+			#gnb{width:1920px; height:51px; background-color:gold;}
+				#gnb_area{width:1710px; height:50px;float:left; line-height:50px; font-size:14px; border-bottom:1px solid rgba(60,22,80,0.1);}
+					#gnb_area ul{width:1350px; height:50px; text-align:center; margin-left:360px; }
+					#gnb_area li{float:left; height:46px;}
+						#gnb_area li a{display:block;color:#666; font-weight:100; padding:0 25px; float:left;}
+						#gnb_area li .bar{display:block;color:#d8d8d8; float:left;}
+						#gnb_area li:after{content:""; width:0; height:4px; background-color:#3c1650; display:block; margin-top:46px; transition:width ease-in-out .3s;}
+						#gnb_area li:hover a{color:#3c1650; font-weight:700;}
+						#gnb_area li:hover:after{width:100%;}
+
+				#search_area{width:210px; height:100%; float:left; font-size:15px;}
+					#search_area p{float:left; text-align:center; }
+						#search_area .search{width:60px; height:20px; padding:15px 0; border-bottom:1px solid rgba(60,22,80,0.1);}
+						#search_area .booking{width:150px;height:50px;border-bottom:1px solid rgba(60,22,80,1);}
+						#search_area .booking a{display:block; width:100%; height:100%; 
+							background-color:rgba(60,22,80,1); position:relative; color:#fff; }
+						#search_area .booking a .img{position:absolute; top:12px; left:15px; }
+						#search_area .booking a .text{position:absolute; top:15px; right:30px; }
+						#search_area .booking a:hover{background-color:rgba(60,22,80,0.9);}
+				#search_area:after{content:"";display:block;clear:both;}
+				#gnb:after{content:"";display:block;clear:both;}

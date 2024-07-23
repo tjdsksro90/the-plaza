@@ -1,0 +1,58 @@
+ 
+
+핵의 종류 
+
+##############1) ie7 핵  (*) / 선택자 앞에 *을 붙입니다.
+
+*div {margin:10px;padding:10px} 
+
+ 
+
+#############2) ie7, 8, 9 핵 (html>body) / 선택자 앞에 html>body를 붙입니다.
+
+html>body div {margin:10px;padding:10px}
+
+ 
+
+#############3) ie8 핵 (/*＼**/) / 속성값 앞부분에 /*＼**/를 붙입니다.
+
+div {margin:/*＼**/10px;padding:/*＼**/10px}
+
+ 
+
+#############4) ie8+9 핵 (\0/IE8+9) / 속성값 뒷부분에 \0/IE8+9 를 붙입니다.
+
+div {margin:10px \0/IE8+9;padding:10px \0/IE8+9}
+
+ 
+
+#############5) ie9 핵 / 선택자 부분에 :root 와 속성값에 \0/IE9를 붙입니다.
+
+:root div {margin:10px \0/IE9;padding:10px \0/IE9}
+
+ 
+
+#############6) ie10 핵 / 
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none)적용할 스타일}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){
+div {margin:10px;padding:10px}}
+
+ 
+
+#############7) 크롬 / @media screen and(-webkit-min-device-pixel-ratio){적용할 스타일}
+@media screen and(-webkit-min-device-pixel-ratio){div {margin:10px;padding:10px}}
+
+ 
+
+#############8) 파이어폭스 / @-moz-document url-prefix() {적용할 스타일}
+
+@-moz-document url-prefix() {div {margin:10px;padding:10px}}
+
+
+
+ 
+
+ 
+
+ 

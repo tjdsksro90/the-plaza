@@ -1,0 +1,684 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8" />
+    <title> intro </title>
+    <script src="js/jquery-1.12.4.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+    <link rel="shortcut icon" href="img/icon_home.ico" />
+    <link rel="apple-touch-icon" href="img/icon_home.ico" />
+    <link rel="stylesheet" type="text/css" href="css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="css/headerFooter.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <!--http://www.tutorialspoint.com/jqueryui/jqueryui_easings.htm
+      search 모양 참고할 곳
+    -->
+    <style>
+        /*############# container ##################*/
+        .box_tour {
+            position: relative;
+            max-width: 1360px;
+            width: 72%;
+            margin: 0 auto;
+        }
+        .box_sort {
+            max-width: 960px;
+            margin: 90px auto 45px;
+            text-align: center;
+        }
+            .box_sort .radio {
+                position: relative;
+                display: inline-block;
+                padding-left: 24px;
+                font-size: 14px;
+                line-height: 18px;
+                margin-left: 40px;
+                vertical-align: top;
+            }
+        .box_map {
+            position: relative;
+        }
+            .box_map span {
+                width:100%;
+            }
+            .box_map span img {
+                width:100%;
+            }
+            .box_map .marker li {
+                position:absolute;
+            }
+            .box_map .marker li a {
+                display: block;
+                width: 22px;
+                height: 33px;
+            }
+            .box_map .marker .spot1_1 {
+                left: 47.5%;
+                top: 38%;
+            }
+            .box_map .marker .spot1_2 {
+                left: 57%;
+                top: 11%;
+            }
+            .box_map .marker .spot1_3 {
+                left: 48%;
+                top: 16%;
+            }
+            .box_map .marker .spot1_4 {
+                left: 49%;
+                top: 13%;
+            }
+            .box_map .marker .spot1_5 {
+                left: 51.3%;
+                bottom: 12.5%;
+            }
+            .box_map .marker .spot1_6 {
+                left: 46.4%;
+                top: 41.3%;
+            }
+            .box_map .marker .spot1_7 {
+                left: 49%;
+                top: 38%;
+            }
+            .box_map .marker .spot1_8 {
+                left: 49%;
+                top: 26%;
+            }
+            .box_map .marker .spot2_1 {
+                right: 8.4%;
+                top: 71%;
+            }
+            .box_map .marker .spot2_2 {
+                left: 26.3%;
+                bottom: 10.5%;
+            }
+            .box_map .marker .spot2_3 {
+                left: 58.2%;
+                top: 49%;
+            }
+            .box_map .marker .spot2_4 {
+                left: 52%;
+                top: 58%;
+            }
+            .box_map .marker .spot2_5 {
+                left: 56.2%;
+                top: 44%;
+            }
+            .box_map .marker .spot2_6 {
+                left: 53.3%;
+                top: 54%;
+            }
+            .box_map .marker .spot3_1 {
+                left: 54.7%;
+                top: 20.5%;
+            }
+            .box_map .marker .spot3_2 {
+                left: 48.3%;
+                top: 21%;
+            }
+            .box_map .marker .spot4_1 {
+                left: 61.8%;
+                top: 61.5%;
+            }
+            .box_map .marker .spot4_2 {
+                left: 53.1%;
+                top: 16%;
+            }
+            .box_map .marker li.museum a {
+                background-image: url(img/ico_museum.png);
+            }
+            .box_map .marker li.shopping a {
+                background-image: url(img/ico_shopping.png);
+            }
+
+            .box_map .marker li.tourspot a {
+                background-image: url(img/ico_tourspot.png);
+            }
+
+            .box_map .marker li.hotplace a {
+                background-image: url(img/ico_hotplace.png);
+            }
+            .box_map .marker .text {
+                position: absolute;
+                top: 0px;
+                font-size: 14px;
+                color: #333;
+                line-height: 17px;
+                white-space: nowrap;
+                letter-spacing: -0.15px;
+                font-weight: 700;
+            }
+                .box_map .marker .text.left {
+                    left: -137px;
+                    text-align: right;
+                    top: 2px;
+                    width: 130px;
+                }
+                .box_map .marker .text.top {
+                    top: -23px;
+                    width: 100px;
+                    margin-left: -39px;
+                    text-align: center;
+                }
+                .box_map .popup {
+            }
+        .box_tour .box_desc {
+            position: relative;
+            text-align: center;
+            padding: 30px 0;
+            overflow: hidden;
+            background: #fafafa;
+            border: 1px solid #e0e0e0;
+            border-top: 0;
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+        }
+    </style>
+    <script>
+        /*header 제이쿼리 영역(검색,모바일부분) + (infoNav 위치 변경 부분)*/
+        jQuery(document).ready(function () {
+            jQuery("#search_icon").click(function () {
+                jQuery("#search_box").show().css({ "display": "inline", "width": "208px", "opacity": "1" });
+            });
+            jQuery("#mobHeaderX").hide();
+            jQuery("#mobHeader").click(function () {
+                jQuery("#gnb_area, #infoNav_area").css({ "left": "0" });
+                jQuery("#mobHeaderX").show(1000);
+            });
+            jQuery("#mobHeaderX").click(function () {
+                jQuery("#gnb_area, #infoNav_area").css({ "left": "-700px" });
+                jQuery("#mobHeaderX").hide();
+            });
+
+            //창크기 변화 감지
+            $(window).resize(function () {
+                var windowWidth = $(window).width();
+                if (windowWidth < 768) {
+                    //창 가로 크기가 500 미만일 경우
+                    $("#gnb_subBg,.gnb_subArea").hide();
+                    $("#gnb_area li").mouseover(function () {
+                        $(this).children(".gnb_subArea").stop().slideDown(500);
+                    }).mouseout(function () {
+                        $(this).children(".gnb_subArea").stop().slideUp(500);
+                    });
+                } else {
+                    //창 가로 크기가 500보다 클 경우
+                    $(".gnb_subArea, #gnb_subBg").hide();
+                    $("#gnb_area ul").mouseover(function () {
+                        $(".gnb_subArea, #gnb_subBg").stop().slideDown(500);
+                    }).mouseout(function () {
+                        $(".gnb_subArea, #gnb_subBg").stop().slideUp(500);
+                    });
+                }
+            }).resize();
+
+            /*########### 적용할 영역 #############*/
+            header = $("#header");
+            gnb = $("#gnb");
+            gnb_area = $("#gnb_area");
+            infoNav = $("#infoNav");
+
+            wrapMarginT = parseInt($("#wrap").css("marginTop"));
+
+            headerH = $("#header").height();
+            headH = wrapMarginT + headerH;
+            infoNavH = $("#infoNav").height();
+
+            /*########### 스크롤의 위치값 ############*/
+
+            $(window).scroll(function () {
+                var nowScroll = $(document).scrollTop();
+
+                if (nowScroll >= headH) {
+                    header.addClass("fixed");
+                }
+                else {
+                    header.removeClass("fixed");
+                }
+                console.log(nowScroll);
+                console.log(infoNavH);
+                if (nowScroll >= infoNavH) {
+                    $('#infoNav_area').stop().animate({ "right": "-450px" }, 500);
+                    $('#scrollHeader').stop().animate({ "top": "30px", "opacity": "1" }, 500);
+                    $('#scrollHeader').click(function () {
+                        $('#infoNav_area').animate({ "right": "50px" }, 500);
+
+                    });
+                }
+                else {
+                    $('#infoNav_area').stop().animate({ "right": "50px" }, 500);
+                    $('#scrollHeader').stop().animate({ "top": "-130px", "opacity": "0" }, 500);
+                }
+            });
+        });
+
+                /*#############*/
+    </script>
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+            <div id="infoNav">
+                <h1>
+                    <a href="index.html" title="index">
+                        <img src="img/tit_bg_main.png" alt="THE PLAZA" />
+                    </a>
+                </h1>
+                <div id="infoNav_area">
+                    <h5>infoNav</h5>
+                    <ul class="weather_info">
+                        <li><a href="#" title="SEOUL">SEOUL</a></li>
+                        <li><a href="#" title="11:09PM">11:09PM</a></li>
+                        <li><a href="#" title="흐림 12.7ºC">흐림 12.7ºC</a></li>
+                    </ul>
+                    <ul class="user_info">
+                        <li><a href="login.html" title="LOGIN">LOGIN</a></li>
+                        <li><a href="join_form.html" title="JOIN">JOIN</a></li>
+                    </ul>
+                    <select class="lang_info">
+                        <option value="kor">KOREAN</option>
+                        <option value="eng">ENGLISH</option>
+                    </select>
+                </div>
+            </div>
+            <nav id="gnb">
+                <div id="gnb_area">
+                    <h5>gnb</h5>
+                    <ul>
+                        <li>
+                            <h6>더 플라자</h6>
+                            <a class="gnb_areaA" href="sub_intro_1.html" title="더 플라자">더 플라자</a>
+                            <span class="bar">|</span>
+                            <div class="gnb_subArea">
+                                <div class="gnb_sub">
+                                    <a href="sub_intro_1.html" title="브랜드 소개">브랜드 소개</a>
+                                </div>
+                                <div class="gnb_sub">
+                                    <a href="sub_intro_2_reward.html" title="수상이력">수상이력</a>
+                                </div>
+                                <div class="gnb_sub">
+                                    <a href="sub_ready.html" title="오시는 길">오시는 길</a>
+                                </div>
+                                <div class="gnb_sub">
+                                    <a href="sub_ready.html" title="여행 가이드">여행 가이드</a>
+                                </div>
+                                <div class="gnb_sub">
+                                    <a href="sub_ready.html" title="공지뉴스">공지뉴스</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <h6>스폐셜 오퍼</h6>
+                            <a class="gnb_areaA" href="sub_special_1.html" title="스폐셜 오퍼">스폐셜 오퍼</a>
+                            <span class="bar">|</span>
+                            <div class="gnb_subArea">
+                                <div class="gnb_sub">
+                                    <a href="sub_special_1.html" title="패키지 and 프로모션">패키지 &amp; 프로모션</a>
+                                </div>
+                                <div class="gnb_sub">
+                                    <a href="sub_special_2.html" title="더 플라자 이숍">더 플라자 이숍</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <h6>객실</h6>
+                            <a class="gnb_areaA" href="sub_room_all.html" title="객실">객실</a>
+                            <span class="bar">|</span>
+                            <div class="gnb_subArea">
+                                <div class="gnb_sub">
+                                    <a href="sub_room_all.html" title="전체보기">전체보기</a>
+                                </div>
+                                <div class="gnb_sub">
+                                    <a href="sub_room_1_deluxe_room.html" title="룸 and 스위트">룸 &amp; 스위트</a>
+                                </div>
+                                <div class="gnb_sub">
+                                    <a href="sub_room_7_royal_room.html" title="클럽라운지">클럽라운지</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <h6>다이닝</h6>
+                            <a class="gnb_areaA" href="sub_dining_all.html" title="다이닝">다이닝</a>
+                            <span class="bar">|</span>
+                            <div class="gnb_subArea">
+                                <div class="gnb_sub">
+                                    <a href="sub_dining_all.html" title="전체보기">전체보기</a>
+                                </div>
+                                <div class="gnb_sub">
+                                    <a href="sub_dining_all.html" title="레스토랑 and 바">레스토랑 &amp; 바</a>
+                                </div>
+                                <div class="gnb_sub">
+                                    <a href="sub_dining_all.html" title="베이커리">베이커리</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <h6>웨딩 &amp; 연회</h6>
+                            <a class="gnb_areaA" href="#none" title="웨딩 n 연회">웨딩 &amp; 연회</a>
+                            <span class="bar">|</span>
+                            <div class="gnb_subArea">
+                                <div class="gnb_sub">
+                                    <a href="#none" title="전체보기">전체보기</a>
+                                </div>
+                                <div class="gnb_sub">
+                                    <a href="#none" title="웨딩">웨딩</a>
+                                </div>
+                                <div class="gnb_sub">
+                                    <a href="#none" title="연회">연회</a>
+                                </div>
+                                <div class="gnb_sub">
+                                    <a href="#none" title="패밀리 파티">패밀리 파티</a>
+                                </div>
+                                <div class="gnb_sub">
+                                    <a href="#none" title="케이터링 서비스">케이터링 서비스</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <h6>부대시설</h6>
+                            <a class="gnb_areaA" href="#none" title="부대시설">부대시설</a>
+                            <span class="bar">|</span>
+                            <div class="gnb_subArea">
+                                <div class="gnb_sub">
+                                    <a href="#none" title="비즈니스 센터">비즈니스 센터</a>
+                                </div>
+                                <div class="gnb_sub">
+                                    <a href="#none" title="휘트니스클럽">휘트니스클럽</a>
+                                </div>
+                                <div class="gnb_sub">
+                                    <a href="#none" title="더벨스파">더벨스파</a>
+                                </div>
+                                <div class="gnb_sub">
+                                    <a href="#none" title="지스텀">지스텀</a>
+                                </div>
+                                <div class="gnb_sub">
+                                    <a href="#none" title="기프트샵">기프트샵</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <h6>멤버십</h6>
+                            <a class="gnb_areaA" href="sub_membership.html" title="멤버십">멤버십</a>
+                            <span class="bar">|</span>
+                        </li>
+                        <li>
+                            <h6>온라인 컨시어지</h6>
+                            <a class="gnb_areaA" href="sub_online_news.html" title="온라인 컨시어지">온라인 컨시어지</a>
+                            <div class="gnb_subArea">
+                                <div class="gnb_sub">
+                                    <a href="#none" title="호텔 연락처">호텔 연락처</a>
+                                </div>
+                                <div class="gnb_sub">
+                                    <a href="sub_ready.html" title="층별안내">층별안내</a>
+                                </div>
+                                <div class="gnb_sub">
+                                    <a href="#none" title="자주하는 질문">자주하는 질문</a>
+                                </div>
+                                <div class="gnb_sub">
+                                    <a href="sub_ready.html" title="문의하기">문의하기</a>
+                                </div>
+                                <div class="gnb_sub">
+                                    <a href="#none" title="관광 컨시어시">관광 컨시어시</a>
+                                </div>
+                                <div class="gnb_sub">
+                                    <a href="sub_ready.html" title="고객의 소리">고객의 소리</a>
+                                </div>
+                                <div class="gnb_sub">
+                                    <a href="#none" title="온라인 뉴스레터">온라인 뉴스레터</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div id="gnb_subBg">
+                </div>
+                <!--https://search.naver.com/search.naver?sm=nnf_hty&query={query}&x=0&y=0-->
+                <div id="search_area">
+                    <form action="https://www.google.co.kr/search" method="get">
+                        <fieldset>
+                            <legend>검색부분</legend>
+                            <input id="search_box" type="text" name="q" autocomplete="off" title="search" placeholder="search" />
+                            <input id="search_icon" type="button" name="search_icon" title="serach_icon" value="버튼" />
+                            <a href="reservation.html" title="예약" id="reservation">
+                                <span class="img">
+                                    <img src="img/table_icon.svg" alt="예약 이미지" />
+                                </span>
+                                <span class="text">
+                                    예약하기
+                                </span>
+                            </a>
+                        </fieldset>
+                    </form>
+                </div>
+            </nav>
+            <div id="mobHeader">
+                <p>
+                    <span>─</span>
+                    <span>─</span>
+                    <span>─</span>
+                </p>
+            </div>
+            <div id="mobHeaderX">
+            </div>
+            <div id="scrollHeader">
+                <p>
+                    <span class="scroll_1">─</span>
+                    <span class="scroll_2">─</span>
+                    <span class="scroll_3">─</span>
+                </p>
+            </div>
+        </header>
+        <div id="container">
+            <div id="sectionTop">
+                <h2>여행 가이드</h2>
+                <p class="hr"></p>
+                <p class="text">더 플라자 주변의 관광지를 확인해 보세요.</p>
+            </div>
+            <div id="sectionContent">
+                <div class="box_tour">
+                    <div class="box_sort">
+                        <span class="radio">
+                            <input type="radio" name="tourtype" id="total" /><label for="total">전체보기</label>
+                        </span>
+                        <span class="radio">
+                            <input type="radio" name="tourtype" id="museum" /><label for="museum">고궁 &amp; 박물관</label>
+                        </span>
+                        <span class="radio">
+                            <input type="radio" name="tourtype" id="shopping" /><label for="shopping">쇼핑</label>
+                        </span>
+                        <span class="radio">
+                            <input type="radio" name="tourtype" id="tourspot" /><label for="tourspot">관광지</label>
+                        </span>
+                        <span class="radio">
+                            <input type="radio" name="tourtype" id="hotplace" /><label for="hotplace">핫플레이스</label>
+                        </span>
+                    </div>
+                    <div class="box_map">
+                        <div class="back_tour">
+                            <span>
+                                <img src="img/tour_map.jpg" alt="지도" />
+                            </span>
+                        </div>
+                        <div class="marker">
+                            <ul>
+                                <li class="museum spot1_1">
+                                    <p class="text left" class="text left">덕수궁</p>
+                                    <a href="#none" title="덕수궁"></a>
+                                </li>
+                                <li class="museum spot1_2">
+                                    <p class="text left">창덕궁</p>
+                                    <a href="#none" title="창덕궁"></a>
+                                </li>
+                                <li class="museum spot1_3">
+                                    <p class="text left">경복궁</p>
+                                    <a href="#none" title="경복궁"></a>
+                                </li>
+                                <li class="museum spot1_4">
+                                    <p class="text left">국립민속박물관</p>
+                                    <a href="#none" title="국립민속박물관"></a>
+                                </li>
+                                <li class="museum spot1_5">
+                                    <p class="text left">국립중앙박물관</p>
+                                    <a href="#none" title="국립중앙박물관"></a>
+                                </li>
+                                <li class="museum spot1_6">
+                                    <p class="text top">서울시립 미술관</p>
+                                    <a href="#none" title="서울시립 미술관"></a>
+                                </li>
+                                <li class="museum spot1_7">
+                                    <p class="text left">국립현대미술관</p>
+                                    <a href="#none" title="국립현대미술관"></a>
+                                </li>
+                                <li class="museum spot1_8">
+                                    <p class="text left">대한민국역사박물관</p>
+                                    <a href="#none" title="대한민국역사박물관"></a>
+                                </li>
+                                <li class="shopping spot2_1">
+                                    <p class="text left">갤러리아백화점명품관</p>
+                                    <a href="#none" title="갤러리아백화점명품관"></a>
+                                </li>
+                                <li class="shopping spot2_2">
+                                    <p class="text left">갤러리아면세점 63</p>
+                                    <a href="#none" title="갤러리아면세점 63"></a>
+                                </li>
+                                <li class="tourspot spot2_3">
+                                    <p class="text left">명동</p>
+                                    <a href="#none" title="명동"></a>
+                                </li>
+                                <li class="tourspot spot3_2">
+                                    <p class="text left">인사동</p>
+                                    <a href="#none" title="인사동"></a>
+                                </li>
+                                <li class="hotplace spot4_1">
+                                    <p class="text left">이태원(경리단길)</p>
+                                    <a href="#none" title="이태원(경리단길)"></a>
+                                </li>
+                                <li class="hotplace spot4_2">
+                                    <p class="text left">북촌 한옥마을</p>
+                                    <a href="#none" title="북촌 한옥마을"></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="popup">
+
+                        </div>
+                    </div>
+                    <div class="box_desc">
+                        <div class="box_weather">
+                            <iframe width="235" height="157" src="jsp/getWeather_w_body.jsp" scrolling="no" title="날씨정보"></iframe>
+                        </div>
+                        <div class="box_listPlace">
+                            <div class="box_title_listPlace">
+
+                            </div>
+                            <div class="listPlace">
+                                <ul>
+                                    <li>
+                                        <span>
+                                            <img src="img/pl_museum1.png" alt="덕수궁"/>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+            <div id="footerArea">
+                <div class="footerLogo">
+                    <p class="bottomLogo1">
+                        <a href="https://www.hoteltheplaza.com/kr/" title="footer logo1">
+                            <img src="img/footer_logo1.png" alt="footer logo1" />
+                        </a>
+                    </p>
+                    <p class="bottomLogo2">
+                        <a href="https://autograph-hotels.marriott.com/" title="footer logo2">
+                            <img src="img/footer_logo2.png" alt="footer logo2" />
+                        </a>
+                    </p>
+                    <p class="bottomLogo2">
+                        <a href="https://www.marriott.co.kr/rewards/rewards-program.mi" title="footer logo3">
+                            <img src="img/footer_logo3.png" alt="footer logo3" />
+                        </a>
+                    </p>
+
+                </div>
+                <div class="footerDesc">
+                    <div class="footerDesc_fac">
+                        <ul class="desc">
+                            <li>
+                                <a href="https://www.hoteltheplaza.com/kr/footer/sitemap.jsp" title="사이트맵"><span class="text">사이트맵</span></a><span class="bar">|</span>
+                            </li>
+                            <li>
+                                <a href="https://www.hoteltheplaza.com/kr/footer/termsofuse.jsp" title="이용약관"><span class="text">이용약관</span></a><span class="bar">|</span>
+                            </li>
+                            <li>
+                                <a href="https://www.hoteltheplaza.com/kr/footer/personal.jsp" title="개인정보처리방침"><strong class="text">개인정보처리방침</strong></a><span class="bar">|</span>
+                            </li>
+                            <li>
+                                <a href="https://www.hoteltheplaza.com/kr/footer/privacy.jsp" title="영상정보처리기기 운영·관리 방침"><strong class="text">사이트맵</strong></a><span class="bar">|</span>
+                            </li>
+                            <li>
+                                <a href="https://www.hoteltheplaza.com/kr/footer/email_security.jsp" title="이메일무단수집금지"><span class="text">이메일무단수집금지</span></a><span class="bar">|</span>
+                            </li>
+                            <li>
+                                <a href="https://www.hwrc.co.kr/index.asp" title="채용정보"><span class="text">채용정보</span></a><span class="bar">|</span>
+                            </li>
+                            <li>
+                                <a href="https://www.hoteltheplaza.com/_resource/pdf/Sales_Kit_KOR.pdf" title="온라인 브로셔"><span class="text">온라인 브로셔</span></a>
+                            </li>
+                        </ul>
+                        <ul class="sns">
+                            <li>
+                                <a href="https://www.facebook.com/theplaza.seoul" title="facebook">
+                                    <span class="icon"><img src="img/facebook.svg" alt="facebook 아이콘" /></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.instagram.com/theplazaseoul/" title="instagram">
+                                    <span class="icon"><img src="img/instagram.svg" alt="instagram 아이콘" /></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.tripadvisor.co.kr/Hotel_Review-g294197-d306139-Reviews-THE_PLAZA_Seoul_Autograph_Collection-Seoul.html" title="tripadvisor">
+                                    <span class="icon"><img src="img/tripadvisor-logotype.svg" alt="tripadvisor 아이콘" /></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="footerCopy">
+                <div class="copyArea">
+                    <address class="adress">
+                        서울특별시 중구 소공로 119 (우) 04525 TEL 02.771.2200 FAX 02.755.8897
+                    </address>
+                    <address class="copy">
+                        Copyright © THE PLAZA All Rights Reserved
+                    </address>
+                </div>
+            </div>
+        </footer>
+
+        <!--<div class="location">
+                    <div id="map"></div>
+                    <script>
+                        var map;
+                        function initMap() {
+                            map = new google.maps.Map(document.getElementById('map'), {
+                                center: { lat: -34.397, lng: 150.644 },
+                                zoom: 8
+                            });
+                        }
+
+                    </script>
+                    <script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyDPWoBPGnTFdWTv8voctA8APodWLofrwNE&callback=initMap"
+    async defer"></script>
+                </div>-->
+    </div>
+
+</body>
+</html>

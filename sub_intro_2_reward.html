@@ -1,0 +1,624 @@
+<!DOCTYPE html >
+<html lang="ko">
+ <head>
+  <meta charset="utf-8"/>
+  <title> intro2_reward </title>
+  <script src="js/jquery-1.12.4.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+  <link rel="shortcut icon" href="img/icon_home.ico"/>
+  <link rel="apple-touch-icon" href="img/icon_home.ico"/>
+  <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+  <link rel="stylesheet" type="text/css" href="css/headerFooter.css"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"/>
+  <!--http://www.tutorialspoint.com/jqueryui/jqueryui_easings.htm
+	search 모양 참고할 곳
+  -->
+  <style>
+	/*############# container ##################*/
+			#sectionTop{width:100%; height:380px; background-image:url("img/top_awards.jpg");
+				background-attachment:fixed; background-repeat:no-repeat; background-position:50% 25%; background-size:150%;}
+			#sectionTop h2{padding-top:100px; padding-bottom:50px; color:#fff;text-align:center; font-size:40px; font-weight:100;}
+			#sectionTop .hr{width:30px; border:1px solid #fff; margin:0 auto; }
+			#sectionTop .text{text-align:center;color:#fff;padding-top:50px}
+
+		#sectionContent{width:100%; }
+			#sectionContent .location{width:98%; font-size:12px;text-align:right; padding-right:2%; color:#3c1650; font-weight:700; padding:20px 0;}
+			#sectionContent .location a:link,#sectionContent .location a:visited{text-decoration:underline; color:#999; font-weight:400;}
+			#sectionContent .location a:hover{color:#3c1650;}
+			#sectionContent .location span{padding:10px; color:#ccc;}
+
+			#sectionContent .section_list{width:100%; }
+				#sectionContent .section_list_ul{max-width:1200px; padding-top: 75px; padding-bottom: 120px; margin: 0 auto;}
+					#sectionContent .section_list_li{}
+						#sectionContent .list_left{width:150px; font-size:40px; color:#3b1a4f; float:left;}
+						#sectionContent .list_right{width:1050px;
+						border-top: 1px solid #b2b2b2;padding: 35px 0 35px 9px;box-sizing: border-box;float:left; }
+							#sectionContent .right_area{margin-bottom:14px;position:relative;}
+								#sectionContent .right_day{float:left; height:30px; font-size:16px; padding-right:15px; margin-right:15px; line-height:29px; font-weight:300; letter-spacing:0.6px; position:relative;}
+								#sectionContent .right_day:before{content: '';position: absolute;right: 0; top: 8px;width: 1px; height: 13px; background: #b2b2b2;}
+								#sectionContent .right_desc{    float: left;display: block;font-size: 22px; line-height: 22px; margin-bottom: 20px; padding-top: 4px;}
+									#sectionContent .desc_span{    display: block;font-size: 18px;line-height: 22px;margin-top: 10px;}
+									#sectionContent .desc_span:first-child{margin-top: 22px;}
+								#sectionContent .right_eng{    position: absolute;right: 9px; top: 0;font-size: 14px;font-weight: bold;}
+					#sectionContent .section_list_li:after,#sectionContent .right_area:after{clear:both; content:"";display:block;}
+			
+			
+  </style>
+  <script>
+	/*header 제이쿼리 영역(검색,모바일부분) + (infoNav 위치 변경 부분)*/
+		jQuery(document).ready(function(){
+			jQuery("#search_icon").click(function(){
+				jQuery("#search_box").show().css({"display":"inline","width":"208px","opacity":"1"});
+			});
+			jQuery("#mobHeaderX").hide();
+			jQuery("#mobHeader").click(function(){
+				jQuery("#gnb_area, #infoNav_area").css({"left":"0"});
+				jQuery("#mobHeaderX").show(1000);
+			});
+			jQuery("#mobHeaderX").click(function(){
+				jQuery("#gnb_area, #infoNav_area").css({"left":"-700px"});
+				jQuery("#mobHeaderX").hide();
+			});
+		
+		//창크기 변화 감지
+			$( window ).resize(function() {
+			  var windowWidth = $( window ).width();
+				if(windowWidth < 768) {
+					//창 가로 크기가 500 미만일 경우 
+					$("#gnb_subBg,.gnb_subArea").hide();
+					$("#gnb_area li").mouseover(function(){
+						$(this).children(".gnb_subArea").stop().slideDown(500);
+					}).mouseout(function(){
+						$(this).children(".gnb_subArea").stop().slideUp(500);
+					});
+				} else {
+					//창 가로 크기가 500보다 클 경우
+					$(".gnb_subArea, #gnb_subBg").hide();
+					$("#gnb_area ul").mouseover(function(){
+						$(".gnb_subArea, #gnb_subBg").stop().slideDown(500);
+					}).mouseout(function(){
+						$(".gnb_subArea, #gnb_subBg").stop().slideUp(500);
+					});
+				}
+			}).resize();
+
+		/*########### 적용할 영역 #############*/
+			header = $("#header");
+			gnb = $("#gnb");
+			gnb_area = $("#gnb_area");
+			infoNav = $("#infoNav");
+
+			wrapMarginT = parseInt($("#wrap").css("marginTop"));
+
+			headerH = $("#header").height();
+			headH = wrapMarginT + headerH;
+			infoNavH = $("#infoNav").height();
+
+		/*########### 스크롤의 위치값 ############*/
+
+			$(window).scroll(function(){
+				var nowScroll = $(document).scrollTop();
+
+				if(nowScroll >= headH){
+					header.addClass("fixed");
+				}
+				else{
+					header.removeClass("fixed");
+				}
+				console.log(nowScroll);
+				console.log(infoNavH);
+				if(nowScroll >= infoNavH){
+					$('#infoNav_area').stop().animate({"right":"-450px"},500);
+					$('#scrollHeader').stop().animate({"top":"30px","opacity":"1"},500);
+					$('#scrollHeader').click(function(){
+						$('#infoNav_area').stop().animate({"right":"50px"},500);
+                        $(this).stop().animate({"top":"-130px","opacity":"0"},500);
+					});
+				}
+				else{
+					$('#infoNav_area').stop().animate({"right":"50px"},500);
+					$('#scrollHeader').stop().animate({"top":"-130px","opacity":"0"},500);
+				}
+			});
+		});
+
+	/*#############*/
+  </script>
+ </head>
+
+ <body>
+	<div id="wrap">
+		<header id="header">
+			<div id="infoNav">
+				<h1>
+					<a href="index.html" title="index">
+						<img src="img/tit_bg_main.png" alt="THE PLAZA"/>
+					</a>
+				</h1>
+				<div id="infoNav_area">
+					<h5>infoNav</h5>
+					<ul class="weather_info">
+						<li><a href="#" title="SEOUL">SEOUL</a></li>
+						<li><a href="#" title="11:09PM">11:09PM</a></li>
+						<li><a href="#" title="흐림 12.7ºC">흐림 12.7ºC</a></li>
+					</ul>
+					<ul class="user_info">
+						<li><a href="login.html" title="LOGIN">LOGIN</a></li>
+						<li><a href="join_form.html" title="JOIN">JOIN</a></li>
+					</ul>
+					<select class="lang_info">
+						<option value="kor">KOREAN</option>
+						<option value="eng">ENGLISH</option>
+					</select>
+				</div>
+			</div>
+			<nav id="gnb">
+				<div id="gnb_area">
+				<h5>gnb</h5>
+					<ul>
+						<li>
+							<h6>더 플라자</h6>
+							<a class="gnb_areaA" href="sub_intro_1.html" title="더 플라자">더 플라자</a>
+							<span class="bar">|</span>
+							<div class="gnb_subArea">
+								<div class="gnb_sub">
+									<a href="sub_intro_1.html" title="브랜드 소개">브랜드 소개</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_intro_2_reward.html" title="수상이력">수상이력</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_ready.html" title="오시는 길">오시는 길</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_ready.html" title="여행 가이드">여행 가이드</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_ready.html" title="공지뉴스">공지뉴스</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<h6>스폐셜 오퍼</h6>
+							<a class="gnb_areaA" href="sub_special_1.html" title="스폐셜 오퍼">스폐셜 오퍼</a>
+							<span class="bar">|</span>
+							<div class="gnb_subArea">
+								<div class="gnb_sub">
+									<a href="sub_special_1.html" title="패키지 and 프로모션">패키지 &amp; 프로모션</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_special_2.html" title="더 플라자 이숍">더 플라자 이숍</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<h6>객실</h6>
+							<a class="gnb_areaA" href="sub_room_all.html" title="객실">객실</a>
+							<span class="bar">|</span>
+							<div class="gnb_subArea">
+								<div class="gnb_sub">
+									<a href="sub_room_all.html" title="전체보기">전체보기</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_room_1_deluxe_room.html" title="룸 and 스위트">룸 &amp; 스위트</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_room_7_royal_room.html" title="클럽라운지">클럽라운지</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<h6>다이닝</h6>
+							<a class="gnb_areaA" href="sub_dining_all.html" title="다이닝">다이닝</a>
+							<span class="bar">|</span>
+							<div class="gnb_subArea">
+								<div class="gnb_sub">
+									<a href="sub_dining_all.html" title="전체보기">전체보기</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_dining_all.html" title="레스토랑 and 바">레스토랑 &amp; 바</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_dining_all.html" title="베이커리">베이커리</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<h6>웨딩 &amp; 연회</h6>
+							<a class="gnb_areaA" href="#none" title="웨딩 n 연회">웨딩 &amp; 연회</a>
+							<span class="bar">|</span>
+							<div class="gnb_subArea">
+								<div class="gnb_sub">
+									<a href="#none" title="전체보기">전체보기</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="웨딩">웨딩</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="연회">연회</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="패밀리 파티">패밀리 파티</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="케이터링 서비스">케이터링 서비스</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<h6>부대시설</h6>
+							<a class="gnb_areaA" href="#none" title="부대시설">부대시설</a>
+							<span class="bar">|</span>
+							<div class="gnb_subArea">
+								<div class="gnb_sub">
+									<a href="#none" title="비즈니스 센터">비즈니스 센터</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="휘트니스클럽">휘트니스클럽</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="더벨스파">더벨스파</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="지스텀">지스텀</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="기프트샵">기프트샵</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<h6>멤버십</h6>
+							<a class="gnb_areaA" href="sub_membership.html" title="멤버십">멤버십</a>
+							<span class="bar">|</span>
+						</li>
+						<li>
+							<h6>온라인 컨시어지</h6>
+							<a class="gnb_areaA" href="sub_online_news.html" title="온라인 컨시어지">온라인 컨시어지</a>
+							<div class="gnb_subArea">
+								<div class="gnb_sub">
+									<a href="#none" title="호텔 연락처">호텔 연락처</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_ready.html" title="층별안내">층별안내</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="자주하는 질문">자주하는 질문</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_ready.html" title="문의하기">문의하기</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="관광 컨시어시">관광 컨시어시</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_ready.html" title="고객의 소리">고객의 소리</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="온라인 뉴스레터">온라인 뉴스레터</a>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div id="gnb_subBg">
+				</div>
+				<!--https://search.naver.com/search.naver?sm=nnf_hty&query={query}&x=0&y=0-->
+				<div id="search_area">
+					<form action="https://www.google.co.kr/search" method="get">
+						<fieldset>
+							<legend>검색부분</legend>
+							<input id="search_box" type="text" name="q" autocomplete="off"  title="search" placeholder="search"/>
+							<input id="search_icon" type="button" name="search_icon" title="serach_icon" value="버튼"/>
+							<a href="reservation.html" title="예약" id="reservation">
+								<span class="img">
+									<img src="img/table_icon.svg" alt="예약 이미지"/>
+								</span>
+								<span class="text">
+									예약하기
+								</span>
+							</a>
+						</fieldset>
+					</form>
+				</div>
+			</nav>
+			<div id="mobHeader">
+				<p>
+					<span>─</span>
+					<span>─</span>
+					<span>─</span>
+				</p>
+			</div>
+			<div id="mobHeaderX">
+			</div>
+			<div id="scrollHeader">
+				<p>
+					<span class="scroll_1">─</span>
+					<span class="scroll_2">─</span>
+					<span class="scroll_3">─</span>
+				</p>
+			</div>
+		</header>
+		<div id="container">
+			<div id="sectionTop">
+				<h2>수상이력</h2>
+				<p class="hr"></p>
+				<p class="text">다양한 부문에서 인정을 받은 내용을 소개합니다.</p>
+			</div>
+			<div id="sectionContent">
+				<div class="location">
+					<a href="index.html" title="Home"><i><img src="img/icon_home.png" alt="홈이미지"/></i></a><span>></span><a href="#" title="더 플라자">더 플라자</a><span>></span>수상이력
+				</div>
+				<div class="section_list">
+					<ul class="section_list_ul">
+						<li class="section_list_li">
+							<div class="list_left">2017</div>
+							<div class="list_right">
+								<div class="right_area">
+									<div class="right_day">2017.07</div>
+									<div class="right_desc">
+										2017 5 STAR HOTEL 선정(국내 유일)
+										<span class="desc_span">- LARGE HOTEL 부문 수상</span>
+										<span class="desc_span">- CITY HOTEL 부문 수상</span>
+									</div>
+									<div class="right_eng">The International Hotel Awards</div>
+								</div>
+								<div class="right_area">
+									<div class="right_day">2017.01</div>
+									<div class="right_desc">
+										2017 트래블러스 초이스 톱 25 서비스 호텔 선정
+									</div>
+									<div class="right_eng">TripAdvisor</div>
+								</div>
+							</div>
+						</li>
+						<li class="section_list_li">
+							<div class="list_left">2016</div>
+							<div class="list_right">
+								<div class="right_area">
+									<div class="right_day">2016.10</div>
+									<div class="right_desc">
+										한국 TOP 10 호텔 브랜드 중 3위 수상
+									</div>
+									<div class="right_eng">Global Traveler</div>
+								</div>
+								<div class="right_area">
+									<div class="right_day">2016.04</div>
+									<div class="right_desc">
+										2016 UNIQUE LUXURY HOTEL 수상
+									</div>
+									<div class="right_eng">Luxury Travel Guide</div>
+								</div>
+								<div class="right_area">
+									<div class="right_day">2016.01</div>
+									<div class="right_desc">
+										2016 트래블러스 초이스 톱 25 서비스 호텔 선정
+									</div>
+									<div class="right_eng">TripAdvisor</div>
+								</div>
+							</div>
+						</li>
+						<li class="section_list_li">
+							<div class="list_left">2015</div>
+							<div class="list_right">
+								<div class="right_area">
+									<div class="right_day">2015.04</div>
+									<div class="right_desc">
+										2015 트래블러스 초이스 톱 25 호텔 선정 
+									</div>
+									<div class="right_eng">TripAdvisor</div>
+								</div>
+							</div>
+						</li>
+						<li class="section_list_li">
+							<div class="list_left">2014</div>
+							<div class="list_right">
+								<div class="right_area">
+									<div class="right_day">2014.07</div>
+									<div class="right_desc">
+										2014 베스트 브랜드 호텔 럭셔리 부티크 부문 선정
+									</div>
+									<div class="right_eng">The Korea Times</div>
+								</div>
+								<div class="right_area">
+									<div class="right_day">2014.05</div>
+									<div class="right_desc">
+										2014 트래블러스 초이스 한국 톱 25 베스트 서비스 호텔 선정
+									</div>
+									<div class="right_eng">TripAdvisor</div>
+								</div>
+								<div class="right_area">
+									<div class="right_day">2014.01</div>
+									<div class="right_desc">
+										2014 트래블러스 초이스 한국 톱 25 호텔 & 톱 25 럭셔리 호텔선정
+									</div>
+									<div class="right_eng">TripAdvisor</div>
+								</div>
+							</div>
+						</li>
+						<li class="section_list_li">
+							<div class="list_left">2013</div>
+							<div class="list_right">
+								<div class="right_area">
+									<div class="right_day">2013.09</div>
+									<div class="right_desc">
+										2013 톱 25 아시아 비즈니스 호텔 선정
+									</div>
+									<div class="right_eng">Smart Travel Asia</div>
+								</div>
+								<div class="right_area">
+									<div class="right_day">2013.06</div>
+									<div class="right_desc">
+										2013 베스트 브랜드 호텔‘럭셔리 부티크’부문 선정
+									</div>
+									<div class="right_eng">The Korea Times</div>
+								</div>
+								<div class="right_area">
+									<div class="right_day">2013.01</div>
+									<div class="right_desc">
+										2013 트래블러스 초이스 톱 25 호텔 선정
+									</div>
+									<div class="right_eng">TripAdvisor</div>
+								</div>
+							</div>
+						</li>
+						<li class="section_list_li">
+							<div class="list_left">2012</div>
+							<div class="list_right">
+								<div class="right_area">
+									<div class="right_day">2012.12</div>
+									<div class="right_desc">
+										2012 베스트 브랜드 호텔 럭셔리 부티크 부문 선정
+									</div>
+									<div class="right_eng">The Korea Times</div>
+								</div>
+								<div class="right_area">
+									<div class="right_day">2012.06</div>
+									<div class="right_desc">
+										인사이더스 셀렉트 한국의 베스트 호텔 톱 650 선정
+									</div>
+									<div class="right_eng">Expedia</div>
+								</div>
+								<div class="right_area">
+									<div class="right_day">2012.01</div>
+									<div class="right_desc">
+										2012 트래블러스 초이스 톱 25 호텔 선정
+									</div>
+									<div class="right_eng">TripAdvisor</div>
+								</div>
+							</div>
+						</li>
+						<li class="section_list_li">
+							<div class="list_left">2011</div>
+							<div class="list_right">
+								<div class="right_area">
+									<div class="right_day">2011.12</div>
+									<div class="right_desc">
+										2011 골드 서클 어워드 수상
+									</div>
+									<div class="right_eng">Agoda</div>
+								</div>
+								<div class="right_area">
+									<div class="right_day">2011.08</div>
+									<div class="right_desc">
+										우리나라의 디자인 & 부티크 호텔 12 선정
+									</div>
+									<div class="right_eng">Lonely Planet</div>
+								</div>
+								<div class="right_area">
+									<div class="right_day">2011.07</div>
+									<div class="right_desc">
+										아시아 지역 조망 우수한 베스트 호텔 7 선정<br/><br/>
+										서울 지역 COOLEST LUXURY 3대 호텔 선정
+									</div>
+									<div class="right_eng">CNNGo</div>
+								</div>
+								<div class="right_area">
+									<div class="right_day">2011.05</div>
+									<div class="right_desc">
+										서울 지역 BEST LUXURY 5대 호텔 선정<br/><br/>
+										이탤리언이 뽑은 최고의 레스토랑 5 선정
+									</div>
+									<div class="right_eng">CNNGo</div>
+								</div>
+								<div class="right_area">
+									<div class="right_day">2011.05</div>
+									<div class="right_desc">
+										아시아 지역 최첨단 편의 기능 호텔 선정 (TOP 10 호텔)
+									</div>
+									<div class="right_eng">The Nation</div>
+								</div>
+								<div class="right_area">
+									<div class="right_day">2011.02</div>
+									<div class="right_desc">
+										한국의 베스트 호텔 1위 호텔 선정<br/><br/>
+										시설, 위치, 조식, 서비스, 요금 만족도 조사
+									</div>
+									<div class="right_eng">Expedia Japan</div>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<footer id="footer">
+			<div id="footerArea">
+				<div class="footerLogo">
+					<p class="bottomLogo1">
+						<a href="https://www.hoteltheplaza.com/kr/" title="footer logo1">
+							<img src="img/footer_logo1.png" alt="footer logo1"/>
+						</a>
+					</p>
+					<p class="bottomLogo2">
+						<a href="https://autograph-hotels.marriott.com/" title="footer logo2">
+							<img src="img/footer_logo2.png" alt="footer logo2"/>
+						</a>
+					</p>
+					<p class="bottomLogo2">
+						<a href="https://www.marriott.co.kr/rewards/rewards-program.mi" title="footer logo3">
+							<img src="img/footer_logo3.png" alt="footer logo3"/>
+						</a>
+					</p>
+
+				</div>
+				<div class="footerDesc">
+					<div class="footerDesc_fac">
+						<ul class="desc">
+							<li>
+								<a href="https://www.hoteltheplaza.com/kr/footer/sitemap.jsp" title="사이트맵"><span class="text">사이트맵</span></a><span class="bar">|</span>
+							</li>
+							<li>
+								<a href="https://www.hoteltheplaza.com/kr/footer/termsofuse.jsp" title="이용약관"><span class="text">이용약관</span></a><span class="bar">|</span>
+							</li>
+							<li>
+								<a href="https://www.hoteltheplaza.com/kr/footer/personal.jsp" title="개인정보처리방침"><strong class="text">개인정보처리방침</strong></a><span class="bar">|</span>
+							</li>
+							<li>
+								<a href="https://www.hoteltheplaza.com/kr/footer/privacy.jsp" title="영상정보처리기기 운영·관리 방침"><strong class="text">사이트맵</strong></a><span class="bar">|</span>
+							</li>
+							<li>
+								<a href="https://www.hoteltheplaza.com/kr/footer/email_security.jsp" title="이메일무단수집금지"><span class="text">이메일무단수집금지</span></a><span class="bar">|</span>
+							</li>
+							<li>
+								<a href="https://www.hwrc.co.kr/index.asp" title="채용정보"><span class="text">채용정보</span></a><span class="bar">|</span>
+							</li>
+							<li>
+								<a href="https://www.hoteltheplaza.com/_resource/pdf/Sales_Kit_KOR.pdf" title="온라인 브로셔"><span class="text">온라인 브로셔</span></a>
+							</li>
+						</ul>
+						<ul class="sns">
+							<li>
+								<a href="https://www.facebook.com/theplaza.seoul" title="facebook">
+									<span class="icon"><img src="img/facebook.svg" alt="facebook 아이콘"/></span>
+								</a>
+							</li>
+							<li>
+								<a href="https://www.instagram.com/theplazaseoul/" title="instagram">
+									<span class="icon"><img src="img/instagram.svg" alt="instagram 아이콘"/></span>
+								</a>
+							</li>
+							<li>
+								<a href="https://www.tripadvisor.co.kr/Hotel_Review-g294197-d306139-Reviews-THE_PLAZA_Seoul_Autograph_Collection-Seoul.html" title="tripadvisor">
+									<span class="icon"><img src="img/tripadvisor-logotype.svg" alt="tripadvisor 아이콘"/></span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div id="footerCopy">
+				<div class="copyArea">
+					<address class="adress">
+						서울특별시 중구 소공로 119 (우) 04525 TEL 02.771.2200 FAX 02.755.8897 
+					</address>
+					<address class="copy">
+						Copyright © THE PLAZA All Rights Reserved
+					</address>
+				</div>
+			</div>
+		</footer>
+	</div>
+  
+ </body>
+</html>

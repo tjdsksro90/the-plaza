@@ -1,0 +1,1310 @@
+﻿<!DOCTYPE html >
+<html lang="ko">
+ <head>
+  <meta charset="utf-8"/>
+  <title> reservation </title>
+  <script src="js/jquery-1.12.4.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+  <link rel="shortcut icon" href="img/icon_home.ico"/>
+  <link rel="apple-touch-icon" href="img/icon_home.ico"/>
+  <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+  <link rel="stylesheet" type="text/css" href="css/headerFooter.css"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"/>  
+  <style>
+	/*############# container ##################*/
+		#container{position:relative;}
+
+	/*############### sectionWrap ##################*/
+		#sectionWrap{width:100%; margin:0 auto; font-size:14px; padding-top:40px; }
+			.line{width:1000px; height:1px; background-color:#ccc; margin:50px auto; }
+			#formTop{width:1000px; height:70px; margin:0 auto; }
+				#formTop div{width:250px; float:left; }
+				#formTop div .text{text-align:center; color:rgba(60,22,80,0.4); padding-bottom:20px; }
+					#formTop div .text span{padding-right:10px;}
+					#formTop div .text strong{padding-right:20px; }
+					#formTop div .text i{}
+				#formTop .stepArea_1 .text{color:rgba(60,22,80,01);}
+				#formTop div .bar{height:6px; background-color:rgba(60,22,80,0.4);}
+				#formTop .stepArea_1 .bar{background-color:rgba(60,22,80,1);}
+			#formCenter{width:1000px; margin:0 auto; background-color:#fef5ef;}
+				#formCenter form{width:100%; padding-top:20px; position:relative;}
+				#formCenter form legend{display:none;}
+				#formCenter form fieldset{border:none;}
+				#formCenter form .calendarInner{width:160px; float:left; text-align:center;}
+				#formCenter form .calendarInner:last-child{width:200px;}
+					#formCenter form .title{display:block;text-align:center;}
+					#formCenter form .checkInfo{padding:10px 0 40px;}
+					.checkdate{border:none;width:135px; height:48px; text-align:center; background-color:rgba(0,0,0,0); vertical-align:middle; font-weight:700;}
+					#formCenter form .leftSide{width:30%; float:left;text-align:left; padding-left:30%;}
+                      #formCenter form .leftSide .year {
+                          font-size: 14px;
+                      }
+						#formCenter form .leftSide .month{display:block; font-size:24px;}
+						#formCenter form .person{font-size:38px;}
+					#formCenter form .rightSide{width:30%; float:left; display:block; padding-right:10%; }
+
+					#formCenter form .personInfo .leftSide{width:65%;padding-left:13%; text-align:center;}
+					#formCenter form .personInfo .rightSide{width:22%; padding:0;}
+						#formCenter form .btnArea{display:block; width:34px;height:51px; margin-top:1px;}
+							#formCenter form .btnTop,#formCenter form .btnDown{display:block; width:34px; height:26px; overflow:hidden; margin-top:-1px; cursor:pointer; background-image:url("img/btnControl.gif");}
+							#formCenter form .btnTop{background-position:0 0;}
+							#formCenter form .btnDown{background-position:0 33%;}/*0 33%*/
+						#formCenter form .date{font-size:38px; cursor:pointer;}
+						#formCenter form .searchArea{width:80%; padding:30px 0 30px 20%;}
+						#formCenter form .searchArea input{border:1px solid #ccc; background-color:#f3f3f3; width:60%;height:50px; font-weight:700; cursor:pointer;}
+
+                        /*calendar*/
+						.calendar_area{position:absolute; top:141px; left:40px; overflow:hidden; padding:1%; background-color:#fff; border:1px solid #999;}
+                          .calendar_area > div {
+                              float: left;
+                              background-color: #fff;
+                              margin-right: 10px;
+                              text-align: center;
+                              padding: 10px;
+                          }
+                          .calendar_area table {
+                              border-collapse: collapse;
+                          }
+                          .calendar_area caption {
+                              font-size: 18px;
+                              color: #666;
+                              padding-bottom: 10px;
+                          }
+                              .calendar_area caption .month {
+                                  font-size: 26px;
+                                  color: #333;
+                              }
+                          .calendar_area .week {
+                              line-height: 40px;
+                          }
+                          .calendar_area .sun {
+                              color: #996633;
+                          }
+                          .calendar_area td {
+                              width: 45px;
+                              line-height: 45px;
+                              font-size: 20px;
+                              cursor: pointer;
+                              border: 1px solid #ddd;
+                          }
+                              .calendar_area td:hover {
+                                  background-color: rgba(60,22,80,01);
+                                  color: #fff;
+                              }
+
+			#formBottom{width:1000px; margin:0 auto;}
+				#formBottom .before{text-align:center; color:#3c1650; font-size:16px; padding:150px 0; display:block;/*디스플레이/예약전 처음화면*/}
+				#formBottom .after{}
+					#formBottom .after .title{width:100%; height:40px; font-weight:700; line-height:40px; font-size:15px; background-color:#fef5ef; text-indent:20px; }
+						#formBottom .after .title span{width:92%; display:inline-block;font-weight:100; text-align:right; font-size:13px;}
+					#formBottom .after .allInfo{width:100%;  }
+						#formBottom .after .allInfo ul{width:100%; }
+						#formBottom .after .allInfo li{width:100%; border-bottom:1px solid #eceae1; margin-bottom:30px; padding-bottom:30px; }
+							#formBottom .after .detail{width:100%; font-size:12px; overflow:hidden;}
+								#formBottom .after .detailInner{width:650px; float:left; overflow:hidden;}
+									#formBottom .after .thumb{width:220px; height:120px;float:left; margin-right:30px; }
+										#formBottom .after .thumb a{cursor:pointer; }
+											#formBottom .after .thumb a img{width:100%;}
+									#formBottom .after .thumbDesc{float:left; width:400px;}
+										#formBottom .after .thumbDesc dl{}
+										#formBottom .after .thumbDesc dt{font-size:18px; font-weight:700; margin-bottom:13px; display:block ;}
+										#formBottom .after .thumbDesc dd{line-height:1.6em;}
+										#formBottom .after .thumbDesc dd strong{padding-right:10px; }
+								#formBottom .after .priceWrap{float:right;}
+									#formBottom .after .priceWrap .priceSection{display:inline-block; vertical-align:top; text-align:right; margin-right:45px; }
+										#formBottom .after .priceWrap .priceSection .price{font-size:16px; margin-bottom:45px; }
+											#formBottom .after .priceWrap .priceSection .price em{font-style:normal;}
+											#formBottom .after .priceWrap .priceSection .price .unit{padding-right:8px; font-weight:700;}
+											#formBottom .after .priceWrap .priceSection .price .priceTot{font-size:26px; letter-spacing:-0.05em; }
+											#formBottom .after .priceWrap .priceSection .price .scheTxt{font-size:13px; color:#727272; display:inline-block; margin-top:3px; }
+									#formBottom .after .priceWrap .btnInner{display:inline-block; vertical-align:middle; }
+										#formBottom .after .priceWrap .btnInner .btnRsv{display:inline-block; width:100px; height:100px; overflow:hidden; background-image:url("img/btnRsv.gif");font-size:0;
+										background-position:100% 0%;}
+								#formBottom .after .tab_menu{}
+
+					#pack_room_area{}
+						#tabArea{width:100%; }
+							#tabArea ul{width:100%;}
+							#tabArea li{float:left; border-top:1px solid #ccc; border-right:1px solid #ccc; text-align:center;}
+							#tabArea li a{ width:150px; line-height:30px; display:block; color:#666;}
+							#tabArea .pickOK{border:1px solid #3c1650; border-bottom:1px solid #fff; font-weight:700; color:#3c1650;}
+							.position{position:absolute; top:0; transition:all 1s;}
+						#packArea,#RoomArea{border-top:1px solid #3c1650; padding:30px 0; margin-top:-1px;}
+			#tabArea ul:after{content:""; clear:both; display:block;}
+			#formCenter form .checkInfo:after{content:""; clear:both; display:block;}
+			#formCenter form:after{content:""; clear:both; display:block;}
+  </style>
+  <script>
+	/*header 제이쿼리 영역(검색,모바일부분) + (infoNav 위치 변경 부분)*/
+		jQuery(document).ready(function(){
+			jQuery("#search_icon").click(function(){
+				jQuery("#search_box").show().css({"display":"inline","width":"208px","opacity":"1"});
+			});
+			jQuery("#mobHeaderX").hide();
+			jQuery("#mobHeader").click(function(){
+				jQuery("#gnb_area, #infoNav_area").css({"left":"0"});
+				jQuery("#mobHeaderX").show(1000);
+			});
+			jQuery("#mobHeaderX").click(function(){
+				jQuery("#gnb_area, #infoNav_area").css({"left":"-700px"});
+				jQuery("#mobHeaderX").hide();
+			});
+		
+		//창크기 변화 감지
+			$( window ).resize(function() {
+			  var windowWidth = $( window ).width();
+				if(windowWidth < 768) {
+					//창 가로 크기가 500 미만일 경우 
+					$("#gnb_subBg,.gnb_subArea").hide();
+					$("#gnb_area li").mouseover(function(){
+						$(this).children(".gnb_subArea").stop().slideDown(500);
+					}).mouseout(function(){
+						$(this).children(".gnb_subArea").stop().slideUp(500);
+					});
+				} else {
+					//창 가로 크기가 500보다 클 경우
+					$(".gnb_subArea, #gnb_subBg").hide();
+					$("#gnb_area ul").mouseover(function(){
+						$(".gnb_subArea, #gnb_subBg").stop().slideDown(500);
+					}).mouseout(function(){
+						$(".gnb_subArea, #gnb_subBg").stop().slideUp(500);
+					});
+				}
+			}).resize();
+
+		/*########### 적용할 영역 #############*/
+			header = $("#header");
+			gnb = $("#gnb");
+			gnb_area = $("#gnb_area");
+			infoNav = $("#infoNav");
+
+			wrapMarginT = parseInt($("#wrap").css("marginTop"));
+
+			headerH = $("#header").height();
+			headH = wrapMarginT + headerH;
+			infoNavH = $("#infoNav").height();
+
+		/*########### 스크롤의 위치값 ############*/
+
+			$(window).scroll(function(){
+				var nowScroll = $(document).scrollTop();
+
+				if(nowScroll >= headH){
+					header.addClass("fixed");
+				}
+				else{
+					header.removeClass("fixed");
+				}
+				console.log(nowScroll);
+				console.log(infoNavH);
+				if(nowScroll >= infoNavH){
+					$('#infoNav_area').stop().animate({"right":"-450px"},500);
+					$('#scrollHeader').stop().animate({"top":"30px","opacity":"1"},500);
+					$('#scrollHeader').click(function(){
+						$('#infoNav_area').stop().animate({"right":"50px"},500);
+                        $(this).stop().animate({"top":"-130px","opacity":"0"},500);
+					});
+				}
+				else{
+					$('#infoNav_area').stop().animate({"right":"50px"},500);
+					$('#scrollHeader').stop().animate({"top":"-130px","opacity":"0"},500);
+				}
+			});
+		});
+
+	/*#############*/
+
+	jQuery(document).ready(function(){
+		//탭
+			$(".tabAll").addClass("pickOK");
+
+			$(".tabAll").on("click focusin", function(){
+				$("#packArea, #packInfo").show();
+				$("#RoomArea, #roomInfo").show();
+				$("#tabArea li").removeClass("pickOK");
+				$(this).addClass("pickOK");
+			});
+			$(".tabPack").on("click focusin", function(){
+				$("#RoomArea, #roomInfo").hide();
+				$("#packArea, #packInfo").show();
+				$("#tabArea li").removeClass("pickOK");
+				$(this).addClass("pickOK");
+			});
+			$(".tabRoom").on("click focusin", function(){
+				$("#packArea, #packInfo").hide();
+				$("#RoomArea, #roomInfo").show();
+				$("#tabArea li").removeClass("pickOK");
+				$(this).addClass("pickOK");
+			});
+		//탭 끝.
+        
+        //달력 기능
+        $('.calendar_area').hide();
+
+        $('.checkIn, .checkOut').click(function () {
+            $('.calendar_area').toggle();
+        });
+
+        $(".calendar1 td").click(function () {
+            var date = $(this).text();
+            $(".checkIn .date").text(date);
+            $(".checkIn .month").text($('.calendar1 .month').text());
+        });
+        $(".calendar2 td").click(function () {
+            var date1 = $(this).text();
+            $(".checkOut .date").text(date1);
+            $(".checkOut .month").text($('.calendar2 .month').text());
+        });
+		
+		$('.days').click(function(){
+			$('.calendar_area').hide();
+		});
+
+        /*
+        //두번째 클릭 시도
+        $(".calendar_area td").click(function () {
+            var date = $(this).text();
+            $(".checkIn .date").text(date);
+            $(".checkIn .month").text($('.calendar1 .month').text());
+            date = 0;
+            $(".calendar_area td").click(function () {
+                var date1 = $(this).text();
+                console.log(date1);
+                $(".checkOut .date").text(date1);
+                $(".checkOut .month").text($('.calendar2 .month').text());
+            });
+        });
+        */
+        
+		//달력 기능 끝.
+
+
+        //인원 추가 기능
+        var btnTop = $('.btnTop');        
+        btnTop[0].addEventListener('click', function () {
+            var person1 = $('.person1').text();
+            var person2 = $('.person2').text();
+            var person3 = $('.person3').text();
+            var person_sum = parseInt(person1) + parseInt(person2) + parseInt(person3);
+            //console.log(person_sum);
+            if (person_sum > 3) {
+                alert('객실 1실 당 성인과 소인 동반 시 최대 4인까지만 투숙 가능합니다.');
+            }
+            else {
+                if (parseInt(person1) == 3) {
+                    $(this).css({ 'backgroundPosition': '0 51px', 'cursor': 'initial' });
+                    $('.person1').text(4);
+                }                
+                else {
+                    var n = parseInt(person1);
+                    $('.person1').text(n + 1);
+                    $('.btnDown').css({ 'backgroundPosition': '0 33%', 'cursor': 'pointer' });
+                }
+            }
+        }, false);
+        btnTop[1].addEventListener('click', function () {
+            var person1 = $('.person1').text();
+            var person2 = $('.person2').text();
+            var person3 = $('.person3').text();
+            var person_sum = parseInt(person1) + parseInt(person2) + parseInt(person3);
+            //console.log(person_sum);
+            if (person_sum > 3) {
+                alert('객실 1실 당 성인과 소인 동반 시 최대 4인까지만 투숙 가능합니다.');
+            }
+            else {
+                if (parseInt(person2) == 3) {
+                    $(this).css({ 'backgroundPosition': '0 51px', 'cursor': 'initial' });
+                    $('.person2').text(4);
+                }        
+                else {
+                    var n = parseInt(person2);
+                    $('.person2').text(n + 1);
+                    $('.btnDown').css({ 'backgroundPosition': '0 33%', 'cursor': 'pointer' });
+                }
+            }
+        }, false);
+        btnTop[2].addEventListener('click', function () {
+            var person1 = $('.person1').text();
+            var person2 = $('.person2').text();
+            var person3 = $('.person3').text();
+            var person_sum = parseInt(person1) + parseInt(person2) + parseInt(person3);
+            //console.log(person_sum);
+            if (person_sum > 3) {
+                alert('객실 1실 당 성인과 소인 동반 시 최대 4인까지만 투숙 가능합니다.');
+            }
+            else {
+                if (parseInt(person3) == 3) {
+                    $(this).css({ 'backgroundPosition': '0 51px', 'cursor': 'initial' });
+                    $('.person3').text(4);
+                }        
+                else {
+                    var n = parseInt(person3);
+                    $('.person3').text(n + 1);
+                    $('.btnDown').css({ 'backgroundPosition': '0 33%', 'cursor': 'pointer' });
+                }
+            }
+        }, false);
+
+        
+
+        var btnDown = $('.btnDown');  
+        btnDown[0].addEventListener('click', function () {
+            var person1 = $('.person1').text();
+            var person2 = $('.person2').text();
+            var person3 = $('.person3').text();
+            var person_sum = parseInt(person1) + parseInt(person2) + parseInt(person3);
+
+           
+            if (parseInt(person1) == 2) {
+                $(this).css({ 'backgroundPosition': '0 100%', 'cursor': 'initial' });
+                $('.person1').text(1);
+            }
+            else {
+                if (parseInt(person1) < 2) {
+                    //console.log(person_sum);
+                    //alert('1미만은 안됨');
+                }
+                else {
+                    var n = parseInt(person1);
+                    $('.person1').text(n - 1);
+                    $('.btnTop').css({ 'backgroundPosition': '0 0', 'cursor': 'pointer' });
+                }
+            }
+        }, false);
+        btnDown[1].addEventListener('click', function () {
+            var person1 = $('.person1').text();
+            var person2 = $('.person2').text();
+            var person3 = $('.person3').text();
+            var person_sum = parseInt(person1) + parseInt(person2) + parseInt(person3);
+
+
+            if (parseInt(person2) == 1) {
+                $(this).css({ 'backgroundPosition': '0 100%', 'cursor': 'initial' });
+                $('.person2').text(0);
+            }
+            else {
+                if (parseInt(person2) < 1) {
+                    //console.log(person_sum);
+                    //alert('0미만은 안됨');
+                }
+                else {
+                    var n = parseInt(person2);
+                    $('.person2').text(n - 1);
+                    $('.btnTop').css({ 'backgroundPosition': '0 0', 'cursor': 'pointer' });
+                }
+            }
+        }, false);
+        btnDown[2].addEventListener('click', function () {
+            var person1 = $('.person1').text();
+            var person2 = $('.person2').text();
+            var person3 = $('.person3').text();
+            var person_sum = parseInt(person1) + parseInt(person2) + parseInt(person3);
+
+
+            if (parseInt(person3) == 1) {
+                $(this).css({ 'backgroundPosition': '0 100%', 'cursor': 'initial' });
+                $('.person3').text(0);
+            }
+            else {
+                if (parseInt(person3) < 1) {
+                    //console.log(person_sum);
+                    //alert('0미만은 안됨');
+                }
+                else {
+                    var n = parseInt(person3);
+                    $('.person3').text(n - 1);
+                    $('.btnTop').css({ 'backgroundPosition': '0 0', 'cursor': 'pointer' });
+                }
+            }
+        }, false);
+		//인원 추가 기능 끝.
+
+        //검색기능
+        var search = document.getElementById('search');
+        $(".after").hide();//검색결과 숨겨놓기
+        search.addEventListener('click', function () {
+            if (person_sum = 0) {
+                alert('투숙하실 인원을 선택해주세요.');
+            }
+            else {
+                //검색결과 나타나기
+                $(".before, .calendar_area").hide();
+                $(".after").show();
+                $(".btnRsv").click(function () {
+                    $(this).css({ "backgroundPosition": "100% 100%" });
+                });
+            }
+        }, false);
+        //검색기능 끝.
+        
+
+      });
+      //jQuery 영역 끝.
+  </script>
+ </head>
+
+ <body>
+	<div id="wrap">
+		<header id="header">
+			<div id="infoNav">
+				<h1>
+					<a href="index.html" title="index">
+						<img src="img/tit_bg_main.png" alt="THE PLAZA"/>
+					</a>
+				</h1>
+				<div id="infoNav_area">
+					<h5>infoNav</h5>
+					<ul class="weather_info">
+						<li><a href="#" title="SEOUL">SEOUL</a></li>
+						<li><a href="#" title="11:09PM">11:09PM</a></li>
+						<li><a href="#" title="흐림 12.7ºC">흐림 12.7ºC</a></li>
+					</ul>
+					<ul class="user_info">
+						<li><a href="login.html" title="LOGIN">LOGIN</a></li>
+						<li><a href="join_form.html" title="JOIN">JOIN</a></li>
+					</ul>
+					<select class="lang_info">
+						<option value="kor">KOREAN</option>
+						<option value="eng">ENGLISH</option>
+					</select>
+				</div>
+			</div>
+			<nav id="gnb">
+				<div id="gnb_area">
+				<h5>gnb</h5>
+					<ul>
+						<li>
+							<h6>더 플라자</h6>
+							<a class="gnb_areaA" href="sub_intro_1.html" title="더 플라자">더 플라자</a>
+							<span class="bar">|</span>
+							<div class="gnb_subArea">
+								<div class="gnb_sub">
+									<a href="sub_intro_1.html" title="브랜드 소개">브랜드 소개</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_intro_2_reward.html" title="수상이력">수상이력</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_ready.html" title="오시는 길">오시는 길</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_ready.html" title="여행 가이드">여행 가이드</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_ready.html" title="공지뉴스">공지뉴스</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<h6>스폐셜 오퍼</h6>
+							<a class="gnb_areaA" href="sub_special_1.html" title="스폐셜 오퍼">스폐셜 오퍼</a>
+							<span class="bar">|</span>
+							<div class="gnb_subArea">
+								<div class="gnb_sub">
+									<a href="sub_special_1.html" title="패키지 and 프로모션">패키지 &amp; 프로모션</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_special_2.html" title="더 플라자 이숍">더 플라자 이숍</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<h6>객실</h6>
+							<a class="gnb_areaA" href="sub_room_all.html" title="객실">객실</a>
+							<span class="bar">|</span>
+							<div class="gnb_subArea">
+								<div class="gnb_sub">
+									<a href="sub_room_all.html" title="전체보기">전체보기</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_room_1_deluxe_room.html" title="룸 and 스위트">룸 &amp; 스위트</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_room_7_royal_room.html" title="클럽라운지">클럽라운지</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<h6>다이닝</h6>
+							<a class="gnb_areaA" href="sub_dining_all.html" title="다이닝">다이닝</a>
+							<span class="bar">|</span>
+							<div class="gnb_subArea">
+								<div class="gnb_sub">
+									<a href="sub_dining_all.html" title="전체보기">전체보기</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_dining_all.html" title="레스토랑 and 바">레스토랑 &amp; 바</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_dining_all.html" title="베이커리">베이커리</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<h6>웨딩 &amp; 연회</h6>
+							<a class="gnb_areaA" href="#none" title="웨딩 n 연회">웨딩 &amp; 연회</a>
+							<span class="bar">|</span>
+							<div class="gnb_subArea">
+								<div class="gnb_sub">
+									<a href="#none" title="전체보기">전체보기</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="웨딩">웨딩</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="연회">연회</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="패밀리 파티">패밀리 파티</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="케이터링 서비스">케이터링 서비스</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<h6>부대시설</h6>
+							<a class="gnb_areaA" href="#none" title="부대시설">부대시설</a>
+							<span class="bar">|</span>
+							<div class="gnb_subArea">
+								<div class="gnb_sub">
+									<a href="#none" title="비즈니스 센터">비즈니스 센터</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="휘트니스클럽">휘트니스클럽</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="더벨스파">더벨스파</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="지스텀">지스텀</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="기프트샵">기프트샵</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<h6>멤버십</h6>
+							<a class="gnb_areaA" href="sub_membership.html" title="멤버십">멤버십</a>
+							<span class="bar">|</span>
+						</li>
+						<li>
+							<h6>온라인 컨시어지</h6>
+							<a class="gnb_areaA" href="sub_online_news.html" title="온라인 컨시어지">온라인 컨시어지</a>
+							<div class="gnb_subArea">
+								<div class="gnb_sub">
+									<a href="#none" title="호텔 연락처">호텔 연락처</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_ready.html" title="층별안내">층별안내</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="자주하는 질문">자주하는 질문</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_ready.html" title="문의하기">문의하기</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="관광 컨시어시">관광 컨시어시</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_ready.html" title="고객의 소리">고객의 소리</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="온라인 뉴스레터">온라인 뉴스레터</a>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div id="gnb_subBg">
+				</div>
+				<!--https://search.naver.com/search.naver?sm=nnf_hty&query={query}&x=0&y=0-->
+				<div id="search_area">
+					<form action="https://www.google.co.kr/search" method="get">
+						<fieldset>
+							<legend>검색부분</legend>
+							<input id="search_box" type="text" name="q" autocomplete="off"  title="search" placeholder="search"/>
+							<input id="search_icon" type="button" name="search_icon" title="serach_icon" value="버튼"/>
+							<a href="reservation.html" title="예약" id="reservation">
+								<span class="img">
+									<img src="img/table_icon.svg" alt="예약 이미지"/>
+								</span>
+								<span class="text">
+									예약하기
+								</span>
+							</a>
+						</fieldset>
+					</form>
+				</div>
+			</nav>
+			<div id="mobHeader">
+				<p>
+					<span>─</span>
+					<span>─</span>
+					<span>─</span>
+				</p>
+			</div>
+			<div id="mobHeaderX">
+			</div>
+			<div id="scrollHeader">
+				<p>
+					<span class="scroll_1">─</span>
+					<span class="scroll_2">─</span>
+					<span class="scroll_3">─</span>
+				</p>
+			</div>
+		</header>
+		<div id="container">
+			<div id="7_month">
+				
+			</div>
+			<div id="sectionWrap">
+				<div id="formTop">
+					<div class="stepArea_1">
+						<p class="text"><span>STEP 1</span><strong>날짜/인원/객실 선택</strong><i>&gt;</i></p>
+						<p class="bar "></p>
+					</div>
+					<div class="stepArea_2">
+						<p class="text"><span>STEP 2</span><strong>옵션 선택</strong><i>&gt;</i></p>
+						<p class="bar "></p>
+					</div>
+					<div class="stepArea_3">
+						<p class="text"><span>STEP 3</span><strong>고객 정보 입력</strong><i>&gt;</i></p>
+						<p class="bar "></p>
+					</div>
+					<div class="stepArea_4">
+						<p class="text"><span>STEP 4</span><strong>예약 완료</strong></p>
+						<p class="bar "></p>
+					</div>
+				</div>
+				<div id="formCenter">
+					<form action="#none" method="post">
+						<fieldset>
+							<legend>날짜 선택</legend>
+							<div class="calendarInner checkIn">
+								<span class="title">체크인</span>
+								<div class="checkInfo">
+									<span class="leftSide">
+										<span class="year">2018</span>
+										<span class="month">7</span>
+									</span>
+									<span class="rightSide">
+										<span class="date">01</span>
+									</span>
+								</div>
+							</div>
+							<div class="calendarInner checkOut">
+								<span class="title">체크아웃</span>
+								<div class="checkInfo">
+									<span class="leftSide">
+										<span class="year">2018</span>
+										<span class="month">7</span>
+									</span>
+									<span class="rightSide">
+										<span class="date">02</span>
+									</span>
+								</div>
+							</div>
+                            <div class="calendar_area">
+                                <div class="calendar1">
+                                    <table>
+                                        <caption>2018.<span class="month">9</span></caption>
+                                        <tr class="week">
+                                            <th class="sun">SUN</th>
+                                            <th>MON</th>
+                                            <th>TUE</th>
+                                            <th>WED</th>
+                                            <th>THU</th>
+                                            <th>FRI</th>
+                                            <th>SAT</th>
+                                        </tr>
+                                        <tr class="days">
+                                            <td class="date1 sun"></td>
+                                            <td class="date2"></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>1</td>
+                                        </tr>
+                                        <tr class="days">
+                                            <td class="date1 sun">2</td>
+                                            <td class="date2">3</td>
+                                            <td>4</td>
+                                            <td>5</td>
+                                            <td>6</td>
+                                            <td>7</td>
+                                            <td>8</td>
+                                        </tr>
+                                        <tr class="days">
+                                            <td class="date1 sun">9</td>
+                                            <td class="date2">10</td>
+                                            <td>11</td>
+                                            <td>12</td>
+                                            <td>13</td>
+                                            <td>14</td>
+                                            <td>15</td>
+                                        </tr>
+                                        <tr class="days">
+                                            <td class="date1 sun">16</td>
+                                            <td class="date2">17</td>
+                                            <td>18</td>
+                                            <td>19</td>
+                                            <td>20</td>
+                                            <td>21</td>
+                                            <td>22</td>
+                                        </tr>
+                                        <tr class="days">
+                                            <td class="date1 sun">23</td>
+                                            <td class="date2">24</td>
+                                            <td>25</td>
+                                            <td>26</td>
+                                            <td>27</td>
+                                            <td>28</td>
+                                            <td>29</td>
+                                        </tr>
+                                        <tr class="days">
+                                            <td class="date1 sun">30</td>
+                                            <td class="date2"></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="calendar2">
+                                    <table>
+                                        <caption>2018.<span class="month">10</span></caption>
+                                        <tr class="week">
+                                            <th class="sun">SUN</th>
+                                            <th>MON</th>
+                                            <th>TUE</th>
+                                            <th>WED</th>
+                                            <th>THU</th>
+                                            <th>FRI</th>
+                                            <th>SAT</th>
+                                        </tr>
+                                        <tr class="days">
+                                            <td class="date1 sun"></td>
+                                            <td class="date2">1</td>
+                                            <td>2</td>
+                                            <td>3</td>
+                                            <td>4</td>
+                                            <td>5</td>
+                                            <td>6</td>
+                                        </tr>
+                                        <tr class="days">
+                                            <td class="date1 sun">7</td>
+                                            <td class="date2">8</td>
+                                            <td>9</td>
+                                            <td>10</td>
+                                            <td>11</td>
+                                            <td>12</td>
+                                            <td>13</td>
+                                        </tr>
+                                        <tr class="days">
+                                            <td class="date1 sun">14</td>
+                                            <td class="date2">15</td>
+                                            <td>16</td>
+                                            <td>17</td>
+                                            <td>18</td>
+                                            <td>19</td>
+                                            <td>20</td>
+                                        </tr>
+                                        <tr class="days">
+                                            <td class="date1 sun">21</td>
+                                            <td class="date2">22</td>
+                                            <td>23</td>
+                                            <td>24</td>
+                                            <td>25</td>
+                                            <td>26</td>
+                                            <td>27</td>
+                                        </tr>
+                                        <tr class="days">
+                                            <td class="date1 sun">28</td>
+                                            <td class="date2">29</td>
+                                            <td>30</td>
+                                            <td>31</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr class="days">
+                                            <td class="date1 sun">&nbsp;</td>
+                                            <td class="date2"></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+							<div class="calendarInner">
+								<span class="title">성인</span>
+								<div class="checkInfo personInfo">
+									<span class="leftSide">
+										<span class="person person1">1</span>
+									</span>
+									<span class="rightSide">
+										<span class="btn_area">
+											<span class="btnTop btnTop1"></span>
+											<span class="btnDown btnDown1"></span>
+										</span>
+									</span>
+								</div>
+							</div>
+							<div class="calendarInner">
+								<span class="title">어린이</span>
+								<div class="checkInfo personInfo">
+									<span class="leftSide">
+										<span class="person person2">0</span>
+									</span>
+									<span class="rightSide">
+										<span class="btn_area">
+											<span class="btnTop btnTop2"></span>
+											<span class="btnDown btnDown2"></span>
+										</span>
+									</span>
+								</div>
+							</div>
+							<div class="calendarInner">
+								<span class="title">유아</span>
+								<div class="checkInfo personInfo">
+									<span class="leftSide">
+										<span class="person person3">0</span>
+									</span>
+									<span class="rightSide">
+										<span class="btn_area">
+											<span class="btnTop btnTop3"></span>
+											<span class="btnDown btnDown3"></span>
+										</span>
+									</span>
+								</div>
+							</div>
+							<div class="calendarInner">
+								<p class="searchArea"><input id="search" type="button" value="검색" title="검색하기"/></p>
+							</div>
+						</fieldset>
+					</form>
+				</div>
+				<p class="line"></p>
+				<div id="formBottom">
+					<div class="before">
+						예약을 원하시는 날짜, 인원을 선택 후 검색 버튼을 눌러주세요.
+					</div>
+					<div class="after">
+						<div id="pack_room_area" class="all_room_area"><!-- 패키지전체 시작-->
+							<div id="tabArea"><!-- 탭메뉴-->
+								<ul>
+									<li class="tabAll"><a href="#none" title="전체">전체 (11)</a></li>
+									<li class="tabPack"><a href="#none" title="패키지">패키지 (6)</a></li>
+									<li class="tabRoom"><a href="#none" title="객실">객실 (4)</a></li>
+								</ul>
+							</div>
+							<div id="packArea"><!-- 패키지 시작-->
+								<div class="title">
+									패키지<span class="desc">현재 예약 가능한 패키지입니다.</span>
+								</div>
+							</div>
+							<div id="packInfo" class="allInfo">
+								<ul>
+									<li><!--객실반복-->
+										<div class="detail">
+											<div class="detailInner">
+												<div class="thumb">
+													<a href="#none" title="객실">
+														<img src="img/promotion_1.jpg" alt="객실 이미지"/>
+													</a>
+												</div>
+												<div class="thumbDesc">
+													<dl>
+														<dt>얼리 서머 패키지</dt>
+														<dd>
+															객실 디럭스 1박<br/>
+															더라운지 여름 빙수 3종 中 택 1<br/>
+															고궁 통합 관람권 2매
+														</dd>
+													</dl>
+												</div>
+											</div>
+											<div class="priceWrap">
+												<div class="priceSection">
+													<div class="price">
+														<em class="unit"></em>
+														<span class="priceTot">225,000</span>
+														<em>~</em><br/>
+														<span class="scheTxt">&nbsp;원/1박</span>
+													</div>
+												</div>
+												<div class="btnInner">
+													<a href="#none" title="예약하기">
+														<span class="btnRsv">예약하기</span>
+													</a>
+												</div>
+											</div>
+											<div class="tab_menu"></div>
+										</div>
+									</li>
+									<li><!--객실반복-->
+										<div class="detail">
+											<div class="detailInner">
+												<div class="thumb">
+													<a href="#none" title="객실">
+														<img src="img/promotion_7.jpg" alt="객실 이미지"/>
+													</a>
+												</div>
+												<div class="thumbDesc">
+													<dl>
+														<dt>서머 컬렉션</dt>
+														<dd>
+															디럭스 룸 1박<br/>
+															오휘 서머 뷰티 트래블 키트<br/>
+															메리어트 보너스 2,000 포인트 (메리어트 리워즈 멤버 대상 추가 혜택)
+														</dd>
+													</dl>
+												</div>
+											</div>
+											<div class="priceWrap">
+												<div class="priceSection">
+													<div class="price">
+														<em class="unit"></em>
+														<span class="priceTot">205,000</span>
+														<em>~</em><br/>
+														<span class="scheTxt">&nbsp;원/1박</span>
+													</div>
+												</div>
+												<div class="btnInner">
+													<a href="#none" title="예약하기">
+														<span class="btnRsv">예약하기</span>
+													</a>
+												</div>
+											</div>
+											<div class="tab_menu"></div>
+										</div>
+									</li>
+									<li><!--객실반복-->
+										<div class="detail">
+											<div class="detailInner">
+												<div class="thumb">
+													<a href="#none" title="객실">
+														<img src="img/promotion_9.jpg" alt="객실 이미지"/>
+													</a>
+												</div>
+												<div class="thumbDesc">
+													<dl>
+														<dt>"GO! 코리아" 패키지</dt>
+														<dd>
+															디럭스 룸 1박<br/>
+															사이드 디쉬 (후라이드 치킨)<br/>
+															미니바 40% 할인
+														</dd>
+													</dl>
+												</div>
+											</div>
+											<div class="priceWrap">
+												<div class="priceSection">
+													<div class="price">
+														<em class="unit"></em>
+														<span class="priceTot">210,000</span>
+														<em>~</em><br/>
+														<span class="scheTxt">&nbsp;원/1박</span>
+													</div>
+												</div>
+												<div class="btnInner">
+													<a href="#none" title="예약하기">
+														<span class="btnRsv">예약하기</span>
+													</a>
+												</div>
+											</div>
+											<div class="tab_menu"></div>
+										</div>
+									</li>
+									<li><!--객실반복-->
+										<div class="detail">
+											<div class="detailInner">
+												<div class="thumb">
+													<a href="#none" title="객실">
+														<img src="img/promotion_12.jpg" alt="객실 이미지"/>
+													</a>
+												</div>
+												<div class="thumbDesc">
+													<dl>
+														<dt>위크앤드 브런치</dt>
+														<dd>
+															객실 1박<br/>
+															더라운지 브런치 2인<br/>
+															객실 내 수입 맥주 2캔 (미니바)<br/>
+															사우나 2인
+														</dd>
+													</dl>
+												</div>
+											</div>
+											<div class="priceWrap">
+												<div class="priceSection">
+													<div class="price">
+														<em class="unit"></em>
+														<span class="priceTot">215,000</span>
+														<em>~</em><br/>
+														<span class="scheTxt">&nbsp;원/1박</span>
+													</div>
+												</div>
+												<div class="btnInner">
+													<a href="#none" title="예약하기">
+														<span class="btnRsv">예약하기</span>
+													</a>
+												</div>
+											</div>
+											<div class="tab_menu"></div>
+										</div>
+									</li>
+									<li><!--객실반복-->
+										<div class="detail">
+											<div class="detailInner">
+												<div class="thumb">
+													<a href="#none" title="객실">
+														<img src="img/promotion_18.jpg" alt="객실 이미지"/>
+													</a>
+												</div>
+												<div class="thumbDesc">
+													<dl>
+														<dt>플라자 스파케이션</dt>
+														<dd>
+															플라자 스위트 1박<br/>
+															더벨 스파 트리트먼트 (1인 120분 또는 2인 60분 택 1)<br/>
+															더벨 스파 웰컴 티<br/>
+															클럽층 혜택 2인 (사우나 2인 포함)
+														</dd>
+													</dl>
+												</div>
+											</div>
+											<div class="priceWrap">
+												<div class="priceSection">
+													<div class="price">
+														<em class="unit"></em>
+														<span class="priceTot">500,000</span>
+														<em>~</em><br/>
+														<span class="scheTxt">&nbsp;원/1박</span>
+													</div>
+												</div>
+												<div class="btnInner">
+													<a href="#none" title="예약하기">
+														<span class="btnRsv">예약하기</span>
+													</a>
+												</div>
+											</div>
+											<div class="tab_menu"></div>
+										</div>
+									</li>
+									<li><!--객실반복-->
+										<div class="detail">
+											<div class="detailInner">
+												<div class="thumb">
+													<a href="#none" title="객실">
+														<img src="img/promotion_19.jpg" alt="객실 이미지"/>
+													</a>
+												</div>
+												<div class="thumbDesc">
+													<dl>
+														<dt>아이 워너 메리 유</dt>
+														<dd>
+															프리미어 스위트 1박<br/>
+															객실 플라워 데코레이션<br/>
+															지스트 플로리스트와 1:1 클래스로 직접 만드는 프로포즈 부케<br/>
+															객실 내 스파클링 와인 &amp; 오페라 케이크 셋업
+														</dd>
+													</dl>
+												</div>
+											</div>
+											<div class="priceWrap">
+												<div class="priceSection">
+													<div class="price">
+														<em class="unit"></em>
+														<span class="priceTot">500,000</span>
+														<em>~</em><br/>
+														<span class="scheTxt">&nbsp;원/1박</span>
+													</div>
+												</div>
+												<div class="btnInner">
+													<a href="#none" title="예약하기">
+														<span class="btnRsv">예약하기</span>
+													</a>
+												</div>
+											</div>
+											<div class="tab_menu"></div>
+										</div>
+									</li>
+								</ul>
+							</div>
+							<div id="RoomArea"><!-- 객실 시작-->
+								<div class="title">
+									객실<span class="desc">현재 예약 가능한 객실입니다.</span>
+								</div>
+							</div>
+							<div id="roomInfo" class="allInfo">
+								<ul>
+									<li><!--객실반복-->
+										<div class="detail">
+											<div class="detailInner">
+												<div class="thumb">
+													<a href="#none" title="객실">
+														<img src="img/w_03-2_1_1.jpg" alt="객실 이미지"/>
+													</a>
+												</div>
+												<div class="thumbDesc">
+													<dl>
+														<dt>디럭스 킹룸/트윈룸</dt>
+														<dd>
+															<strong>객실크기</strong>30㎡<br/>
+															<strong>침대타입</strong>싱글/더블(킹 사이즈)
+														</dd>
+													</dl>
+												</div>
+											</div>
+											<div class="priceWrap">
+												<div class="priceSection">
+													<div class="price">
+														<em class="unit"></em>
+														<span class="priceTot">227,700</span>
+														<em>~</em><br/>
+														<span class="scheTxt">&nbsp;원/1박</span>
+													</div>
+												</div>
+												<div class="btnInner">
+													<a href="#none" title="예약하기">
+														<span class="btnRsv">예약하기</span>
+													</a>
+												</div>
+											</div>
+											<div class="tab_menu"></div>
+										</div>
+									</li>
+									<li><!--객실반복-->
+										<div class="detail">
+											<div class="detailInner">
+												<div class="thumb">
+													<a href="#none" title="객실">
+														<img src="img/w_03-2_2_1.jpg" alt="객실 이미지"/>
+													</a>
+												</div>
+												<div class="thumbDesc">
+													<dl>
+														<dt>프리미어 스위트룸</dt>
+														<dd>
+															<strong>객실크기</strong>40㎡<br/>
+															<strong>침대타입</strong>더블(킹 사이즈)
+														</dd>
+													</dl>
+												</div>
+											</div>
+											<div class="priceWrap">
+												<div class="priceSection">
+													<div class="price">
+														<em class="unit"></em>
+														<span class="priceTot">277,200</span>
+														<em>~</em><br/>
+														<span class="scheTxt">&nbsp;원/1박</span>
+													</div>
+												</div>
+												<div class="btnInner">
+													<a href="#none" title="예약하기">
+														<span class="btnRsv">예약하기</span>
+													</a>
+												</div>
+											</div>
+											<div class="tab_menu"></div>
+										</div>
+									</li>
+								</ul>
+							</div>
+
+						</div>
+					</div>
+				</div>
+				<p class="line"></p>
+			</div>
+		</div>
+		<footer id="footer">
+			<div id="footerArea">
+				<div class="footerLogo">
+					<p class="bottomLogo1">
+						<a href="https://www.hoteltheplaza.com/kr/" title="footer logo1">
+							<img src="img/footer_logo1.png" alt="footer logo1"/>
+						</a>
+					</p>
+					<p class="bottomLogo2">
+						<a href="https://autograph-hotels.marriott.com/" title="footer logo2">
+							<img src="img/footer_logo2.png" alt="footer logo2"/>
+						</a>
+					</p>
+					<p class="bottomLogo2">
+						<a href="https://www.marriott.co.kr/rewards/rewards-program.mi" title="footer logo3">
+							<img src="img/footer_logo3.png" alt="footer logo3"/>
+						</a>
+					</p>
+
+				</div>
+				<div class="footerDesc">
+					<div class="footerDesc_fac">
+						<ul class="desc">
+							<li>
+								<a href="https://www.hoteltheplaza.com/kr/footer/sitemap.jsp" title="사이트맵"><span class="text">사이트맵</span></a><span class="bar">|</span>
+							</li>
+							<li>
+								<a href="https://www.hoteltheplaza.com/kr/footer/termsofuse.jsp" title="이용약관"><span class="text">이용약관</span></a><span class="bar">|</span>
+							</li>
+							<li>
+								<a href="https://www.hoteltheplaza.com/kr/footer/personal.jsp" title="개인정보처리방침"><strong class="text">개인정보처리방침</strong></a><span class="bar">|</span>
+							</li>
+							<li>
+								<a href="https://www.hoteltheplaza.com/kr/footer/privacy.jsp" title="영상정보처리기기 운영·관리 방침"><strong class="text">사이트맵</strong></a><span class="bar">|</span>
+							</li>
+							<li>
+								<a href="https://www.hoteltheplaza.com/kr/footer/email_security.jsp" title="이메일무단수집금지"><span class="text">이메일무단수집금지</span></a><span class="bar">|</span>
+							</li>
+							<li>
+								<a href="https://www.hwrc.co.kr/index.asp" title="채용정보"><span class="text">채용정보</span></a><span class="bar">|</span>
+							</li>
+							<li>
+								<a href="https://www.hoteltheplaza.com/_resource/pdf/Sales_Kit_KOR.pdf" title="온라인 브로셔"><span class="text">온라인 브로셔</span></a>
+							</li>
+						</ul>
+						<ul class="sns">
+							<li>
+								<a href="https://www.facebook.com/theplaza.seoul" title="facebook">
+									<span class="icon"><img src="img/facebook.svg" alt="facebook 아이콘"/></span>
+								</a>
+							</li>
+							<li>
+								<a href="https://www.instagram.com/theplazaseoul/" title="instagram">
+									<span class="icon"><img src="img/instagram.svg" alt="instagram 아이콘"/></span>
+								</a>
+							</li>
+							<li>
+								<a href="https://www.tripadvisor.co.kr/Hotel_Review-g294197-d306139-Reviews-THE_PLAZA_Seoul_Autograph_Collection-Seoul.html" title="tripadvisor">
+									<span class="icon"><img src="img/tripadvisor-logotype.svg" alt="tripadvisor 아이콘"/></span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div id="footerCopy">
+				<div class="copyArea">
+					<address class="adress">
+						서울특별시 중구 소공로 119 (우) 04525 TEL 02.771.2200 FAX 02.755.8897 
+					</address>
+					<address class="copy">
+						Copyright © THE PLAZA All Rights Reserved
+					</address>
+				</div>
+			</div>
+		</footer>
+	</div>
+ </body>
+</html>

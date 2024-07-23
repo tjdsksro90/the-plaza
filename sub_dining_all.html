@@ -1,0 +1,676 @@
+<!DOCTYPE html >
+<html lang="ko">
+ <head>
+  <meta charset="utf-8"/>
+  <title> sub_dining_all </title>
+  <script src="js/jquery-1.12.4.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+  <link rel="shortcut icon" href="img/icon_home.ico"/>
+  <link rel="apple-touch-icon" href="img/icon_home.ico"/>
+  <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+  <link rel="stylesheet" type="text/css" href="css/headerFooter.css"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"/>
+  <!--http://www.tutorialspoint.com/jqueryui/jqueryui_easings.htm
+	search 모양 참고할 곳
+  -->
+  <style>
+	/*############# container ##################*/
+		#container{position:relative;}
+		#remote{position: fixed; width: 100%; z-index: 1; right: 30px; bottom: 30px;}
+		#remote a{overflow: hidden; display: block; position: absolute;right: 0; bottom: 0; width: 48px; height: 48px;background: url("img/btn_top.png") no-repeat top left; background-position: 0 0; text-indent: 101%; white-space: nowrap;}
+	/*############# visualWrap  + visualTop ##################*/
+		#visualWrap{width:100%; max-width:1920px; }
+			#visualTop{width:100%; height:250px; padding-top:40px;}
+			#visualTop .mainTitle{width:100%; padding:100px 0 5px;font-size:19px; line-height:26px; color:#666;text-align:center;}
+			#visualTop .mainline{width:60px; height:2px; background-color:#666;margin:0 auto 15px;}
+			#visualTop h3{width:100%; text-align:center;font-weight:100; font-size:40px; line-height:60px; text-align:center; color:#333;}
+				#visualTop h3 span{font-weight:700;}
+				#visualTop .homebar{width:98%; font-size:12px;text-align:right; padding-right:2%; color:#3c1650; font-weight:700;}
+				#visualTop .homebar a:link,#visualTop .homebar a:visited{text-decoration:underline; color:#999; font-weight:400;}
+				#visualTop .homebar a:hover{color:#3c1650;}
+				#visualTop .homebar span{padding:10px; color:#ccc;}
+
+			#visualTop:after{clear:both;content:"";display:block;}
+
+	/*############# visualBottom ##################*/
+		#visualBottom{width:100%; padding-bottom:100px 0 0;}
+			.visual_area{width:100%; background-color:#fff;}
+			.visual_area:nth-child(2n){width:100%; background-color:#f2f2f2;}
+			.visual{width:1200px; padding:0 360px ;}
+				.visualTap{width:480px; float:left; padding:80px 0;}
+				.box2,.box4{margin-left:240px;}
+					.visualTap .imgBox{width:100%;}
+						.visualTap .imgBox a{display:block; position:relative;}
+						.visualTap .imgBox a:before{content:"THE PLAZA DINING"; display:block; position:absolute; left:-10px; top:140px; transform:translate(-50%) rotate(-90deg); text-align:right;
+						width:300px; height:20px; font-weight:700; font-size:12px; letter-spacing:3px;}
+						.visualTap .imgBox a .photo{width:480px; display:block;float:left; background-color:red; overflow:hidden; position:relative; }
+							.visualTap .imgBox a .photo:before{content:"";
+								background-color:rgba(0,0,0,0.6);
+								position:absolute; right:0; bottom:0;
+								width:50px; height:50px;
+								transition:all 0.5s 0.1s;
+								z-index:1;
+								}
+								.visualTap .imgBox a .photo:after{content:"";
+								background-image:url("img/bullet_more.gif"); background-repeat:no-repeat;
+								position:absolute; right:0; bottom:0;
+								width:50px; height:50px;
+								transition:transform 0.5s 0.1s;
+								z-index:1;
+								}
+								.visualTap .imgBox a .photo img{transition:all 0.5s 0.1s;}
+						.visualTap .imgBox a:hover .photo:before{background-color:rgba(243,115,33,1);}
+						.visualTap .imgBox a:hover .photo:after{transform:rotate(180deg);}
+						.visualTap .imgBox a:hover .photo img{transform:scale(1.1);}
+					.visualTap .textBox{width:100%; text-align:center;}
+
+						.visualTap .textBox h4{font-size:30px; font-weight:100;padding-top:20px; }
+						.visualTap .textBox p{color:#666; font-size:13px; line-height:1.75em;padding-top:20px;}
+				
+						.box1,.box4,.box5{}
+						.box2,.box3,.box6{padding:230px 0;}
+						.box1 .imgBox a .photo,.box4 .imgBox a .photo{height:600px; }
+							.box1 .imgBox a .photo img,.box4 .imgBox a .photo img{height:100%; position:relative; left:-400px;}
+						.box2 .imgBox a .photo,.box3 .imgBox a .photo{height:300px;}
+							.box2 .imgBox a .photo img,.box3 .imgBox a .photo img{height:100%;}
+						
+						.box5,.box6{width:1200px;}
+							.box5 .imgBox a .photo{width:1200px; height:550px;}
+								.box5 .imgBox a .photo img{width:100%;}
+						
+							.box6 .imgBox{width:840px;float:left;}
+							.box6 .textBox{width:310px; height:108px;float:left; padding:226px 0 266px 50px;}
+							.box6 .imgBox a .photo_mini{width:300px; height:300px;  float:left; overflow:hidden;
+							padding:150px 0;}
+								.box6 .imgBox a .photo_mini img{height:100%; position:relative; left:-150px;}
+							.box6 .imgBox a .photo{width:500px; height:600px;float:left; margin-left:40px; overflow:hidden;}
+								.box6 .imgBox a .photo img{height:100%; position:relative; left:-200px;}
+								.box6 .imgBox a:before{content:"";}
+								.box6 .imgBox a .photo_mini:before{content:"THE PLAZA DINING"; display:block; position:absolute; left:-10px; top:290px; transform:translate(-50%) rotate(-90deg); text-align:right;
+						width:300px; height:20px; font-weight:700; font-size:12px; letter-spacing:3px;}
+
+					.visualTap .imgBox a:after{content:"";display:block;clear:both;}
+					.visual:after{content:"";display:block;clear:both;}
+
+	/*##################################################################################*/
+	@media all and (min-width:1201px) and (max-width:1900px){
+			.visual{width:100%; padding:0;}
+			.visualTap{width:50%; margin:0 auto;}
+			.box2,.box4{margin-left:auto; }
+			.box1 .imgBox, .box1 .textBox,.box2 .imgBox, .box2 .textBox,.box3 .imgBox, .box3 .textBox,.box4 .imgBox, .box4 .textBox{width:480px; margin:0 auto;}
+			.box5,.box6{width:100%; margin:0 auto; }
+			.box5 .imgBox{width:85%; margin:0 auto;}
+			.box5 .imgBox a .photo{width:100%; height:490px; margin:0 auto;}
+			.box6 .imgBox{float:none; margin:0 auto;}
+			.box6 .textBox{float:none; padding:0; margin:0 auto;}
+
+
+		}
+
+	/*##################################################################################*/
+	@media all and (min-width:1025px) and (max-width:1200px){
+		.visual{width:100%; margin:0 auto; padding:0;}
+		.visualTap{float:none; padding:40px 0; margin:0 auto;}
+		.box2,.box4{margin-left:auto; }
+			.box1 .imgBox, .box1 .textBox,.box2 .imgBox, .box2 .textBox,.box3 .imgBox, .box3 .textBox,.box4 .imgBox, .box4 .textBox{width:480px; margin:0 auto;}
+			.box5,.box6{width:100%; margin:0 auto; }
+			.box5 .imgBox{width:85%; margin:0 auto;}
+			.box5 .imgBox a .photo{width:100%; height:450px; margin:0 auto;}
+			.box6 .imgBox{float:none; margin:0 auto;}
+			.box6 .textBox{float:none; padding:0; margin:0 auto;}
+		}
+
+	/*##################################################################################*/
+	@media all and (min-width:768px) and (max-width:1024px){
+		.visual{width:100%; margin:0 auto; padding:0;}
+		.visualTap{float:none; padding:40px 0; margin:0 auto;}
+		.box2,.box4{margin-left:auto; }
+			.box1 .imgBox, .box1 .textBox,.box2 .imgBox, .box2 .textBox,.box3 .imgBox, .box3 .textBox,.box4 .imgBox, .box4 .textBox{width:480px; margin:0 auto;}
+			.box5,.box6{width:100%; margin:0 auto; }
+			.box5 .imgBox{width:85%; margin:0 auto;}
+			.box5 .imgBox a .photo{width:100%; height:330px; margin:0 auto;}
+			.box6 .imgBox{float:none; margin:0 auto;}
+			.box6 .textBox{float:none; padding:0; margin:0 auto;}
+		}
+
+	/*##################################################################################*/
+	@media all and (min-width:481px) and (max-width:767px){
+		.visual{width:100%; margin:0 auto; padding:0;}
+		.visualTap{float:none; padding:40px 0; margin:0 auto;}
+
+		.box2,.box4{margin-left:auto; }
+			.box1 .imgBox, .box1 .textBox,.box2 .imgBox, .box2 .textBox,.box3 .imgBox, .box3 .textBox,.box4 .imgBox, .box4 .textBox, .imgBox{width:450px; margin:0 auto;}
+			.box1 .imgBox a .photo img,.box4 .imgBox a .photo img{height:100%; position:relative; left:-200px;}
+			.box5,.box6{width:100%; margin:0 auto; }
+			.box5 .imgBox{width:85%; margin:0 auto;}
+			.box5 .imgBox a .photo{width:100%; height:200px; margin:0 auto;}
+			.box6 .imgBox{float:none; margin:0 auto;}
+			.box6 .textBox{float:none; padding:0; margin:0 auto;}
+			.box6 .imgBox a .photo_mini{display:none;}
+
+		}
+	/*##################################################################################*/
+	@media all and (min-width:0px) and (max-width:480px){
+		.visual{width:100%; margin:0 auto; padding:0; font-size:0.5em;}
+		.visualTap{width:250px;float:none; padding:40px 0; margin:0 auto;}
+		.visualTap .imgBox a .photo{width:250px;}
+
+		.box2,.box4{margin-left:auto; }
+			.box1 .imgBox, .box1 .textBox,.box2 .imgBox, .box2 .textBox,.box3 .imgBox, .box3 .textBox,.box4 .imgBox, .box4 .textBox, .imgBox{width:250px; margin:0 auto;}
+			.box1 .imgBox a .photo img,.box4 .imgBox a .photo img{height:100%; position:relative; left:-200px;}
+			.box1 .imgBox a .photo,.box4 .imgBox a .photo,.box6 .imgBox a .photo{height:300px; }
+			.box5,.box6{width:100%; margin:0 auto; }
+			.box5 .imgBox{width:85%; margin:0 auto;}
+			.box5 .imgBox a .photo{width:100%; height:160px; margin:0 auto;}
+			.box5 .imgBox a .photo img{height:100%;}
+			.box6 .imgBox{float:none; margin:0 auto;}
+			.box6 .textBox{float:none; padding:0; margin:0 auto;}
+			.box6 .imgBox a .photo_mini{display:none;}
+
+
+		}
+  </style>
+  <script>
+	/*header 제이쿼리 영역(검색,모바일부분) + (infoNav 위치 변경 부분)*/
+		jQuery(document).ready(function(){
+			jQuery("#search_icon").click(function(){
+				jQuery("#search_box").show().css({"display":"inline","width":"208px","opacity":"1"});
+			});
+			jQuery("#mobHeaderX").hide();
+			jQuery("#mobHeader").click(function(){
+				jQuery("#gnb_area, #infoNav_area").css({"left":"0"});
+				jQuery("#mobHeaderX").show(1000);
+			});
+			jQuery("#mobHeaderX").click(function(){
+				jQuery("#gnb_area, #infoNav_area").css({"left":"-700px"});
+				jQuery("#mobHeaderX").hide();
+			});
+		
+		//창크기 변화 감지
+			$( window ).resize(function() {
+			  var windowWidth = $( window ).width();
+				if(windowWidth < 768) {
+					//창 가로 크기가 500 미만일 경우 
+					$("#gnb_subBg,.gnb_subArea").hide();
+					$("#gnb_area li").mouseover(function(){
+						$(this).children(".gnb_subArea").stop().slideDown(500);
+					}).mouseout(function(){
+						$(this).children(".gnb_subArea").stop().slideUp(500);
+					});
+				} else {
+					//창 가로 크기가 500보다 클 경우
+					$(".gnb_subArea, #gnb_subBg").hide();
+					$("#gnb_area ul").mouseover(function(){
+						$(".gnb_subArea, #gnb_subBg").stop().slideDown(500);
+					}).mouseout(function(){
+						$(".gnb_subArea, #gnb_subBg").stop().slideUp(500);
+					});
+				}
+			}).resize();
+
+		/*########### 적용할 영역 #############*/
+			header = $("#header");
+			gnb = $("#gnb");
+			gnb_area = $("#gnb_area");
+			infoNav = $("#infoNav");
+
+			wrapMarginT = parseInt($("#wrap").css("marginTop"));
+
+			headerH = $("#header").height();
+			headH = wrapMarginT + headerH;
+			infoNavH = $("#infoNav").height();
+
+		/*########### 스크롤의 위치값 ############*/
+
+			$(window).scroll(function(){
+				var nowScroll = $(document).scrollTop();
+
+				if(nowScroll >= headH){
+					header.addClass("fixed");
+				}
+				else{
+					header.removeClass("fixed");
+				}
+				console.log(nowScroll);
+				console.log(infoNavH);
+				if(nowScroll >= infoNavH){
+					$('#infoNav_area').stop().animate({"right":"-450px"},500);
+					$('#scrollHeader').stop().animate({"top":"30px","opacity":"1"},500);
+					$('#scrollHeader').click(function(){
+						$('#infoNav_area').stop().animate({"right":"50px"},500);
+                        $(this).stop().animate({"top":"-130px","opacity":"0"},500);
+					});
+				}
+				else{
+					$('#infoNav_area').stop().animate({"right":"50px"},500);
+					$('#scrollHeader').stop().animate({"top":"-130px","opacity":"0"},500);
+				}
+			});
+		});
+
+	/*#############*/
+  </script>
+ </head>
+
+ <body>
+	<div id="wrap">
+		<header id="header">
+			<div id="infoNav">
+				<h1>
+					<a href="index.html" title="index">
+						<img src="img/tit_bg_main.png" alt="THE PLAZA"/>
+					</a>
+				</h1>
+				<div id="infoNav_area">
+					<h5>infoNav</h5>
+					<ul class="weather_info">
+						<li><a href="#" title="SEOUL">SEOUL</a></li>
+						<li><a href="#" title="11:09PM">11:09PM</a></li>
+						<li><a href="#" title="흐림 12.7ºC">흐림 12.7ºC</a></li>
+					</ul>
+					<ul class="user_info">
+						<li><a href="login.html" title="LOGIN">LOGIN</a></li>
+						<li><a href="join_form.html" title="JOIN">JOIN</a></li>
+					</ul>
+					<select class="lang_info">
+						<option value="kor">KOREAN</option>
+						<option value="eng">ENGLISH</option>
+					</select>
+				</div>
+			</div>
+			<nav id="gnb">
+				<div id="gnb_area">
+				<h5>gnb</h5>
+					<ul>
+						<li>
+							<h6>더 플라자</h6>
+							<a class="gnb_areaA" href="sub_intro_1.html" title="더 플라자">더 플라자</a>
+							<span class="bar">|</span>
+							<div class="gnb_subArea">
+								<div class="gnb_sub">
+									<a href="sub_intro_1.html" title="브랜드 소개">브랜드 소개</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_intro_2_reward.html" title="수상이력">수상이력</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_ready.html" title="오시는 길">오시는 길</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_ready.html" title="여행 가이드">여행 가이드</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_ready.html" title="공지뉴스">공지뉴스</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<h6>스폐셜 오퍼</h6>
+							<a class="gnb_areaA" href="sub_special_1.html" title="스폐셜 오퍼">스폐셜 오퍼</a>
+							<span class="bar">|</span>
+							<div class="gnb_subArea">
+								<div class="gnb_sub">
+									<a href="sub_special_1.html" title="패키지 and 프로모션">패키지 &amp; 프로모션</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_special_2.html" title="더 플라자 이숍">더 플라자 이숍</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<h6>객실</h6>
+							<a class="gnb_areaA" href="sub_room_all.html" title="객실">객실</a>
+							<span class="bar">|</span>
+							<div class="gnb_subArea">
+								<div class="gnb_sub">
+									<a href="sub_room_all.html" title="전체보기">전체보기</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_room_1_deluxe_room.html" title="룸 and 스위트">룸 &amp; 스위트</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_room_7_royal_room.html" title="클럽라운지">클럽라운지</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<h6>다이닝</h6>
+							<a class="gnb_areaA" href="sub_dining_all.html" title="다이닝">다이닝</a>
+							<span class="bar">|</span>
+							<div class="gnb_subArea">
+								<div class="gnb_sub">
+									<a href="sub_dining_all.html" title="전체보기">전체보기</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_dining_all.html" title="레스토랑 and 바">레스토랑 &amp; 바</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_dining_all.html" title="베이커리">베이커리</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<h6>웨딩 &amp; 연회</h6>
+							<a class="gnb_areaA" href="#none" title="웨딩 n 연회">웨딩 &amp; 연회</a>
+							<span class="bar">|</span>
+							<div class="gnb_subArea">
+								<div class="gnb_sub">
+									<a href="#none" title="전체보기">전체보기</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="웨딩">웨딩</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="연회">연회</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="패밀리 파티">패밀리 파티</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="케이터링 서비스">케이터링 서비스</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<h6>부대시설</h6>
+							<a class="gnb_areaA" href="#none" title="부대시설">부대시설</a>
+							<span class="bar">|</span>
+							<div class="gnb_subArea">
+								<div class="gnb_sub">
+									<a href="#none" title="비즈니스 센터">비즈니스 센터</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="휘트니스클럽">휘트니스클럽</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="더벨스파">더벨스파</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="지스텀">지스텀</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="기프트샵">기프트샵</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<h6>멤버십</h6>
+							<a class="gnb_areaA" href="sub_membership.html" title="멤버십">멤버십</a>
+							<span class="bar">|</span>
+						</li>
+						<li>
+							<h6>온라인 컨시어지</h6>
+							<a class="gnb_areaA" href="sub_online_news.html" title="온라인 컨시어지">온라인 컨시어지</a>
+							<div class="gnb_subArea">
+								<div class="gnb_sub">
+									<a href="#none" title="호텔 연락처">호텔 연락처</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_ready.html" title="층별안내">층별안내</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="자주하는 질문">자주하는 질문</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_ready.html" title="문의하기">문의하기</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="관광 컨시어시">관광 컨시어시</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_ready.html" title="고객의 소리">고객의 소리</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="온라인 뉴스레터">온라인 뉴스레터</a>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div id="gnb_subBg">
+				</div>
+				<!--https://search.naver.com/search.naver?sm=nnf_hty&query={query}&x=0&y=0-->
+				<div id="search_area">
+					<form action="https://www.google.co.kr/search" method="get">
+						<fieldset>
+							<legend>검색부분</legend>
+							<input id="search_box" type="text" name="q" autocomplete="off"  title="search" placeholder="search"/>
+							<input id="search_icon" type="button" name="search_icon" title="serach_icon" value="버튼"/>
+							<a href="reservation.html" title="예약" id="reservation">
+								<span class="img">
+									<img src="img/table_icon.svg" alt="예약 이미지"/>
+								</span>
+								<span class="text">
+									예약하기
+								</span>
+							</a>
+						</fieldset>
+					</form>
+				</div>
+			</nav>
+			<div id="mobHeader">
+				<p>
+					<span>─</span>
+					<span>─</span>
+					<span>─</span>
+				</p>
+			</div>
+			<div id="mobHeaderX">
+			</div>
+			<div id="scrollHeader">
+				<p>
+					<span class="scroll_1">─</span>
+					<span class="scroll_2">─</span>
+					<span class="scroll_3">─</span>
+				</p>
+			</div>
+		</header>
+		<div id="container">
+			<section id="visualWrap">
+				<h6>다이닝 전체</h6>
+				<div id="visualTop">
+					<p class="homebar">
+						<a href="#" title="Home"><i><img src="img/icon_home.png" alt="홈이미지"/></i></a><span>></span><a href="#" title="Home">다이닝</a><span>></span>전체보기
+					</p>
+					<p class="mainTitle">
+						DINING
+					</p>
+					<p class="mainline">
+					</p>
+					<h3>
+						더 플라자 <span>다이닝</span>
+					</h3>
+				</div>
+				<div id="visualBottom">
+					<div class="visual_area">
+						<div class="visual">
+							<div class="visualTap box1">
+								<div class="imgBox">
+									<a href="#none" title="힝">
+										<span class="photo">
+											<img src="img/w_04-2_1_8.jpg" alt="세븐스퀘어"/>
+										</span>
+									</a>
+								</div>
+								<div class="textBox">
+									<h4>세븐스퀘어</h4>
+									<p>
+										셰프 고메 컬렉션을 통한 버라이어티 다이닝으로<br/>
+										새롭게 태어난 세븐스퀘어
+									</p>
+								</div>
+							</div>
+							<div class="visualTap box2">
+								<div class="imgBox">
+									<a href="#none" title="힝">
+										<span class="photo">
+											<img src="img/w_04-2_2_2.jpg" alt="도원"/>
+										</span>
+									</a>
+								</div>
+								<div class="textBox">
+									<h4>도원</h4>
+									<p>
+										복숭아 꽃이 만개한<br/>
+										언덕이라는 의미의 도원
+									</p>
+								</div>
+							</div>
+							<div class="visualTap box3">
+								<div class="imgBox">
+									<a href="#none" title="힝">
+										<span class="photo">
+											<img src="img/w_04-2_3_2.jpg" alt="무라사키"/>
+										</span>
+									</a>
+								</div>
+								<div class="textBox">
+									<h4>무라사키</h4>
+									<p>
+										고급 일본 요리의 정수 가이세키 요리를 감각적인<br/>
+										스타일로 재현하는 일식당 무라사키
+									</p>
+								</div>
+							</div>
+							<div class="visualTap box4">
+								<div class="imgBox">
+									<a href="#none" title="힝">
+										<span class="photo">
+											<img src="img/w_04-2_4_2.jpg" alt="투스카니"/>
+										</span>
+									</a>
+								</div>
+								<div class="textBox">
+									<h4>투스카니</h4>
+									<p>
+										본토의 풍미를 현대적이고 고급스러운<br/>
+										감각으로 재현하는 이탈리안 레스토랑 투스카니
+									</p>
+								</div>
+							</div>
+							<div class="visualTap box5">
+								<div class="imgBox">
+									<a href="#none" title="힝">
+										<span class="photo">
+											<img src="img/w_04-2_5_2.jpg" alt="더라운지"/>
+										</span>
+									</a>
+								</div>
+								<div class="textBox">
+									<h4>더라운지</h4>
+									<p>
+										고급 사교 공간의 전형
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="visual_area">
+						<div class="visual">
+							<div class="visualTap box6">
+								<div class="imgBox">
+									<a href="#none" title="힝">
+										<span class="photo_mini">
+											<img src="img/w_04-3_1_2.jpg" alt="에릭케제르"/>
+										</span>
+										<span class="photo">
+											<img src="img/w_04-3_1_1.jpg" alt="에릭케제르"/>
+										</span>
+									</a>
+								</div>
+								<div class="textBox">
+									<h4>에릭케제르</h4>
+									<p>
+										세계 최고로 평가받는 프랑스 베이커리 에릭케제르를<br/>
+										도심 속 특급호텔 더 플라자에서 만나다
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<div id="remote">
+				<a href="#" title="TOP">TOP</a>
+			</div>
+		</div>
+		<footer id="footer">
+			<div id="footerArea">
+				<div class="footerLogo">
+					<p class="bottomLogo1">
+						<a href="https://www.hoteltheplaza.com/kr/" title="footer logo1">
+							<img src="img/footer_logo1.png" alt="footer logo1"/>
+						</a>
+					</p>
+					<p class="bottomLogo2">
+						<a href="https://autograph-hotels.marriott.com/" title="footer logo2">
+							<img src="img/footer_logo2.png" alt="footer logo2"/>
+						</a>
+					</p>
+					<p class="bottomLogo2">
+						<a href="https://www.marriott.co.kr/rewards/rewards-program.mi" title="footer logo3">
+							<img src="img/footer_logo3.png" alt="footer logo3"/>
+						</a>
+					</p>
+
+				</div>
+				<div class="footerDesc">
+					<div class="footerDesc_fac">
+						<ul class="desc">
+							<li>
+								<a href="https://www.hoteltheplaza.com/kr/footer/sitemap.jsp" title="사이트맵"><span class="text">사이트맵</span></a><span class="bar">|</span>
+							</li>
+							<li>
+								<a href="https://www.hoteltheplaza.com/kr/footer/termsofuse.jsp" title="이용약관"><span class="text">이용약관</span></a><span class="bar">|</span>
+							</li>
+							<li>
+								<a href="https://www.hoteltheplaza.com/kr/footer/personal.jsp" title="개인정보처리방침"><strong class="text">개인정보처리방침</strong></a><span class="bar">|</span>
+							</li>
+							<li>
+								<a href="https://www.hoteltheplaza.com/kr/footer/privacy.jsp" title="영상정보처리기기 운영·관리 방침"><strong class="text">사이트맵</strong></a><span class="bar">|</span>
+							</li>
+							<li>
+								<a href="https://www.hoteltheplaza.com/kr/footer/email_security.jsp" title="이메일무단수집금지"><span class="text">이메일무단수집금지</span></a><span class="bar">|</span>
+							</li>
+							<li>
+								<a href="https://www.hwrc.co.kr/index.asp" title="채용정보"><span class="text">채용정보</span></a><span class="bar">|</span>
+							</li>
+							<li>
+								<a href="https://www.hoteltheplaza.com/_resource/pdf/Sales_Kit_KOR.pdf" title="온라인 브로셔"><span class="text">온라인 브로셔</span></a>
+							</li>
+						</ul>
+						<ul class="sns">
+							<li>
+								<a href="https://www.facebook.com/theplaza.seoul" title="facebook">
+									<span class="icon"><img src="img/facebook.svg" alt="facebook 아이콘"/></span>
+								</a>
+							</li>
+							<li>
+								<a href="https://www.instagram.com/theplazaseoul/" title="instagram">
+									<span class="icon"><img src="img/instagram.svg" alt="instagram 아이콘"/></span>
+								</a>
+							</li>
+							<li>
+								<a href="https://www.tripadvisor.co.kr/Hotel_Review-g294197-d306139-Reviews-THE_PLAZA_Seoul_Autograph_Collection-Seoul.html" title="tripadvisor">
+									<span class="icon"><img src="img/tripadvisor-logotype.svg" alt="tripadvisor 아이콘"/></span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div id="footerCopy">
+				<div class="copyArea">
+					<address class="adress">
+						서울특별시 중구 소공로 119 (우) 04525 TEL 02.771.2200 FAX 02.755.8897 
+					</address>
+					<address class="copy">
+						Copyright © THE PLAZA All Rights Reserved
+					</address>
+				</div>
+			</div>
+		</footer>
+	</div>
+  
+ </body>
+</html>

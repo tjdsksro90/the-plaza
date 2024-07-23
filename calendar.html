@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+ <head>
+  <title> new document </title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<!--jQuery UI CSS파일 -->
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
+	<!--jQuery 기본 js파일-->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
+  <script src="js/jquery-1.12.4.js"></script>
+	<style>
+		.output_day, .output_day_out{
+		display:inline-block;
+		width:200px;
+		height:100px;
+		line-height:100px;
+		background-color:tan;
+		}
+		.output_mon, .output_mon_out{
+		display:inline-block;
+		width:200px;
+		height:100px;
+		line-height:100px;
+		background-color:powderblue;
+		}
+		td{cursor:pointer;}
+	</style>
+ <script>
+	jQuery(document).ready(function(){
+			$('.calendar_sep, .calendar_oct').hide();
+
+		$('.output_area').click(function(){
+			$('.calendar_sep, .calendar_oct').toggle();
+		});
+		$(".calendar_sep .date1").click(function(){
+			var date1 = $(this).text();
+			alert(date1);
+			$(".output_day").text(date1);		
+			$(".output_mon").text('09');	
+		});
+		$(".calendar_sep .date2").click(function(){
+			var date2 = $(this).text();
+			alert(date2);
+			$(".output_day").text(date2);	
+			$(".output_mon").text('09');		
+		});
+
+		
+		$(".calendar_oct .date1").click(function(){
+			var date1 = $(this).text();
+			alert(date1);
+			$(".output_day_out").text(date1);		
+			$(".output_mon_out").text('10');	
+		});
+		$(".calendar_oct .date2").click(function(){
+			var date2 = $(this).text();
+			alert(date2);
+			$(".output_day_out").text(date2);	
+			$(".output_mon_out").text('10');		
+		});
+	});
+ </script>
+ </head>
+ <body>
+ <div class="output_area">
+	<div class="output_day"></div>
+	<div class="output_mon"></div>
+	<div class="output_day_out"></div>
+	<div class="output_mon_out"></div>
+</div>
+  <div class="calendar_sep">
+	  <table summary="calendar">
+		 <caption>2018.<span>9</span></caption>
+		  <tr>
+			<th class="week1">일</th>
+			<th>월</th>
+			<th>화</th>
+			<th>수</th>
+			<th>목</th>
+			<th>금</th>
+			<th>토</th>
+		  </tr>
+		  <tr>
+			  <td class="date1">1</td>
+			  <td class="date2">2</td>
+			  <td>3</td>
+			  <td>4</td>
+			  <td>5</td>
+			  <td>6 </td>
+			  <td>7</td>
+		  </tr>
+		  <tr>
+			  <td class="date1">8</td>
+			  <td class="date2">9</td>
+			  <td>10</td>
+			  <td>11</td>
+			  <td>12</td>
+			  <td>13 </td>
+			  <td>14</td>
+		  </tr>
+		  <tr>
+			  <td class="date1">15</td>
+			  <td class="date2">16</td>
+			  <td>17</td>
+			  <td>18</td>
+			  <td>19</td>
+			  <td>20 </td>
+			  <td>21</td>
+		  </tr>
+		  <tr>
+			  <td class="date1">22</td>
+			  <td class="date2">23</td>
+			  <td>24</td>
+			  <td>25</td>
+			  <td>26</td>
+			  <td>27 </td>
+			  <td>28</td>
+		  </tr>
+		  <tr>
+			  <td class="date1">29</td>
+			  <td class="date2">30</td>
+			  <td>31</td>
+			  <td></td>
+			  <td></td>
+			  <td></td>
+			  <td></td>
+		  </tr>
+	  </table>
+  </div>
+  <div class="calendar_oct">
+	  <table summary="calendar">
+		 <caption>2018.<span>10</span></caption>
+		  <tr>
+			<th class="week1">일</th>
+			<th>월</th>
+			<th>화</th>
+			<th>수</th>
+			<th>목</th>
+			<th>금</th>
+			<th>토</th>
+		  </tr>
+		  <tr>
+			  <td class="date1">1</td>
+			  <td class="date2">2</td>
+			  <td>3</td>
+			  <td>4</td>
+			  <td>5</td>
+			  <td>6 </td>
+			  <td>7</td>
+		  </tr>
+		  <tr>
+			  <td class="date1">8</td>
+			  <td class="date2">9</td>
+			  <td>10</td>
+			  <td>11</td>
+			  <td>12</td>
+			  <td>13 </td>
+			  <td>14</td>
+		  </tr>
+		  <tr>
+			  <td class="date1">15</td>
+			  <td class="date2">16</td>
+			  <td>17</td>
+			  <td>18</td>
+			  <td>19</td>
+			  <td>20 </td>
+			  <td>21</td>
+		  </tr>
+		  <tr>
+			  <td class="date1">22</td>
+			  <td class="date2">23</td>
+			  <td>24</td>
+			  <td>25</td>
+			  <td>26</td>
+			  <td>27 </td>
+			  <td>28</td>
+		  </tr>
+		  <tr>
+			  <td class="date1">29</td>
+			  <td class="date2">30</td>
+			  <td>31</td>
+			  <td></td>
+			  <td></td>
+			  <td></td>
+			  <td></td>
+		  </tr>
+	  </table>
+  </div>
+ </body>
+</html>

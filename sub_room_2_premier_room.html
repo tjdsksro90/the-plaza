@@ -1,0 +1,919 @@
+<!DOCTYPE html >
+<html lang="ko">
+ <head>
+  <meta charset="utf-8"/>
+  <title> sub_room_prestige </title>
+  <script src="js/jquery-1.12.4.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+  <link rel="shortcut icon" href="img/icon_home.ico"/>
+  <link rel="apple-touch-icon" href="img/icon_home.ico"/>
+  <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+  <link rel="stylesheet" type="text/css" href="css/headerFooter.css"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"/>
+  <!--http://www.tutorialspoint.com/jqueryui/jqueryui_easings.htm
+	search 모양 참고할 곳
+  -->
+  <style>
+	/*############# visualWrap  + visualTop ##################*/
+		#visualWrap{width:100%; max-width:1920px;}
+		#visualMain{width:100%; height:350px; background-image:url("img/top_premier_suite.jpg");
+			background-position:50% 400%;background-attachment:fixed; background-repeat:no-repeat;}
+			#visualMain h2{color:#fff; font-size:60px; line-height:350px; font-weight:100;
+			width:1100px; height:350px; margin:0 auto; position:relative; overflow:hidden;}
+			#visualMain h2 span{width:100px; height:50px; position:absolute; left:0; top:0;}
+				#visualMain h2 .active1{left:0; animation:aniText 1s 1;}
+				#visualMain h2 .active2{left:85px; animation:aniText 1.25s 1;}
+				#visualMain h2 .active3{left:170px; animation:aniText 1.5s 1;}
+				#visualMain h2 .active4{left:255px; animation:aniText 1.75s 1;}
+				#visualMain h2 .active5{left:350px; animation:aniText 2s 1;}
+				#visualMain h2 .active6{left:425px; animation:aniText 2.25s 1;}
+				#visualMain h2 .active7{left:510px; animation:aniText 2.5s 1;}
+				#visualMain h2 .active8{left:710px; animation:aniText 2.75s 1;}
+				#visualMain h2 .active9{left:795px; animation:aniText 3s 1;}
+				#visualMain h2 .active10{left:880px; animation:aniText 3.25s 1;}
+				#visualMain h2 .active11{left:965px; animation:aniText 3.5s 1;}
+				#visualMain h2 .active12{left:1050px; animation:aniText 3.75s 1;}
+
+				@keyframes aniText{
+					0%{top:-200px; color:rgba(255,255,255,0);}
+					50%{top:100px; text-transform:lowercase;}
+					100%{top:0; }
+				}
+
+		#visualTop{width:100%; height:20px; padding-top:40px; }
+			#visualTop .homebar{width:98%; font-size:12px;text-align:right; padding-right:2%; color:#3c1650; font-weight:700;}
+			#visualTop .homebar a:link,#visualTop .homebar a:visited{text-decoration:underline; color:#999; font-weight:400;}
+			#visualTop .homebar a:hover{color:#3c1650;}
+			#visualTop .homebar span{padding:10px; color:#ccc;}
+
+			#visualTop:after{clear:both;content:"";display:block;}
+
+
+		#visualBottom{width:100%; }
+			
+
+			
+			#mainDesc{width:1200px; height:350px;padding:80px 0; margin:0 auto;}
+				#descWrap{width:50%; font-size:14px; line-height:20px; float:left; padding-right:10%;}
+					#descWrap h3{font-weight:100; font-size:32px; line-height:36px; }
+						#descWrap h3 span{font-weight:700;}
+					#descWrap .desc{padding:60px 0 30px; line-height:28px;}
+					#descWrap ul{width:100%; }
+					#descWrap li{display:inline-block; text-align:center;margin-right:10px; }
+					#descWrap li a{display:inline-block; border:1px solid #ccc; width:140px; height:40px; line-height:40px; font-weight:700; color:#3c1650; border-radius:20px; transition:0.5s 0.1s;}
+					#descWrap li a:hover{background-color:#3c1650; border:1px solid #3c1650; color:#fff;}
+
+				#hotel_info{width:40%;font-size:13px; float:left; }
+					#hotel_info .title{color:#be9336; font-weight:bold; line-height:43px; padding-bottom:25px;
+						letter-spacing:1px;}
+					#hotel_info .desc{line-height:28px; padding-bottom:62px; font-weight:900; letter-spacing:0.6px;}
+					#hotel_info .tell{letter-spacing:0.6px;}
+						#hotel_info .tell span{color:#3c1650;padding-right:20px; font-weight:700;}
+		
+			#mainDesc:after{clear:both;content:"";display:block;}
+			
+
+
+
+		#amenityWrap{width:100%; max-width:1920px; position:relative;}
+			#amenityWrap h3{width:1200px;padding-top:80px;font-size:24px; font-weight:100;margin:0 auto;}
+			#amenityWrap .img{width:800px;height:113px; position:absolute; top:0; right:0;overflow:hidden;}
+			#amenityWrap .list{width:1200px; padding-top:80px; margin:0 auto;}
+				#amenityWrap .list dl{width:25%; float:left; letter-spacing:-0.5px; line-height:29px; font-size:13px; line-height:29px; vertical-align:top;}
+				#amenityWrap .list dt{font-weight:700; padding-bottom:8px;}
+				#amenityWrap .list dd{line-height:18px; padding:6px 0 5px;}
+			
+			#amenityWrap .list:after{clear:both;content:"";display:block;}
+			#amenityWrap:after{clear:both;content:"";display:block;}
+			
+			#galleryWrap{width:100%; max-width:1920px; padding-bottom:100px; position:relative; overflow:hidden;}
+			#galleryWrap h3{width:1200px; font-size:24px; font-weight:100; padding:120px 0 40px 0; margin:0 auto;}
+				#gallery{width:100%; position:relative;}
+					#gallery .btnArea{position:absolute; left:0; right:0; z-index:1; }
+						#gallery .btnArea a{position:absolute; background-color:#fff;padding:251px 24px; z-index:2;}
+						#gallery .btnArea .prev{left:326px;}
+						#gallery .btnArea .next{right:326px;}
+					#gallery .imgArea{height:550px;}
+						#gallery .imgArea ul{width:10440px;}
+						#gallery .imgArea li{width:1060px; height:100%;float:left; opacity:0.4; transition:all 0.2s ease-out; overflow:hidden;}
+						#gallery .imgArea li.active{opacity:1; }
+						#gallery .imgArea li a{}
+						#gallery .imgArea li a img{width:100%;}
+
+
+			#gallery .imgArea ul:after{content:"";clear:both;display:block;}
+
+
+			#gallery .zzumArea{ width:180px; height:30px; position:absolute; left:50%; transform:translatex(-50%); bottom:-50px; }	
+			#gallery .zzumArea ul{ width:100%;}
+			#gallery .zzumArea li{ width:10px; height:10px; border-radius:10px; background-color:#ccc; float:left; margin-left:20px; cursor:pointer; }
+			#gallery .zzumArea ul:after{ content:""; display:block; clear:both; }
+
+			/* 이벤트 클래스 */
+			#gallery .zzumArea li.addBtn{background-color:rgba(60,22,80,1);}
+
+			
+
+			#addAdv{width:100%; max-width:1920px; background-color:#f7f7f7;perspective:300px;}
+			#addAdv h3{width:1200px; font-size:24px; font-weight:100; 
+				padding:80px 0 40px 0;text-align:center; margin:0 auto;}
+			#addAdv .imgArea{width:100%; text-align:center;}
+			#addAdv .imgArea p{width:1200px; margin:0 auto;}
+				#addAdv .imgArea p img{width:100%;transition:all 1s ease-in-out .2s;}
+			#addAdv:hover .imgArea p img{transform:rotatex(720deg);}
+			#addAdv .textArea{width:1200px; margin:0 auto;}
+				#addAdv .textArea div{width:50%; float:left;font-size:14px;}
+				#addAdv .textArea .left{ line-height:26px; position:relative;}
+					#addAdv .textArea .left strong{font-size:18px;padding-top:21px;font-weight:100;display:block;}
+					#addAdv .textArea .left:after{content:"";width:1px; height:185px; position:absolute;background-color:rgba(0,0,0,0.07);top:21px; right:0;}
+				#addAdv .textArea .right dl{padding: 21px 0 0 47px;}
+				#addAdv .textArea .right dt{font-weight:700;}
+				#addAdv .textArea .right dd{line-height:22px; margin:8px 0 20px;}
+			#addAdv .textArea:after{clear:both;content:"";display:block;}
+
+
+			#addEvent{width:100%; max-width:1920px; padding-bottom:100px;background-color:#f7f7f7;}
+			#addEvent h3{width:1200px; padding-top:100px;text-align:center; font-size:24px; padding-bottom:40px; font-weight:100;margin:0 auto;}
+			#addEvent ul{width:1200px; margin:0 auto;}
+			#addEvent li{width:266px; height:266px;float:left; margin-right:12px; text-align:center; position:relative; overflow:hidden; }
+			#addEvent li:last-child{margin:0;}
+				#addEvent li a{display:block;transition:all .5s ease-in-out 0.1s;}
+				#addEvent li a:hover strong{text-decoration:underline;}
+					#addEvent li a span{display:block;width:100%; height:100%; overflow:hidden;}
+						#addEvent li a span img{width:100%; height:100%; }
+					#addEvent li a i{display:block; color:#ccc; font-style:normal; font-size:13px; padding:10px 0 5px;}
+					#addEvent li a strong{display:block; font-weight:normal; font-size:14px; color:#fff;}
+					#addEvent li .text{background-color:rgba(0,0,0,0.02); width:266px;height:66px; position:absolute;left:232px;top:0;padding:100px 0 100px; opacity:0.5;}
+
+					#addEvent li .plus{color:rgba(255,255,255,0.7); font-size:50px; position:absolute;left:130px;top:100px;}
+			
+			#addEvent li:hover .text{left:0;top:0; opacity:1;background-color:rgba(0,0,0,0.5);}
+			#addEvent li:hover .plus{left:-50px;top:100px;color:rgba(255,255,255,0);}
+			#addEvent ul:after{content:"";clear:both; display:block;}
+
+		#view{ width:1200px; height:625px; position:absolute; left:50%; top:200%;
+			transform:translate(-50%,0); box-shadow:10px 10px 10px rgba(0,0,0,0.5);
+			z-index:7;
+		}
+		#view img{width:100%;}
+
+		#full{ position:fixed; width:100%; height:100%; background-color:rgba(0,0,0,0.5); left:0; top:0; z-index:6;}
+
+
+
+		/*##################################################################################*/
+	@media all and (min-width:1201px) and (max-width:1900px){
+
+		}
+
+		/*##################################################################################*/
+	@media all and (min-width:1025px) and (max-width:1200px){
+
+		}
+
+	/*##################################################################################*/
+	@media all and (min-width:768px) and (max-width:1024px){
+
+		}
+
+	/*##################################################################################*/
+	@media all and (min-width:481px) and (max-width:767px){
+
+		}
+	/*##################################################################################*/
+	@media all and (min-width:0px) and (max-width:480px){
+
+		}
+
+  </style>
+  <script>
+	/*header 제이쿼리 영역(검색,모바일부분) + (infoNav 위치 변경 부분)*/
+		jQuery(document).ready(function(){
+			jQuery("#search_icon").click(function(){
+				jQuery("#search_box").show().css({"display":"inline","width":"208px","opacity":"1"});
+			});
+			jQuery("#mobHeaderX").hide();
+			jQuery("#mobHeader").click(function(){
+				jQuery("#gnb_area, #infoNav_area").css({"left":"0"});
+				jQuery("#mobHeaderX").show(1000);
+			});
+			jQuery("#mobHeaderX").click(function(){
+				jQuery("#gnb_area, #infoNav_area").css({"left":"-700px"});
+				jQuery("#mobHeaderX").hide();
+			});
+		
+		//창크기 변화 감지
+			$( window ).resize(function() {
+			  var windowWidth = $( window ).width();
+				if(windowWidth < 768) {
+					//창 가로 크기가 500 미만일 경우 
+					$("#gnb_subBg,.gnb_subArea").hide();
+					$("#gnb_area li").mouseover(function(){
+						$(this).children(".gnb_subArea").stop().slideDown(500);
+					}).mouseout(function(){
+						$(this).children(".gnb_subArea").stop().slideUp(500);
+					});
+				} else {
+					//창 가로 크기가 500보다 클 경우
+					$(".gnb_subArea, #gnb_subBg").hide();
+					$("#gnb_area ul").mouseover(function(){
+						$(".gnb_subArea, #gnb_subBg").stop().slideDown(500);
+					}).mouseout(function(){
+						$(".gnb_subArea, #gnb_subBg").stop().slideUp(500);
+					});
+				}
+			}).resize();
+
+		/*########### 적용할 영역 #############*/
+			header = $("#header");
+			gnb = $("#gnb");
+			gnb_area = $("#gnb_area");
+			infoNav = $("#infoNav");
+
+			wrapMarginT = parseInt($("#wrap").css("marginTop"));
+
+			headerH = $("#header").height();
+			headH = wrapMarginT + headerH;
+			infoNavH = $("#infoNav").height();
+
+		/*########### 스크롤의 위치값 ############*/
+
+			$(window).scroll(function(){
+				var nowScroll = $(document).scrollTop();
+
+				if(nowScroll >= headH){
+					header.addClass("fixed");
+				}
+				else{
+					header.removeClass("fixed");
+				}
+				console.log(nowScroll);
+				console.log(infoNavH);
+				if(nowScroll >= infoNavH){
+					$('#infoNav_area').stop().animate({"right":"-450px"},500);
+					$('#scrollHeader').stop().animate({"top":"30px","opacity":"1"},500);
+					$('#scrollHeader').click(function(){
+						$('#infoNav_area').stop().animate({"right":"50px"},500);
+                        $(this).stop().animate({"top":"-130px","opacity":"0"},500);
+					});
+				}
+				else{
+					$('#infoNav_area').stop().animate({"right":"50px"},500);
+					$('#scrollHeader').stop().animate({"top":"-130px","opacity":"0"},500);
+				}
+			});
+		});
+
+	/*#############*/
+
+	jQuery(document).ready(function(){
+ 		 //	$("#gallery .imgArea ul").append( $("#gallery .imgArea li:last") );
+		$("#gallery .imgArea ul").css({"marginLeft":"-650px"});
+		$("#gallery .imgArea li:eq(1)").addClass("active");
+		$("#gallery .btnArea .next").click(function(){
+			$("#gallery .imgArea ul:not(:animated)").stop().animate({"marginLeft":"-=1050px"},1000,"swing",function(){
+				$("#gallery .imgArea ul").append( $("#gallery .imgArea li:first") );
+				$("#gallery .imgArea ul").css({"marginLeft":"-650px"});
+				$("#gallery .imgArea li").removeClass("active");
+				$("#gallery .imgArea li:eq(1)").addClass("active");
+			});
+		});
+		$("#gallery .btnArea .prev").click(function(){
+			$("#gallery .imgArea ul:not(:animated)").stop().animate({"marginLeft":"+=1050px"},1000,"swing",function(){
+				$("#gallery .imgArea ul").prepend( $("#gallery .imgArea li:last") );
+				$("#gallery .imgArea ul").css({"marginLeft":"-650px"});
+				$("#gallery .imgArea li").removeClass("active");
+				$("#gallery .imgArea li:eq(1)").addClass("active");
+			});
+		});
+		// 자동클릭
+		var autoSel = setInterval(function(){$("#gallery .btnArea .next").click();},3000);
+		// 자동클릭 멈추기
+		$("h1").click(function(){
+			clearInterval( autoSel );
+		});
+
+
+
+		// 버튼 이어주기 일단 보류
+
+
+			$("#gallery .zzumArea li:eq(1)").addClass("addBtn");
+			$("#gallery .zzumArea li").click(function(){
+			/* 빨간색 버튼 이어주기 */
+			var btnIndex = $(this).index();
+			$("#gallery .zzumArea li").removeClass();
+			$("#gallery .zzumArea li:eq("+btnIndex+")").addClass("addBtn");
+/*
+			width = $("#gallery .imgArea li").width();
+
+			for(var i=0; i<width; i++){
+				if( btnIndex == i ){
+					$("#gallery .imgArea ul").animate({"marginLeft":"-"+width*btnIndex+"px"},500);
+				}
+			}
+*/
+		});
+
+
+		
+		// 1) view 영역과 full 영역이 없음! : div태그로 만들기
+		$("body").append("<div id='view'></div><div id='full'></div>");
+
+		// view와 full영역 화면에서 숨기기
+		$("#view,#full").hide();
+
+		// 3) ul li a를 클릭하면 해당하는 이미지가 view 영역에 보이도록 만들기
+		$(".imgArea ul li a").click(function(){
+			$("#view,#wiew img, #full").show();
+			/*
+				문제점 : substring으로 작업하면 자릿수가 바뀌었을 때
+				시작에서 어디전까지가 틀어지게 됨
+			*/
+			$("#view").html("<img src=' "+$(this).attr("href")+" ' alt='이미지'/>");
+			return false;
+		});
+		
+		// 4) view나 full 영역을 누르면 사라지도록 만들기
+		$("#view,#full").click(function(){
+			$("#view,#full").hide();
+		});
+	});
+
+
+	
+  </script>
+ </head>
+
+ <body>
+	<div id="wrap">
+		<header id="header">
+			<div id="infoNav">
+				<h1>
+					<a href="index.html" title="index">
+						<img src="img/tit_bg_main.png" alt="THE PLAZA"/>
+					</a>
+				</h1>
+				<div id="infoNav_area">
+					<h5>infoNav</h5>
+					<ul class="weather_info">
+						<li><a href="#" title="SEOUL">SEOUL</a></li>
+						<li><a href="#" title="11:09PM">11:09PM</a></li>
+						<li><a href="#" title="흐림 12.7ºC">흐림 12.7ºC</a></li>
+					</ul>
+					<ul class="user_info">
+						<li><a href="login.html" title="LOGIN">LOGIN</a></li>
+						<li><a href="join_form.html" title="JOIN">JOIN</a></li>
+					</ul>
+					<select class="lang_info">
+						<option value="kor">KOREAN</option>
+						<option value="eng">ENGLISH</option>
+					</select>
+				</div>
+			</div>
+			<nav id="gnb">
+				<div id="gnb_area">
+				<h5>gnb</h5>
+					<ul>
+						<li>
+							<h6>더 플라자</h6>
+							<a class="gnb_areaA" href="sub_intro_1.html" title="더 플라자">더 플라자</a>
+							<span class="bar">|</span>
+							<div class="gnb_subArea">
+								<div class="gnb_sub">
+									<a href="sub_intro_1.html" title="브랜드 소개">브랜드 소개</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_intro_2_reward.html" title="수상이력">수상이력</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_ready.html" title="오시는 길">오시는 길</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_ready.html" title="여행 가이드">여행 가이드</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_ready.html" title="공지뉴스">공지뉴스</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<h6>스폐셜 오퍼</h6>
+							<a class="gnb_areaA" href="sub_special_1.html" title="스폐셜 오퍼">스폐셜 오퍼</a>
+							<span class="bar">|</span>
+							<div class="gnb_subArea">
+								<div class="gnb_sub">
+									<a href="sub_special_1.html" title="패키지 and 프로모션">패키지 &amp; 프로모션</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_special_2.html" title="더 플라자 이숍">더 플라자 이숍</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<h6>객실</h6>
+							<a class="gnb_areaA" href="sub_room_all.html" title="객실">객실</a>
+							<span class="bar">|</span>
+							<div class="gnb_subArea">
+								<div class="gnb_sub">
+									<a href="sub_room_all.html" title="전체보기">전체보기</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_room_1_deluxe_room.html" title="룸 and 스위트">룸 &amp; 스위트</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_room_7_royal_room.html" title="클럽라운지">클럽라운지</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<h6>다이닝</h6>
+							<a class="gnb_areaA" href="sub_dining_all.html" title="다이닝">다이닝</a>
+							<span class="bar">|</span>
+							<div class="gnb_subArea">
+								<div class="gnb_sub">
+									<a href="sub_dining_all.html" title="전체보기">전체보기</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_dining_all.html" title="레스토랑 and 바">레스토랑 &amp; 바</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_dining_all.html" title="베이커리">베이커리</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<h6>웨딩 &amp; 연회</h6>
+							<a class="gnb_areaA" href="#none" title="웨딩 n 연회">웨딩 &amp; 연회</a>
+							<span class="bar">|</span>
+							<div class="gnb_subArea">
+								<div class="gnb_sub">
+									<a href="#none" title="전체보기">전체보기</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="웨딩">웨딩</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="연회">연회</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="패밀리 파티">패밀리 파티</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="케이터링 서비스">케이터링 서비스</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<h6>부대시설</h6>
+							<a class="gnb_areaA" href="#none" title="부대시설">부대시설</a>
+							<span class="bar">|</span>
+							<div class="gnb_subArea">
+								<div class="gnb_sub">
+									<a href="#none" title="비즈니스 센터">비즈니스 센터</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="휘트니스클럽">휘트니스클럽</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="더벨스파">더벨스파</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="지스텀">지스텀</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="기프트샵">기프트샵</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<h6>멤버십</h6>
+							<a class="gnb_areaA" href="sub_membership.html" title="멤버십">멤버십</a>
+							<span class="bar">|</span>
+						</li>
+						<li>
+							<h6>온라인 컨시어지</h6>
+							<a class="gnb_areaA" href="sub_online_news.html" title="온라인 컨시어지">온라인 컨시어지</a>
+							<div class="gnb_subArea">
+								<div class="gnb_sub">
+									<a href="#none" title="호텔 연락처">호텔 연락처</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_ready.html" title="층별안내">층별안내</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="자주하는 질문">자주하는 질문</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_ready.html" title="문의하기">문의하기</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="관광 컨시어시">관광 컨시어시</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_ready.html" title="고객의 소리">고객의 소리</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="온라인 뉴스레터">온라인 뉴스레터</a>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div id="gnb_subBg">
+				</div>
+				<!--https://search.naver.com/search.naver?sm=nnf_hty&query={query}&x=0&y=0-->
+				<div id="search_area">
+					<form action="https://www.google.co.kr/search" method="get">
+						<fieldset>
+							<legend>검색부분</legend>
+							<input id="search_box" type="text" name="q" autocomplete="off"  title="search" placeholder="search"/>
+							<input id="search_icon" type="button" name="search_icon" title="serach_icon" value="버튼"/>
+							<a href="reservation.html" title="예약" id="reservation">
+								<span class="img">
+									<img src="img/table_icon.svg" alt="예약 이미지"/>
+								</span>
+								<span class="text">
+									예약하기
+								</span>
+							</a>
+						</fieldset>
+					</form>
+				</div>
+			</nav>
+			<div id="mobHeader">
+				<p>
+					<span>─</span>
+					<span>─</span>
+					<span>─</span>
+				</p>
+			</div>
+			<div id="mobHeaderX">
+			</div>
+			<div id="scrollHeader">
+				<p>
+					<span class="scroll_1">─</span>
+					<span class="scroll_2">─</span>
+					<span class="scroll_3">─</span>
+				</p>
+			</div>
+		</header>
+		<div id="container">
+			<section id="visualWrap">
+				<h6>객실 정보</h6>
+				<div id="visualMain">
+					<h2>
+						<span class="active1">P</span>
+						<span class="active2">R</span>
+						<span class="active3">E</span>
+						<span class="active4">M</span>
+						<span class="active5">I</span>
+						<span class="active6">E</span>
+						<span class="active7">R</span>
+						<span class="active8">S</span>
+						<span class="active9">U</span>
+						<span class="active10">I</span>
+						<span class="active11">T</span>
+						<span class="active12">E</span>
+					</h2>
+				</div>
+				<div id="visualTop">
+					<h6>프리미어 스위트 설명</h6>
+					<p class="homebar">
+						<a href="index.html" title="Home"><i><img src="img/icon_home.png" alt="홈이미지"/></i></a><span>></span><a href="sub_room_all_.html" title="객실">객실</a><span>></span><a href="sub_room_all_.html" title="룸n스위트">룸&amp;스위트</a><span>></span>프리미어 스위트
+					</p>
+				</div>
+				<div id="visualBottom">
+					<div id="mainDesc">
+						<h6>객실 설명</h6>
+						<div id="descWrap">
+							<h3>
+								<span>프리미어</span> 스위트
+							</h3>
+							<p class="desc">
+								프리미어 스위트는 비즈니스를 목적으로 하는 투숙객에게 최적의 객실입니다. 나무 등 자연 요소를 모티브로 한 가구 디자인과 효율적인 동선 배치는 프리미어 스위트를 가장 합리적이면서도 스타일리시한 객실로 만들어 줍니다. 더 플라자만의 프리미어 스위트를 통해 ‘기대 그 이상의 경험’을 즐겨보시기 바랍니다.
+							</p>
+							<ul>
+								<li>
+									<a href="reservation.html" title="예약하기">
+										예약하기
+									</a>
+								</li>
+								<li>
+									<a href="contact.html" title="문의하기">
+										문의하기
+									</a>
+								</li>
+							</ul>
+						</div>
+						<div id="hotel_info">
+							<p class="title">Designer GUIDO CIOMPI</p>
+							<p class="desc">
+							“디럭스 룸에서 보이는 이 특별한 조망은 마치 도시가 이 객실을 위해 조경을 한 것 같은 느낌을 들게 할 것입니다.”
+							</p>
+							<p class="tell">
+								<span>문의 및 예약</span>02.3100.7710
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section id="amenityWrap">
+				<h3>어메니티</h3>
+				<div class="img"><img src="img/amenity_premier_suite.jpg" alt="amenity_premier_suite.jpg"/>	</div>
+				<div class="list">
+					<dl>
+						<dt>일반</dt>
+						<dd>LCD TV</dd>
+						<dd>THE COMPORT 침구류</dd>
+						<dd>객실 전화기</dd>
+						<dd>알람 시계</dd>
+						<dd>객실 금고</dd>
+						<dd>다리미 & 다리미판 (요청 시)</dd>
+						<dd>고급 객실 슬리퍼 (남, 여)</dd>
+						<dd>우산</dd>
+						<dd>항 알러지 케어 성능 카페트</dd>
+						<dd>멀티어댑터</dd>
+						<dd>다기능 잭팩(USB/HDMI) 시스템</dd>
+						<dd>(TV 연결 가능)</dd>
+						<dd>객실 온도 중앙 조절 시스템</dd>
+						<dd>조명, 커튼 전자동 시스템</dd>
+						<dd>RFID 도어락 시스템</dd>
+						<dd>음성 사서함 시스템</dd>
+						<dd>옷솔</dd>
+						<dd>구둣주걱</dd>
+						<dd>쇼핑백</dd>
+						<dd>옷걸이</dd>
+						<dd>비상용품 (손전등,마스크)</dd>
+					</dl>
+					<dl>
+						<dt>욕실</dt>
+						<dd>레인 포레스트 샤워 (샤워부스)</dd>
+						<dd>욕조 (트윈 객실 한정)</dd>
+						<dd>헤어 드라이어</dd>
+						<dd>전자동 비데</dd>
+						<dd>고급 욕실가운</dd>
+						<dd>욕실 내 확대경</dd>
+						<dd>에르메스 배스 어메니티 (클럽객실)</dd>
+						<dd>몰튼 브라운 배스 어메니티 (일반객실)</dd>
+						<dd>디지털 체중계</dd>
+						<dd>위생주머니</dd>
+						<dd>샤워캡</dd>
+						<dd>코튼세트 (면봉 & 화장솜)</dd>
+						<dd>머리빗</dd>
+						<dd>바느질 세트</dd>
+						<dd>핸드 타월</dd>
+						<dd>페이스 타월</dd>
+						<dd>배스 타월</dd>
+						<dd>비상벨</dd>
+					</dl>
+					<dl>
+						<dt>미니바</dt>
+						<dd>미니바와 냉장고
+						<dd>네스프레소 머신 (클럽객실)</dd>
+						<dd>네스프레소 캡슐 (클럽객실, 1일 3개 무료)</dd>
+						<dd>무선 전기주전자</dd>
+						<dd>무료 생수 (1일 2병)</dd>
+						<dd>무료 티, 커피</dd>
+						<dd>물컵, 찻잔</dd>
+					</dl>
+					<dl>
+						<dt>서비스</dt>
+						<dd>고객 짐 보관 및 공항 배송 서비스 (유료)</dd>
+						<dd>초고속 인터넷 랜선 및 Wi-Fi (무료)</dd>
+						<dd>24시간 IT 버틀러</dd>
+						<dd>24시간 룸서비스</dd>
+						<dd>익스프레스 체크아웃 서비스</dd>
+						<dd>신속한 객실 청소 서비스(횟수 제한 없음)</dd>
+						<dd>모닝콜 서비스</dd>
+						<dd>주요 산책 지도 (생수 1병 & 타올)</dd>
+						<dd>신문 (무료)</dd>
+						<dd>턴다운 서비스</dd>
+						<dd>다양한 맞춤베개 (요청 시)</dd>
+					</dl>
+				</div>
+			</section>
+			<section id="galleryWrap">
+				<h3>포토 갤러리</h3>
+				<div id="gallery">
+					<div class="btnArea">
+						<a href="javascript:void(0)" title="이전버튼" class="prev">
+							<img src="img/arrow_left.svg" alt="좌측 아이콘"/>
+						</a>
+						<a href="javascript:void(0)" title="이후버튼" class="next">
+							<img src="img/arrow_right.svg" alt="우측 아이콘"/>
+						</a>
+					</div>
+					<div class="imgArea">
+						<ul>
+							<li>
+								<a href="img/w_03-2_2_1.jpg" title="비지니스 디럭스0 이미지">
+									<img src="img/w_03-2_2_1.jpg" alt="비지니스 디럭스0 이미지"/>
+								</a>
+							</li>
+							<li>
+								<a href="img/w_03-2_2_2.jpg" title="비지니스 디럭스1 이미지">
+									<img src="img/w_03-2_2_2.jpg" alt="비지니스 디럭스1 이미지"/>
+								</a>
+							</li>
+							<li>
+								<a href="img/w_03-2_2_3.jpg" title="비지니스 디럭스2 이미지">
+									<img src="img/w_03-2_2_3.jpg" alt="비지니스 디럭스2 이미지"/>
+								</a>
+							</li>
+							<li>
+								<a href="img/w_03-2_2_4.jpg" title="비지니스 디럭스3 이미지">
+									<img src="img/w_03-2_2_4.jpg" alt="비지니스 디럭스3 이미지"/>
+								</a>
+							</li>
+							<li>
+								<a href="img/w_03-2_2_5.jpg" title="비지니스 디럭스4 이미지">
+									<img src="img/w_03-2_2_5.jpg" alt="비지니스 디럭스4 이미지"/>
+								</a>
+							</li>
+							<li>
+								<a href="img/w_03-2_2_6.jpg" title="비지니스 디럭스5 이미지">
+									<img src="img/w_03-2_2_6.jpg" alt="비지니스 디럭스5 이미지"/>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<!--	
+					<div class="zzumArea">
+						<ul>
+							<li><a href="#btn0" title="btn0"></a></li>
+							<li><a href="#btn1" title="btn1"></a></li>
+							<li><a href="#btn2" title="btn2"></a></li>
+							<li><a href="#btn3" title="btn3"></a></li>
+							<li><a href="#btn4" title="btn4"></a></li>
+							<li><a href="#btn5" title="btn5"></a></li>
+						</ul>
+					</div>
+					-->
+				</div>
+			</section>
+			<section id="addAdv">
+				<h3>룸 다이닝</h3>
+				<div class="imgArea">
+					<p><img src="img/room_dining.jpg" alt="room_dining"/></p>
+				</div>
+				<div class="textArea">
+					<div class="left">
+						<strong>24시간, 맛있는 즐거움을 선사합니다</strong><br/>
+						In-Room Dining은 편안하고 독립적인 공간인 객실에서 더 플라자의<br/>
+						특별한 요리를 경험 하실 수 있는 서비스입니다.<br/>
+						가벼운 음료부터 코스 정찬에 이르는 다양한 메뉴를 매일매일 신선하게<br/>
+						만나보실 수 있습니다. 최고의 실력을 자랑하는 더 플라자 셰프들이<br/>
+						선보이는 다양한 요리를 객실에서 편안하게 즐기세요.<br/>
+					</div>
+					<div class="right">
+						<dl>
+							<dt>메뉴</dt>
+							<dd>
+								스프, 파스타, 스테이크, 일식·중식·한식 일품 요리, 샌드위치,<br/>
+								디저트, 스낵 등
+							</dd>
+						</dl>
+						<dl>
+							<dt>예약 및 문의</dt>
+							<dd>
+								Customer Service: 내선번호 0
+							</dd>
+						</dl>
+					</div>
+				</div>
+			</section>
+			<section id="addEvent">
+				<h3>스폐셜 오퍼</h3>
+				<ul>
+					<li>
+						<a href="#" title="얼리 서머 패키지">
+							<span><img src="img/section_1.jpg" alt="얼리 서머 패키지"/></span>
+						</a>
+						<a href="#" title="얼리 서머 패키지" class="text">
+							<i>객실패키지</i>
+							<strong>얼리 서머 패키지</strong>
+						</a>
+						<a href="#" title="얼리 서머 패키지" class="plus">
+							<span>+</span>
+						</a>
+					</li>
+					<li>
+						<a href="#" title="어반 라이프">
+							<span><img src="img/package2.jpg" alt="어반 라이프"/></span>
+						</a>
+						<a href="#" title="어반 라이프" class="text">
+							<i>객실패키지</i>
+							<strong>어반 라이프</strong>
+						</a>
+						<a href="#" title="어반 라이프" class="plus">
+							<span>+</span>
+						</a>
+					</li>
+					<li>
+						<a href="#" title="스프링 시트러스 컬렉션">
+							<span><img src="img/package3.jpg" alt="스프링 시트러스 컬렉션"/></span>
+						</a>
+						<a href="#" title="스프링 시트러스 컬렉션" class="text">
+							<i>객실패키지</i>
+							<strong>스프링 시트러스 컬렉션</strong>
+						</a>
+						<a href="#" title="스프링 시트러스 컬렉션" class="plus">
+							<span>+</span>
+						</a>
+					</li>
+					<li>
+						<a href="#" title="위크앤드 브런치">
+							<span><img src="img/package4.jpg" alt="위크앤드 브런치"/></span>
+						</a>
+						<a href="#" title="위크앤드 브런치" class="text">
+							<i>객실패키지</i>
+							<strong>위크앤드 브런치</strong>
+						</a>
+						<a href="#" title="위크앤드 브런치" class="plus">
+							<span>+</span>
+						</a>
+					</li>
+				</ul>
+			</section>
+		</div>
+.z		<footer id="footer">
+			<div id="footerArea">
+				<div class="footerLogo">
+					<p class="bottomLogo1">
+						<a href="https://www.hoteltheplaza.com/kr/" title="footer logo1">
+							<img src="img/footer_logo1.png" alt="footer logo1"/>
+						</a>
+					</p>
+					<p class="bottomLogo2">
+						<a href="https://autograph-hotels.marriott.com/" title="footer logo2">
+							<img src="img/footer_logo2.png" alt="footer logo2"/>
+						</a>
+					</p>
+					<p class="bottomLogo2">
+						<a href="https://www.marriott.co.kr/rewards/rewards-program.mi" title="footer logo3">
+							<img src="img/footer_logo3.png" alt="footer logo3"/>
+						</a>
+					</p>
+
+				</div>
+				<div class="footerDesc">
+					<div class="footerDesc_fac">
+						<ul class="desc">
+							<li>
+								<a href="https://www.hoteltheplaza.com/kr/footer/sitemap.jsp" title="사이트맵"><span class="text">사이트맵</span></a><span class="bar">|</span>
+							</li>
+							<li>
+								<a href="https://www.hoteltheplaza.com/kr/footer/termsofuse.jsp" title="이용약관"><span class="text">이용약관</span></a><span class="bar">|</span>
+							</li>
+							<li>
+								<a href="https://www.hoteltheplaza.com/kr/footer/personal.jsp" title="개인정보처리방침"><strong class="text">개인정보처리방침</strong></a><span class="bar">|</span>
+							</li>
+							<li>
+								<a href="https://www.hoteltheplaza.com/kr/footer/privacy.jsp" title="영상정보처리기기 운영·관리 방침"><strong class="text">사이트맵</strong></a><span class="bar">|</span>
+							</li>
+							<li>
+								<a href="https://www.hoteltheplaza.com/kr/footer/email_security.jsp" title="이메일무단수집금지"><span class="text">이메일무단수집금지</span></a><span class="bar">|</span>
+							</li>
+							<li>
+								<a href="https://www.hwrc.co.kr/index.asp" title="채용정보"><span class="text">채용정보</span></a><span class="bar">|</span>
+							</li>
+							<li>
+								<a href="https://www.hoteltheplaza.com/_resource/pdf/Sales_Kit_KOR.pdf" title="온라인 브로셔"><span class="text">온라인 브로셔</span></a>
+							</li>
+						</ul>
+						<ul class="sns">
+							<li>
+								<a href="https://www.facebook.com/theplaza.seoul" title="facebook">
+									<span class="icon"><img src="img/facebook.svg" alt="facebook 아이콘"/></span>
+								</a>
+							</li>
+							<li>
+								<a href="https://www.instagram.com/theplazaseoul/" title="instagram">
+									<span class="icon"><img src="img/instagram.svg" alt="instagram 아이콘"/></span>
+								</a>
+							</li>
+							<li>
+								<a href="https://www.tripadvisor.co.kr/Hotel_Review-g294197-d306139-Reviews-THE_PLAZA_Seoul_Autograph_Collection-Seoul.html" title="tripadvisor">
+									<span class="icon"><img src="img/tripadvisor-logotype.svg" alt="tripadvisor 아이콘"/></span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div id="footerCopy">
+				<div class="copyArea">
+					<address class="adress">
+						서울특별시 중구 소공로 119 (우) 04525 TEL 02.771.2200 FAX 02.755.8897 
+					</address>
+					<address class="copy">
+						Copyright © THE PLAZA All Rights Reserved
+					</address>
+				</div>
+			</div>
+		</footer>
+	</div>
+  
+ </body>
+</html>

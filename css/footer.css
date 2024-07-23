@@ -1,0 +1,33 @@
+
+
+
+	/*############# footer ##################*/
+		#footer{width:100%; height:400px; margin:0 auto; color:#fff; position:relative;}
+
+		/*############# footerArea ##################*/
+			#footerArea{width:100%; height:330px; background-color:#222;}
+				#footerArea .footerLogo{width:100%; height:47px; text-align:center; padding:96px 0; }
+				#footerArea .footerLogo .bottomLogo2{opacity:0.5; transition:all .2s;}
+				#footerArea .footerLogo .bottomLogo2:hover{opacity:1;}
+					#footerArea p{display:inline; margin:0 20px; }
+				
+				#footerArea .footerDesc{width:100%; height:90px; border-top:1px solid #3e3e3e;margin:0 auto;}
+					#footerArea .footerDesc_fac{width:1200px; height:90px; margin:0 auto;}
+						#footerArea .footerDesc_fac ul{float:left; overflow:hidden;}
+						#footerArea .footerDesc_fac li{float:left; }
+							#footerArea .desc{width:900px; height:90px; color:#343434; line-height:90px; font-size:13px;}
+								#footerArea .desc a{color:#c4c4c4; padding:0 15px; }
+							#footerArea .sns{width:200px; height:50px; padding:20px 0 20px 100px;}
+								#footerArea .sns li{margin-left:15px;}
+								#footerArea .desc a:hover{color:#eee;}
+
+	/*############# footerCopy ##################*/
+		#footerCopy{width:100%; height:70px; background-color:#000;color:#999; font-size:12px;margin:0 auto;}
+			#footerCopy .copyArea{width:1200px; height:70px; line-height:70px; margin:0 auto;}
+			#footerCopy .copyArea address{ float:left; }
+
+			#footerCopy .adress{width:800px; font-style:normal;}
+				.footerArea a{padding:0 5px 0 10px; }
+			#footerCopy .copy{width:400px; text-align:right; font-style:normal;}
+
+		#footerCopy .copyArea:after{content:"";clear:both;display:block;}

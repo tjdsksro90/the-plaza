@@ -1,0 +1,741 @@
+<!DOCTYPE html >
+<html lang="ko">
+ <head>
+  <meta charset="utf-8"/>
+  <title> sub_special1 </title>
+  <script src="js/jquery-1.12.4.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+  <link rel="shortcut icon" href="img/icon_home.ico"/>
+  <link rel="apple-touch-icon" href="img/icon_home.ico"/>
+  <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+  <link rel="stylesheet" type="text/css" href="css/headerFooter.css"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"/>
+  <style>
+	/*############# container ##################*/
+			#container .location{width:98%; font-size:12px;text-align:right; padding-right:2%; color:#3c1650; font-weight:700; padding:20px 0;}
+			#container .location a:link,#container .location a:visited{text-decoration:underline; color:#999; font-weight:400;}
+			#container .location a:hover{color:#3c1650;}
+			#container .location span{padding:10px; color:#ccc;}
+			
+		#sectionTop{width:100%; height:300px;}
+		#sectionTop h2{padding-top:50px; padding-bottom:50px; text-align:center; font-size:40px; font-weight:100;}
+		#sectionTop .hr{width:30px; border:1px solid #ccc; margin:0 auto; }
+		#sectionTop .text{text-align:center;padding-top:50px}
+		
+		#sectionContent{width:100%; padding-bottom:200px;}
+			#promotionCheck{width:100%; padding:40px 0;}
+				#promotionCheck form{width:1200px; margin:0 auto;}
+				#promotionCheck form fieldset{width:679px; border:none;margin:0 auto;}
+				#promotionCheck form legend{display:none;}
+				#promotionCheck form p{float:left; margin-right:30px;font-size:14px; }
+				#promotionCheck form p:last-child{margin-right:0;}
+				#promotionCheck form p input{}
+				#promotionCheck form p label{padding-left:5px;}
+			#promotionList{width:100%;}
+				#promotionList .btn_more{display:block; width:140px; height:40px; line-height:42px; font-size:14px; border:1px solid #b2b2b2; margin:100px auto 0; text-align:center; border-radius:30px; color:#a2a2a2; background-color:#fff; transition:all .2s;}
+				#promotionList .btn_more:hover{font-weight:700; box-shadow:0 0 5px rgba(0,0,0,0.4);}
+				#promotionList ul{width:1200px; border-bottom:1px solid #eee; margin:0 auto; }
+				#promotionList li{width:399px; height:449px; float:left;background-color:#fff;border-top:1px solid #ccc; border-right:1px solid #eee; transition:.3s ease-in-out;}
+				#promotionList li.left{width:398px;border-left:1px solid #eee;}
+				#promotionList li a{width:100%; height:100%; display:block; overflow:hidden;}
+				#promotionList li a .img{width:100%; }
+					#promotionList li a .img img{width:100%; }
+				#promotionList li a .text{width:90%; padding:0 5%;display:block; padding-top:15px; ;}
+				#promotionList li a .text span{display:block; font-size:13px; text-align:center; }
+					#promotionList li a .title{padding-bottom:15px;transition:1s ease-in-out;}
+					#promotionList li a .line{width:20px; height:1px; background-color:#ccc; margin:0 auto;}
+					#promotionList li a strong{display:block;font-size:24px; text-align:center; padding:15px 0 130px;}
+					#promotionList li a .desc{color:#efefef; line-height:24px; transform:translatey(300px); transition:1s ease-in-out;}
+				
+				#promotionList li:hover{
+					transform:scale(1.1);box-shadow:5px 5px 20px rgba(60,22,80,0.5);border-right:none;
+					}
+				#promotionList li a:hover .text{ 
+					color:#fff;background-color:rgba(60,22,80,0.5);transform:translatey(-292px);height:449px;
+					}
+				#promotionList li a:hover .text .title{padding-top:100px;}
+				#promotionList li a:hover .text .desc{transform:translatey(0px);}
+
+			
+			#promotionCheck form fieldset:after{content:"";display:block; clear:both;}
+			#promotionList ul:after{content:"";display:block; clear:both;}
+  </style>
+  <script>
+	/*header 제이쿼리 영역(검색,모바일부분) + (infoNav 위치 변경 부분)*/
+		jQuery(document).ready(function(){
+			jQuery("#search_icon").click(function(){
+				jQuery("#search_box").show().css({"display":"inline","width":"208px","opacity":"1"});
+			});
+			jQuery("#mobHeaderX").hide();
+			jQuery("#mobHeader").click(function(){
+				jQuery("#gnb_area, #infoNav_area").css({"left":"0"});
+				jQuery("#mobHeaderX").show(1000);
+			});
+			jQuery("#mobHeaderX").click(function(){
+				jQuery("#gnb_area, #infoNav_area").css({"left":"-700px"});
+				jQuery("#mobHeaderX").hide();
+			});
+		
+		//창크기 변화 감지
+			$( window ).resize(function() {
+			  var windowWidth = $( window ).width();
+				if(windowWidth < 768) {
+					//창 가로 크기가 500 미만일 경우 
+					$("#gnb_subBg,.gnb_subArea").hide();
+					$("#gnb_area li").mouseover(function(){
+						$(this).children(".gnb_subArea").stop().slideDown(500);
+					}).mouseout(function(){
+						$(this).children(".gnb_subArea").stop().slideUp(500);
+					});
+				} else {
+					//창 가로 크기가 500보다 클 경우
+					$(".gnb_subArea, #gnb_subBg").hide();
+					$("#gnb_area ul").mouseover(function(){
+						$(".gnb_subArea, #gnb_subBg").stop().slideDown(500);
+					}).mouseout(function(){
+						$(".gnb_subArea, #gnb_subBg").stop().slideUp(500);
+					});
+				}
+			}).resize();
+
+		/*########### 적용할 영역 #############*/
+			header = $("#header");
+			gnb = $("#gnb");
+			gnb_area = $("#gnb_area");
+			infoNav = $("#infoNav");
+
+			wrapMarginT = parseInt($("#wrap").css("marginTop"));
+
+			headerH = $("#header").height();
+			headH = wrapMarginT + headerH;
+			infoNavH = $("#infoNav").height();
+
+		/*########### 스크롤의 위치값 ############*/
+
+			$(window).scroll(function(){
+				var nowScroll = $(document).scrollTop();
+
+				if(nowScroll >= headH){
+					header.addClass("fixed");
+				}
+				else{
+					header.removeClass("fixed");
+				}
+				console.log(nowScroll);
+				console.log(infoNavH);
+				if(nowScroll >= infoNavH){
+					$('#infoNav_area').stop().animate({"right":"-450px"},500);
+					$('#scrollHeader').stop().animate({"top":"30px","opacity":"1"},500);
+					$('#scrollHeader').click(function(){
+						$('#infoNav_area').stop().animate({"right":"50px"},500);
+                        $(this).stop().animate({"top":"-130px","opacity":"0"},500);
+					});
+				}
+				else{
+					$('#infoNav_area').stop().animate({"right":"50px"},500);
+					$('#scrollHeader').stop().animate({"top":"-130px","opacity":"0"},500);
+				}
+			});
+		});
+
+	/*#############*/
+  </script>
+ </head>
+
+ <body>
+	<div id="wrap">
+		<header id="header">
+			<div id="infoNav">
+				<h1>
+					<a href="index.html" title="index">
+						<img src="img/tit_bg_main.png" alt="THE PLAZA"/>
+					</a>
+				</h1>
+				<div id="infoNav_area">
+					<h5>infoNav</h5>
+					<ul class="weather_info">
+						<li><a href="#" title="SEOUL">SEOUL</a></li>
+						<li><a href="#" title="11:09PM">11:09PM</a></li>
+						<li><a href="#" title="흐림 12.7ºC">흐림 12.7ºC</a></li>
+					</ul>
+					<ul class="user_info">
+						<li><a href="login.html" title="LOGIN">LOGIN</a></li>
+						<li><a href="join_form.html" title="JOIN">JOIN</a></li>
+					</ul>
+					<select class="lang_info">
+						<option value="kor">KOREAN</option>
+						<option value="eng">ENGLISH</option>
+					</select>
+				</div>
+			</div>
+			<nav id="gnb">
+				<div id="gnb_area">
+				<h5>gnb</h5>
+					<ul>
+						<li>
+							<h6>더 플라자</h6>
+							<a class="gnb_areaA" href="sub_intro_1.html" title="더 플라자">더 플라자</a>
+							<span class="bar">|</span>
+							<div class="gnb_subArea">
+								<div class="gnb_sub">
+									<a href="sub_intro_1.html" title="브랜드 소개">브랜드 소개</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_intro_2_reward.html" title="수상이력">수상이력</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_ready.html" title="오시는 길">오시는 길</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_ready.html" title="여행 가이드">여행 가이드</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_ready.html" title="공지뉴스">공지뉴스</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<h6>스폐셜 오퍼</h6>
+							<a class="gnb_areaA" href="sub_special_1.html" title="스폐셜 오퍼">스폐셜 오퍼</a>
+							<span class="bar">|</span>
+							<div class="gnb_subArea">
+								<div class="gnb_sub">
+									<a href="sub_special_1.html" title="패키지 and 프로모션">패키지 &amp; 프로모션</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_special_2.html" title="더 플라자 이숍">더 플라자 이숍</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<h6>객실</h6>
+							<a class="gnb_areaA" href="sub_room_all.html" title="객실">객실</a>
+							<span class="bar">|</span>
+							<div class="gnb_subArea">
+								<div class="gnb_sub">
+									<a href="sub_room_all.html" title="전체보기">전체보기</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_room_1_deluxe_room.html" title="룸 and 스위트">룸 &amp; 스위트</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_room_7_royal_room.html" title="클럽라운지">클럽라운지</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<h6>다이닝</h6>
+							<a class="gnb_areaA" href="sub_dining_all.html" title="다이닝">다이닝</a>
+							<span class="bar">|</span>
+							<div class="gnb_subArea">
+								<div class="gnb_sub">
+									<a href="sub_dining_all.html" title="전체보기">전체보기</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_dining_all.html" title="레스토랑 and 바">레스토랑 &amp; 바</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_dining_all.html" title="베이커리">베이커리</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<h6>웨딩 &amp; 연회</h6>
+							<a class="gnb_areaA" href="#none" title="웨딩 n 연회">웨딩 &amp; 연회</a>
+							<span class="bar">|</span>
+							<div class="gnb_subArea">
+								<div class="gnb_sub">
+									<a href="#none" title="전체보기">전체보기</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="웨딩">웨딩</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="연회">연회</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="패밀리 파티">패밀리 파티</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="케이터링 서비스">케이터링 서비스</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<h6>부대시설</h6>
+							<a class="gnb_areaA" href="#none" title="부대시설">부대시설</a>
+							<span class="bar">|</span>
+							<div class="gnb_subArea">
+								<div class="gnb_sub">
+									<a href="#none" title="비즈니스 센터">비즈니스 센터</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="휘트니스클럽">휘트니스클럽</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="더벨스파">더벨스파</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="지스텀">지스텀</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="기프트샵">기프트샵</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<h6>멤버십</h6>
+							<a class="gnb_areaA" href="sub_membership.html" title="멤버십">멤버십</a>
+							<span class="bar">|</span>
+						</li>
+						<li>
+							<h6>온라인 컨시어지</h6>
+							<a class="gnb_areaA" href="sub_online_news.html" title="온라인 컨시어지">온라인 컨시어지</a>
+							<div class="gnb_subArea">
+								<div class="gnb_sub">
+									<a href="#none" title="호텔 연락처">호텔 연락처</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_ready.html" title="층별안내">층별안내</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="자주하는 질문">자주하는 질문</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_ready.html" title="문의하기">문의하기</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="관광 컨시어시">관광 컨시어시</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_ready.html" title="고객의 소리">고객의 소리</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="온라인 뉴스레터">온라인 뉴스레터</a>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div id="gnb_subBg">
+				</div>
+				<!--https://search.naver.com/search.naver?sm=nnf_hty&query={query}&x=0&y=0-->
+				<div id="search_area">
+					<form action="https://www.google.co.kr/search" method="get">
+						<fieldset>
+							<legend>검색부분</legend>
+							<input id="search_box" type="text" name="q" autocomplete="off"  title="search" placeholder="search"/>
+							<input id="search_icon" type="button" name="search_icon" title="serach_icon" value="버튼"/>
+							<a href="reservation.html" title="예약" id="reservation">
+								<span class="img">
+									<img src="img/table_icon.svg" alt="예약 이미지"/>
+								</span>
+								<span class="text">
+									예약하기
+								</span>
+							</a>
+						</fieldset>
+					</form>
+				</div>
+			</nav>
+			<div id="mobHeader">
+				<p>
+					<span>─</span>
+					<span>─</span>
+					<span>─</span>
+				</p>
+			</div>
+			<div id="mobHeaderX">
+			</div>
+			<div id="scrollHeader">
+				<p>
+					<span class="scroll_1">─</span>
+					<span class="scroll_2">─</span>
+					<span class="scroll_3">─</span>
+				</p>
+			</div>
+		</header>
+		<div id="container">
+			<div class="location">
+				<a href="index.html" title="Home"><i><img src="img/icon_home.png" alt="홈이미지"/></i></a><span>></span><a href="#" title="스폐셜 오퍼">스폐셜 오퍼</a><span>></span>패키지 &amp; 프로모션
+			</div>
+			<div id="sectionTop">
+				<h2>패키지 &amp; 프로모션</h2>
+				<p class="hr"></p>
+				<p class="text">도심 속 특급호텔 더 플라자에서 제안하는 '기대 그 이상의 경험'을 놓치지 마세요!</p>
+			</div>
+			<div id="sectionContent">
+				<div id="promotionCheck">
+					<form action="#none" method="get">
+						<fieldset>
+							<legend>프로모션 종류 체크하기</legend>
+							<p><input id="cate_all" type="radio" name="catechek" checked/><label for="cate_all">전체보기</label></p>
+							<p><input id="cate0" type="radio" name="catechek"/><label for="cate0">객실 패키지</label></p>
+							<p><input id="cate1" type="radio" name="catechek"/><label for="cate1">다이닝 프로모션</label></p>
+							<p><input id="cate2" type="radio" name="catechek"/><label for="cate2">연회 &amp; 웨딩</label></p>
+							<p><input id="cate3" type="radio" name="catechek"/><label for="cate3">플라워 &amp; 스파</label></p>
+							<p><input id="cate4" type="radio" name="catechek"/><label for="cate4">기타</label></p>
+						</fieldset>
+					</form>
+				</div>
+				<div id="promotionList">
+					<ul>
+						<li class="left">
+							<a href="#none" title="얼리 서머 패키지">
+								<span class="img">
+									<img src="img/promotion_1.jpg" alt="얼리 서머 패키지"/>
+								</span>
+								<span class="text">
+									<span class="title">객실 패키지</span>
+									<span class="line"></span>
+									<strong>얼리 서머 패키지</strong>
+									<span class="desc">도심 속 특급호텔에서 스타일리시한 여름휴가를 즐겨보세요.</span>
+								</span>
+							</a>
+						</li>
+						<li>
+							<a href="#none" title="2018 아이스 디저트 프로모션">
+								<span class="img">
+									<img src="img/promotion_2.jpg" alt="2018 아이스 디저트 프로모션"/>
+								</span>
+								<span class="text">
+									<span class="title">다이닝 프로모션</span>
+									<span class="line"></span>
+									<strong>2018 아이스 디저트 프로모션</strong>
+									<span class="desc">도심 속 특급호텔에서 여름 무더위를 달래줄 아이스 디저트 5종을 즐겨보세요.</span>
+								</span>
+							</a>
+						</li>
+						<li>
+							<a href="#none" title="어반 라이프">
+								<span class="img">
+									<img src="img/promotion_3.jpg" alt="어반 라이프"/>
+								</span>
+								<span class="text">
+									<span class="title">객실 패키지</span>
+									<span class="line"></span>
+									<strong>어반 라이프</strong>
+									<span class="desc">도심 속 특급호텔에서 ‘기대 그 이상의 휴식’을 경험해보시기 바랍니다.</span>
+								</span>
+							</a>
+						</li>
+						<li class="left">
+							<a href="#none" title="도원and모모노키제휴 기념 프로모션">
+								<span class="img">
+									<img src="img/promotion_4.jpg" alt="도원and모모노키제휴 기념 프로모션"/>
+								</span>
+								<span class="text">
+									<span class="title">다이닝 프로모션</span>
+									<span class="line"></span>
+									<strong>도원 &amp; 모모노키<br/>제휴 기념 프로모션</strong>
+									<span class="desc">한국을 대표하는 중식당 ‘도원’에서 일본을 대표하는 중식당 ‘모모노키’의 메뉴를 즐길 수 있는 특별한 기회!</span>
+								</span>
+							</a>
+						</li>
+						<li>
+							<a href="#none" title="2018 가든페스트">
+								<span class="img">
+									<img src="img/promotion_5.jpg" alt="2018 가든페스트"/>
+								</span>
+								<span class="text">
+									<span class="title">다이닝 프로모션</span>
+									<span class="line"></span>
+									<strong>2018 가든페스트</strong>
+									<span class="desc">도심 속 시크릿 가든에서 즐기는 스타일리시한 휴식!</span>
+								</span>
+							</a>
+						</li>
+						<li>
+							<a href="#none" title="무라사키 여름 특선 건강 메뉴">
+								<span class="img">
+									<img src="img/promotion_6.jpg" alt="무라사키 여름 특선 건강 메뉴"/>
+								</span>
+								<span class="text">
+									<span class="title">다이닝 프로모션</span>
+									<span class="line"></span>
+									<strong>무라사키 여름 특선 건강 메뉴</strong>
+									<span class="desc">더 플라자 일식당 무라사키에서 여름철 대표 건강 식재료인 민어와 장어를 활용한 메뉴를 선보입니다.</span>
+								</span>
+							</a>
+						</li>
+						<li class="left">
+							<a href="#none" title="서머 컬렉션">
+								<span class="img">
+									<img src="img/promotion_7.jpg" alt="서머 컬렉션"/>
+								</span>
+								<span class="text">
+									<span class="title">객실 패키지</span>
+									<span class="line"></span>
+									<strong>서머 컬렉션</strong>
+									<span class="desc">도심 속 특급호텔에서 즐기는 여름 호캉스 패키지!</span>
+								</span>
+							</a>
+						</li>
+						<li>
+							<a href="#none" title="여름 특선 메뉴">
+								<span class="img">
+									<img src="img/promotion_8.jpg" alt="여름 특선 메뉴"/>
+								</span>
+								<span class="text">
+									<span class="title">다이닝 프로모션</span>
+									<span class="line"></span>
+									<strong>여름 특선 메뉴</strong>
+									<span class="desc">특급호텔 수석 셰프들이 제철 식재료를 활용하여 여름의 맛과 멋을 담은 특선 시즌메뉴를 선보입니다.</span>
+								</span>
+							</a>
+						</li>
+						<li>
+							<a href="#none" title="“GO! 코리아” 패키지">
+								<span class="img">
+									<img src="img/promotion_9.jpg" alt="“GO! 코리아” 패키지"/>
+								</span>
+								<span class="text">
+									<span class="title">객실 패키지</span>
+									<span class="line"></span>
+									<strong>“GO! 코리아” 패키지</strong>
+									<span class="desc">대국민 거리 응원의 상징, 더 플라자에서 편안한 휴식과 함께 4년만에 열리는 축구 축제의 열기를 즐겨보세요.</span>
+								</span>
+							</a>
+						</li>
+						<li class="left">
+							<a href="#none" title="전 세계인의 축제를 즐기자!">
+								<span class="img">
+									<img src="img/promotion_10.jpg" alt="전 세계인의 축제를 즐기자!"/>
+								</span>
+								<span class="text">
+									<span class="title">다이닝 프로모션</span>
+									<span class="line"></span>
+									<strong>전 세계인의 축제를 즐기자!</strong>
+									<span class="desc">특급호텔 더 플라자에서 2018 러시아 월드컵 공식 스폰서 버드와이저 생맥주와 함께 한국 축구 대표팀의 선전을 기원하세요.</span>
+								</span>
+							</a>
+						</li>
+						<li>
+							<a href="#none" title="세븐스퀘어 특별 프로모션">
+								<span class="img">
+									<img src="img/promotion_11.jpg" alt="세븐스퀘어 특별 프로모션"/>
+								</span>
+								<span class="text">
+									<span class="title">다이닝 프로모션</span>
+									<span class="line"></span>
+									<strong>세븐스퀘어 특별 프로모션</strong>
+									<span class="desc">2018 러시아 월드컵 공식 스폰서 버드와이저 맥주와 호텔 수석 셰프들이 준비한 세계 각국의 대표 메뉴를 동시에 즐길 수 있는 32일간의 특별한 시간!</span>
+								</span>
+							</a>
+						</li>
+						<li>
+							<a href="#none" title="위크앤드 브런치">
+								<span class="img">
+									<img src="img/promotion_12.jpg" alt="위크앤드 브런치"/>
+								</span>
+								<span class="text">
+									<span class="title">객실 패키지</span>
+									<span class="line"></span>
+									<strong>위크앤드 브런치</strong>
+									<span class="desc">지친 일상을 벗어나 기분 전환을 느끼고 싶다면, 위크앤드 브런치와 함께 여유로운 주말 휴식을 즐겨보세요.</span>
+								</span>
+							</a>
+						</li>
+						<li class="left">
+							<a href="#none" title="2018 F/W 그랜드볼룸 웨딩파티">
+								<span class="img">
+									<img src="img/promotion_13.jpg" alt="2018 F/W 그랜드볼룸 웨딩파티"/>
+								</span>
+								<span class="text">
+									<span class="title">연회 &amp; 웨딩</span>
+									<span class="line"></span>
+									<strong>2018 F/W 그랜드볼룸 웨딩파티</strong>
+									<span class="desc">더 플라자 그랜드볼룸 웨딩파티에 고객님을 초대합니다.</span>
+								</span>
+							</a>
+						</li>
+						<li>
+							<a href="#none" title="서머 컬렉션">
+								<span class="img">
+									<img src="img/promotion_14.jpg" alt="서머 컬렉션"/>
+								</span>
+								<span class="text">
+									<span class="title">연회 &amp; 웨딩/플라워 &amp; 스파</span>
+									<span class="line"></span>
+									<strong>웨딩 스파 프로그램</strong>
+									<span class="desc">더벨 스파, 더 플라자점만의 웨딩 전용 스파 프로그램으로 완벽한 웨딩을 준비하세요.</span>
+								</span>
+							</a>
+						</li>
+						<li>
+							<a href="#none" title="유러피언 플라워 부티크 지스텀">
+								<span class="img">
+									<img src="img/promotion_15.jpg" alt="유러피언 플라워 부티크 지스텀"/>
+								</span>
+								<span class="text">
+									<span class="title">플라워 &amp; 스파</span>
+									<span class="line"></span>
+									<strong>유러피언 플라워 부티크 지스텀</strong>
+									<span class="desc">고객의 라이프스타일에 맞는 감각적인 스타일링을 제안하는 지스텀에서 감성적이고 창의적인 플라워 데코레이션을 만나보세요.</span>
+								</span>
+							</a>
+						</li>
+						<li class="left">
+							<a href="#none" title="지스텀 플라워 클래스">
+								<span class="img">
+									<img src="img/promotion_16.jpg" alt="지스텀 플라워 클래스"/>
+								</span>
+								<span class="text">
+									<span class="title">플라워 &amp; 스파</span>
+									<span class="line"></span>
+									<strong>지스텀 플라워 클래스</strong>
+									<span class="desc">2018년 ‘자연과 여유를 담은 그린 라이프스타일’을 콘셉트로 새로운 클래스를 선보입니다.</span>
+								</span>
+							</a>
+						</li>
+						<li>
+							<a href="#none" title="파인다이닝 주말 특선 메뉴">
+								<span class="img">
+									<img src="img/promotion_17.jpg" alt="파인다이닝 주말 특선 메뉴"/>
+								</span>
+								<span class="text">
+									<span class="title">다이닝 프로모션</span>
+									<span class="line"></span>
+									<strong>파인다이닝 주말 특선 메뉴</strong>
+									<span class="desc">럭셔리 부티크 호텔 더 플라자<br/>파인다이닝에서 준비한 특별한 메뉴</span>
+								</span>
+							</a>
+						</li>
+						<li>
+							<a href="#none" title="플라자 스파케이션">
+								<span class="img">
+									<img src="img/promotion_18.jpg" alt="플라자 스파케이션"/>
+								</span>
+								<span class="text">
+									<span class="title">객실 패키지/플라워 &amp; 스파</span>
+									<span class="line"></span>
+									<strong>플라자 스파케이션</strong>
+									<span class="desc">나의 소중한 사람을 위한 특별한 선물,<br/>더 플라자에서 제안하는 맞춤 스파<br/>패키지로 완벽한 힐링을 선물하세요.</span>
+								</span>
+							</a>
+						</li>
+						<li class="left">
+							<a href="#none" title="아이 워너 메리 유">
+								<span class="img">
+									<img src="img/promotion_19.jpg" alt="아이 워너 메리 유"/>
+								</span>
+								<span class="text">
+									<span class="title">객실 패키지/플라워 &amp; 스파</span>
+									<span class="line"></span>
+									<strong>아이 워너 메리 유</strong>
+									<span class="desc">영화 속 한 장면같은 로맨틱 프로포즈.<br/>더 플라자가 제안하는<br/>프로포즈 패키지를 만나보세요.</span>
+								</span>
+							</a>
+						</li>
+						<li>
+							<a href="#none" title="힐링 포 유 패키지">
+								<span class="img">
+									<img src="img/promotion_20.jpg" alt="힐링 포 유 패키지"/>
+								</span>
+								<span class="text">
+									<span class="title">다이닝 프로모션/플라워 &amp; 스파</span>
+									<span class="line"></span>
+									<strong>힐링 포 유 패키지</strong>
+									<span class="desc">무라사키 오반자이와 하루의 피로를<br/>풀어줄 더벨 스파 힐링 프로그램을<br/>경험해 보세요.</span>
+								</span>
+							</a>
+						</li>
+						<li>
+							<a href="#none" title="무라사키 테이크 아웃 런치 박스">
+								<span class="img">
+									<img src="img/promotion_21.jpg" alt="무라사키 테이크 아웃 런치 박스"/>
+								</span>
+								<span class="text">
+									<span class="title">다이닝 프로모션</span>
+									<span class="line"></span>
+									<strong>무라사키 테이크 아웃 런치 박스</strong>
+									<span class="desc">럭셔리 부티크 호텔, 더 플라자 일식당 무라사키에서 선보이는 테이크아웃 런치 박스 세트!</span>
+								</span>
+							</a>
+						</li>
+					</ul>
+					<a class="btn_more" href="#none" title="더 보기">더 보기</a>
+				</div>
+				
+			</div>
+		</div>
+		<footer id="footer">
+			<div id="footerArea">
+				<div class="footerLogo">
+					<p class="bottomLogo1">
+						<a href="https://www.hoteltheplaza.com/kr/" title="footer logo1">
+							<img src="img/footer_logo1.png" alt="footer logo1"/>
+						</a>
+					</p>
+					<p class="bottomLogo2">
+						<a href="https://autograph-hotels.marriott.com/" title="footer logo2">
+							<img src="img/footer_logo2.png" alt="footer logo2"/>
+						</a>
+					</p>
+					<p class="bottomLogo2">
+						<a href="https://www.marriott.co.kr/rewards/rewards-program.mi" title="footer logo3">
+							<img src="img/footer_logo3.png" alt="footer logo3"/>
+						</a>
+					</p>
+
+				</div>
+				<div class="footerDesc">
+					<div class="footerDesc_fac">
+						<ul class="desc">
+							<li>
+								<a href="https://www.hoteltheplaza.com/kr/footer/sitemap.jsp" title="사이트맵"><span class="text">사이트맵</span></a><span class="bar">|</span>
+							</li>
+							<li>
+								<a href="https://www.hoteltheplaza.com/kr/footer/termsofuse.jsp" title="이용약관"><span class="text">이용약관</span></a><span class="bar">|</span>
+							</li>
+							<li>
+								<a href="https://www.hoteltheplaza.com/kr/footer/personal.jsp" title="개인정보처리방침"><strong class="text">개인정보처리방침</strong></a><span class="bar">|</span>
+							</li>
+							<li>
+								<a href="https://www.hoteltheplaza.com/kr/footer/privacy.jsp" title="영상정보처리기기 운영·관리 방침"><strong class="text">사이트맵</strong></a><span class="bar">|</span>
+							</li>
+							<li>
+								<a href="https://www.hoteltheplaza.com/kr/footer/email_security.jsp" title="이메일무단수집금지"><span class="text">이메일무단수집금지</span></a><span class="bar">|</span>
+							</li>
+							<li>
+								<a href="https://www.hwrc.co.kr/index.asp" title="채용정보"><span class="text">채용정보</span></a><span class="bar">|</span>
+							</li>
+							<li>
+								<a href="https://www.hoteltheplaza.com/_resource/pdf/Sales_Kit_KOR.pdf" title="온라인 브로셔"><span class="text">온라인 브로셔</span></a>
+							</li>
+						</ul>
+						<ul class="sns">
+							<li>
+								<a href="https://www.facebook.com/theplaza.seoul" title="facebook">
+									<span class="icon"><img src="img/facebook.svg" alt="facebook 아이콘"/></span>
+								</a>
+							</li>
+							<li>
+								<a href="https://www.instagram.com/theplazaseoul/" title="instagram">
+									<span class="icon"><img src="img/instagram.svg" alt="instagram 아이콘"/></span>
+								</a>
+							</li>
+							<li>
+								<a href="https://www.tripadvisor.co.kr/Hotel_Review-g294197-d306139-Reviews-THE_PLAZA_Seoul_Autograph_Collection-Seoul.html" title="tripadvisor">
+									<span class="icon"><img src="img/tripadvisor-logotype.svg" alt="tripadvisor 아이콘"/></span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div id="footerCopy">
+				<div class="copyArea">
+					<address class="adress">
+						서울특별시 중구 소공로 119 (우) 04525 TEL 02.771.2200 FAX 02.755.8897 
+					</address>
+					<address class="copy">
+						Copyright © THE PLAZA All Rights Reserved
+					</address>
+				</div>
+			</div>
+		</footer>
+	</div>
+  
+ </body>
+</html>

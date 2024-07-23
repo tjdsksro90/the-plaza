@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="8cea427c-0d14-46cc-94a1-6227fe9bbfa9" name="Default Changelist" comment="" />
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>scrollHeader</find>
+      <find>.html</find>
+      <find>&lt;a href=&quot;login.php&quot; title=&quot;LOGIN&quot;&gt;LOGIN&lt;/a&gt;</find>
+      <find>&lt;a href=&quot;join_form.php&quot; title=&quot;JOIN&quot;&gt;JOIN&lt;/a&gt;</find>
+      <find>cate0</find>
+      <find>cate1</find>
+      <find>다이닝 프로모션</find>
+      <find>연회 &amp;amp; 웨딩</find>
+      <find>플라워 &amp;amp; 스파</find>
+      <find>기타</find>
+      <find>left</find>
+      <find>객실 패</find>
+      <find>객실 패키지</find>
+    </findStrings>
+    <replaceStrings>
+      <replace />
+      <replace>.html</replace>
+      <replace>&lt;a href=&quot;login.html&quot; title=&quot;LOGIN&quot;&gt;LOGIN&lt;/a&gt;</replace>
+      <replace>&lt;a href=&quot;join_form.html&quot; title=&quot;JOIN&quot;&gt;JOIN&lt;/a&gt;</replace>
+    </replaceStrings>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/sub_room_6_presidential_room.html" />
+        <option value="$PROJECT_DIR$/reservation.html" />
+        <option value="$PROJECT_DIR$/delete.php" />
+        <option value="$PROJECT_DIR$/sub_intro_2_reward.html" />
+        <option value="$PROJECT_DIR$/read.php" />
+        <option value="$PROJECT_DIR$/sub_online_news.html" />
+        <option value="$PROJECT_DIR$/sub_room_all.html" />
+        <option value="$PROJECT_DIR$/sub_room_3_plaza_room.html" />
+        <option value="$PROJECT_DIR$/sub_membership.html" />
+        <option value="$PROJECT_DIR$/sub_room_2_premier_room.html" />
+        <option value="$PROJECT_DIR$/sub_room_1_deluxe_room.html" />
+        <option value="$PROJECT_DIR$/sub_intro_1.html" />
+        <option value="$PROJECT_DIR$/list.php" />
+        <option value="$PROJECT_DIR$/sub_room_4_residential_room.html" />
+        <option value="$PROJECT_DIR$/sub_wedding_all.html" />
+        <option value="$PROJECT_DIR$/sub_room_7_royal_room.html" />
+        <option value="$PROJECT_DIR$/login.php" />
+        <option value="$PROJECT_DIR$/sub_special_2.html" />
+        <option value="$PROJECT_DIR$/sub_dining_all.html" />
+        <option value="$PROJECT_DIR$/sub_room_5_prestige_room.html" />
+        <option value="$PROJECT_DIR$/sub_ready.html" />
+        <option value="$PROJECT_DIR$/write.php" />
+        <option value="$PROJECT_DIR$/join_form.php" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/login.html" />
+        <option value="$PROJECT_DIR$/sub_special_1.html" />
+        <option value="$USER_HOME$/Desktop/윤호준_작업/소스/radio.html" />
+        <option value="$PROJECT_DIR$/sub_special_1 - 복사본.html" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-1210" />
+    <option name="y" value="-1106" />
+    <option name="width" value="877" />
+    <option name="height" value="837" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="D:/부산" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8cea427c-0d14-46cc-94a1-6227fe9bbfa9" name="Default Changelist" comment="" />
+      <created>1572429539178</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1572429539178</updated>
+      <workItem from="1572429541642" duration="7590000" />
+      <workItem from="1572772551866" duration="1198000" />
+      <workItem from="1573982162791" duration="857000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="9645000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-1088" y="-1091" width="1096" height="1896" extended-state="6" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.10302457" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="497" column="29" selection-start-line="497" selection-start-column="29" selection-end-line="497" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/join_control.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/join_form.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="30" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/join_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="10" column="70" selection-start-line="10" selection-start-column="70" selection-end-line="10" selection-end-column="70" />
+          <folding>
+            <element signature="n#style#0;n#strong#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="13" column="50" selection-start-line="13" selection-start-column="50" selection-end-line="13" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sub_special_1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-136">
+          <caret line="372" column="76" selection-start-line="372" selection-start-column="68" selection-end-line="372" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sub_special_1 - 복사본.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="588">
+          <caret line="193" lean-forward="true" selection-start-line="193" selection-end-line="193" />
+          <folding>
+            <element signature="e#8571#8576#0" expanded="true" />
+            <element signature="e#9109#9114#0" expanded="true" />
+            <element signature="e#9651#9656#0" expanded="true" />
+            <element signature="e#9835#9840#0" expanded="true" />
+            <element signature="e#9909#9914#0" expanded="true" />
+            <element signature="e#13465#13470#0" expanded="true" />
+            <element signature="e#13523#13528#0" expanded="true" />
+            <element signature="e#14178#14183#0" expanded="true" />
+            <element signature="e#14280#14285#0" expanded="true" />
+            <element signature="e#16091#16096#0" expanded="true" />
+            <element signature="e#20119#20124#0" expanded="true" />
+            <element signature="e#20551#20556#0" expanded="true" />
+            <element signature="e#20564#20569#0" expanded="true" />
+            <element signature="e#21019#21024#0" expanded="true" />
+            <element signature="e#21494#21499#0" expanded="true" />
+            <element signature="e#22397#22402#0" expanded="true" />
+            <element signature="e#22879#22884#0" expanded="true" />
+            <element signature="e#23349#23354#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/윤호준_작업/소스/radio.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="582">
+          <caret line="33" column="52" selection-start-line="33" selection-start-column="52" selection-end-line="33" selection-end-column="52" />
+          <folding>
+            <element signature="n#style#0;n#select#0;n#span#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#0;n#span#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

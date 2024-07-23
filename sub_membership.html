@@ -1,0 +1,811 @@
+<!DOCTYPE html >
+<html lang="ko">
+ <head>
+  <meta charset="utf-8"/>
+  <title> membership </title>
+  <script src="js/jquery-1.12.4.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+  <link rel="shortcut icon" href="img/icon_home.ico"/>
+  <link rel="apple-touch-icon" href="img/icon_home.ico"/>
+  <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+  <link rel="stylesheet" type="text/css" href="css/headerFooter.css"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"/>
+  <style>
+	/*############# container ##################*/
+		#visualTop{width:100%; height:20px; padding-top:40px; }
+			#visualTop .homebar{width:98%; font-size:12px;text-align:right; padding-right:2%; color:#3c1650; font-weight:700;}
+			#visualTop .homebar a:link,#visualTop .homebar a:visited{text-decoration:underline; color:#999; font-weight:400;}
+			#visualTop .homebar a:hover{color:#3c1650;}
+			#visualTop .homebar span{padding:10px; color:#ccc;}
+
+	/*############# section ##################*/
+		#section{width:100%; margin:0 auto;}
+		#section caption{display:none;}
+			#sectionTop{width:100%; margin:0 auto;}
+				#sectionTop h2{padding-top:50px; padding-bottom:50px; text-align:center; font-size:40px; font-weight:100;}
+				#sectionTop .hr{width:30px; border:1px solid #ccc; margin:0 auto; }
+				#sectionTop .text{text-align:center;padding-top:50px; padding-bottom:100px;}
+			#sectionBot{width:100%; }
+				#sectionBot .section_area{width:100%; }
+					#sectionBot .section_list{width:100%; text-align:center; margin:0 auto;}
+						#sectionBot .section_list ul{width:551px; margin:0 auto; }
+						#sectionBot .section_list li{width:274px; float:left; height: 50px; line-height: 50px; text-align:center; 
+							border-top: 1px solid #dbdbdb; border-right: 1px solid #dbdbdb; }	
+						#sectionBot .section_list li:first-child{border-left:1px solid #dbdbdb; background-color:#f5f5f5; font-weight:700;}
+							#sectionBot .section_list li a{display:block; position:relative;}	
+							#sectionBot .section_list li a:hover{background-color:#f5f5f5;}
+
+					#sectionBot .section_desc{width:100%; margin-top:-1px;}
+						#sectionBot .desc{width:100%; background-color:#f5f5f5; border-top:1px solid #dbdbdb; padding-top:100px;}
+						#sectionBot .desc2{display:none;}/*사라지는 부분*/
+							#sectionBot .desc .descTop{width:900px; margin:0 auto;}
+								#sectionBot .desc .topLeft{width:50%; float:left; }
+									#sectionBot .desc .topLeft h3{font-size:28px; line-height:1.6em; font-weight:700; letter-spacing:-1px;padding-top:5px; }
+									#sectionBot .desc .topLeft p{font-size:14px; line-height:1.6em; padding-top:20px;}
+									#sectionBot .desc .topLeft em{font-style:normal; }
+								#sectionBot .desc .topRight{width:50%; float:left; text-align:right;}
+						#sectionBot .descBot{width:900px; margin:0 auto;padding-bottom:100px; padding-top:50px; }
+							#sectionBot .descBot table{width:100%; border:1px solid #dbdbdb; border-collapse: collapse; font-size:14px; }
+								#sectionBot .descBot tbody{}
+								#sectionBot .descBot tr.title{background-color:#dbdbdb; }
+								#sectionBot .descBot tr.title th{border-left:1px solid #f5f5f5;padding:10px 0;}
+								#sectionBot .descBot tr.title th:first-child{border-left:1px solid #dbdbdb;}
+								#sectionBot .descBot tr.desc{text-align:center;}
+								#sectionBot .descBot tr.desc td{border-left:1px solid #dbdbdb; padding:20px 0; line-height:1.5em;}
+
+								#sectionBot .desc2 li{width:100%; }
+									#sectionBot .desc2 li a{width:100%; height:60px;display:block; border-bottom:1px solid #dbdbdb; border-top:1px solid #dbdbdb; padding:20px 0;}
+									#sectionBot .desc2 li a:first-child{}
+										#sectionBot .desc2 li a .icon{width:42px; height:42px;display:inline-block; padding:9px 20px;}
+										#sectionBot .desc2 li a .text{width:80%; line-height:60px;display:inline-block; vertical-align:top; font-weight:bold; }
+										#sectionBot .desc2 li a .icon_str{width:34px; height:17px; display:inline-block; line-height:42px; padding:16px 20px 28px;vertical-align:top; transition:all .3s .03s;}
+										#sectionBot .desc2 .tableWrap{padding:50px 0;}
+										#sectionBot .desc2 tr{}
+										#sectionBot .desc2 tr th{background-color:#dbdbdb; text-align:center; border-bottom:1px solid #f5f5f5;}
+										#sectionBot .desc2 td{padding:25px; border-bottom:1px solid #dbdbdb;font-size:13px; line-height:1.7em;}
+										#sectionBot .desc2 td ul{}
+										#sectionBot .desc2 td li{position:relative;padding-bottom:5px; }
+										#sectionBot .desc2 td li:before{content: ""; width:4px; height:4px; background-color:rgba(60,22,80,1); position:absolute;
+										left:-11px;top:9px;}
+										#sectionBot .desc2 td span{font-size:12px; line-height:1.6em;}
+										#sectionBot .desc2 td span:before{content: "-"; padding-right:7px;}
+							
+							#sectionBot .section_list ul:after{content:"";display:block;clear:both;}
+							#sectionBot .desc .descTop:after{content:"";display:block;clear:both;}
+
+	/*##################################################################################*/
+	@media all and (min-width:768px) and (max-width:1024px){
+		#sectionBot .desc .descTop{width:740px;}
+			#sectionBot .desc .topLeft{width:100%; float:none; text-align:center;}
+				#sectionBot .desc .topLeft h3{font-size:24px;}
+				#sectionBot .desc .topLeft p{}
+			#sectionBot .desc .topRight{width:100%; float:none; text-align:center; padding-top:20px;}
+		#sectionBot .descBot{width:740px;}
+			#sectionBot .descBot tr.title th{border-left:1px solid #f5f5f5;padding:10px 0;}
+			#sectionBot .descBot tr.title th:first-child{border-left:1px solid #dbdbdb;}
+			#sectionBot .descBot tr.desc{text-align:center;}
+			#sectionBot .descBot tr.desc td{
+			border-left:1px solid #dbdbdb; padding:20px 0; line-height:1.5em;}
+				#sectionBot .desc2 li a .text{width:77%;}
+
+		}
+
+	/*##################################################################################*/
+	@media all and (min-width:481px) and (max-width:767px){
+		#sectionTop h2{font-size:36px;}
+		#sectionTop .text{padding-left:20px; padding-right:20px; word-break:keep-all;}
+						#sectionBot .section_list ul{width:94%; margin:0 3%; }
+						#sectionBot .section_list li{width:50%; float:left; box-sizing:border-box;}
+							#sectionBot .desc .descTop{width:480px; margin:0 auto;}
+								#sectionBot .desc .topLeft{width:100%; float:none; text-align:center;}
+									#sectionBot .desc .topLeft h3{font-size:22px;}
+									#sectionBot .desc .topLeft p{font-size:14px;}
+								#sectionBot .desc .topRight{width:93%; float:none; text-align:center; padding-top:20px;padding-left:3%; padding-right:3%;}
+									#sectionBot .desc .topRight img{width:100%; }
+						#sectionBot .descBot{width:480px;}
+								#sectionBot .descBot tr.title th{font-size:14px; padding:20px;}
+								#sectionBot .descBot tr.desc{font-size:14px;}
+								#sectionBot .descBot tr.desc td{padding:20px;}
+										#sectionBot .desc2 li a .text{width:65%;}
+		}
+	/*##################################################################################*/
+	@media all and (min-width:0px) and (max-width:480px){
+		#sectionTop h2{font-size:34px;}
+		#sectionTop .text{padding-left:20px; padding-right:20px; word-break:keep-all;}
+						#sectionBot .section_list ul{width:94%; margin:0 3%; }
+						#sectionBot .section_list li{width:50%; float:left; box-sizing:border-box;}
+							#sectionBot .desc .descTop{width:300px; margin:0 auto;}
+								#sectionBot .desc .topLeft{width:100%; float:none; text-align:center;}
+									#sectionBot .desc .topLeft h3{font-size:20px;}
+									#sectionBot .desc .topLeft p{font-size:12px;}
+								#sectionBot .desc .topRight{width:93%; float:none; text-align:center; padding-top:20px;padding-left:3%; padding-right:3%;}
+									#sectionBot .desc .topRight img{width:100%; }
+						#sectionBot .descBot{width:300px;}
+								#sectionBot .descBot tr.title th{font-size:12px;}
+								#sectionBot .descBot tr.desc{font-size:12px;}
+										#sectionBot .desc2 li a .text{width:45%;}
+		}
+
+  </style>
+  <script>
+	/*header 제이쿼리 영역(검색,모바일부분) + (infoNav 위치 변경 부분)*/
+		jQuery(document).ready(function(){
+			jQuery("#search_icon").click(function(){
+				jQuery("#search_box").show().css({"display":"inline","width":"208px","opacity":"1"});
+			});
+			jQuery("#mobHeaderX").hide();
+			jQuery("#mobHeader").click(function(){
+				jQuery("#gnb_area, #infoNav_area").css({"left":"0"});
+				jQuery("#mobHeaderX").show(1000);
+			});
+			jQuery("#mobHeaderX").click(function(){
+				jQuery("#gnb_area, #infoNav_area").css({"left":"-700px"});
+				jQuery("#mobHeaderX").hide();
+			});
+		
+		//창크기 변화 감지
+			$( window ).resize(function() {
+			  var windowWidth = $( window ).width();
+				if(windowWidth < 768) {
+					//창 가로 크기가 500 미만일 경우 
+					$("#gnb_subBg,.gnb_subArea").hide();
+					$("#gnb_area li").mouseover(function(){
+						$(this).children(".gnb_subArea").stop().slideDown(500);
+					}).mouseout(function(){
+						$(this).children(".gnb_subArea").stop().slideUp(500);
+					});
+				} else {
+					//창 가로 크기가 500보다 클 경우
+					$(".gnb_subArea, #gnb_subBg").hide();
+					$("#gnb_area ul").mouseover(function(){
+						$(".gnb_subArea, #gnb_subBg").stop().slideDown(500);
+					}).mouseout(function(){
+						$(".gnb_subArea, #gnb_subBg").stop().slideUp(500);
+					});
+				}
+			}).resize();
+
+		/*########### 적용할 영역 #############*/
+			header = $("#header");
+			gnb = $("#gnb");
+			gnb_area = $("#gnb_area");
+			infoNav = $("#infoNav");
+
+			wrapMarginT = parseInt($("#wrap").css("marginTop"));
+
+			headerH = $("#header").height();
+			headH = wrapMarginT + headerH;
+			infoNavH = $("#infoNav").height();
+
+		/*########### 스크롤의 위치값 ############*/
+
+			$(window).scroll(function(){
+				var nowScroll = $(document).scrollTop();
+
+				if(nowScroll >= headH){
+					header.addClass("fixed");
+				}
+				else{
+					header.removeClass("fixed");
+				}
+				console.log(nowScroll);
+				console.log(infoNavH);
+				if(nowScroll >= infoNavH){
+					$('#infoNav_area').stop().animate({"right":"-450px"},500);
+					$('#scrollHeader').stop().animate({"top":"30px","opacity":"1"},500);
+					$('#scrollHeader').click(function(){
+						$('#infoNav_area').stop().animate({"right":"50px"},500);
+                        $(this).stop().animate({"top":"-130px","opacity":"0"},500);
+					});
+				}
+				else{
+					$('#infoNav_area').stop().animate({"right":"50px"},500);
+					$('#scrollHeader').stop().animate({"top":"-130px","opacity":"0"},500);
+				}
+			});
+		});
+
+	/*#############*/
+
+	jQuery(document).ready(function(){
+		jQuery("#search_icon").click(function(){
+			jQuery("#search_box").show().css({"display":"inline","width":"208px","opacity":"1"});
+		});
+		$("#mobHeaderX").hide();
+		$("#mobHeader").click(function(){
+			$("#gnb_area, #infoNav_area").css({"left":"0"});
+			$("#mobHeaderX").show(1000);
+		});
+		$("#mobHeaderX").click(function(){
+			$("#gnb_area, #infoNav_area").css({"left":"-700px"});
+			$("#mobHeaderX").hide();
+		});
+
+		jQuery("#sectionBot .desc2 li div").hide();
+		jQuery("#sectionBot .desc2 li a").click(function(){
+			jQuery("#sectionBot .desc2 li div").slideUp(500);
+			jQuery(this).next().slideDown(500);
+		});
+		jQuery("#sectionBot .section_list ul li:first-child").click(function(){
+			jQuery("#sectionBot .desc1").show();
+			jQuery("#sectionBot .desc2").hide();
+			jQuery(this).css({"fontWeight":"700","backgroundColor":"#f5f5f5","borderBottom":"1px solid #f5f5f5"});
+			jQuery(this).siblings().css({"fontWeight":"100","backgroundColor":"#fff","borderBottom":"1px solid #dbdbdb"});
+		});
+		jQuery("#sectionBot .section_list ul li:last-child").click(function(){
+			jQuery("#sectionBot .desc2").show();
+			jQuery("#sectionBot .desc1").hide();
+			jQuery(this).css({"fontWeight":"700","backgroundColor":"#f5f5f5","borderBottom":"1px solid #f5f5f5"});
+			jQuery(this).siblings().css({"fontWeight":"100","backgroundColor":"#fff","borderBottom":"1px solid #dbdbdb"});
+		});
+
+	});
+  </script>
+ </head>
+
+ <body>
+	<div id="wrap">
+		<header id="header">
+			<div id="infoNav">
+				<h1>
+					<a href="index.html" title="index">
+						<img src="img/tit_bg_main.png" alt="THE PLAZA"/>
+					</a>
+				</h1>
+				<div id="infoNav_area">
+					<h5>infoNav</h5>
+					<ul class="weather_info">
+						<li><a href="#" title="SEOUL">SEOUL</a></li>
+						<li><a href="#" title="11:09PM">11:09PM</a></li>
+						<li><a href="#" title="흐림 12.7ºC">흐림 12.7ºC</a></li>
+					</ul>
+					<ul class="user_info">
+						<li><a href="login.html" title="LOGIN">LOGIN</a></li>
+						<li><a href="join_form.html" title="JOIN">JOIN</a></li>
+					</ul>
+					<select class="lang_info">
+						<option value="kor">KOREAN</option>
+						<option value="eng">ENGLISH</option>
+					</select>
+				</div>
+			</div>
+			<nav id="gnb">
+				<div id="gnb_area">
+				<h5>gnb</h5>
+					<ul>
+						<li>
+							<h6>더 플라자</h6>
+							<a class="gnb_areaA" href="sub_intro_1.html" title="더 플라자">더 플라자</a>
+							<span class="bar">|</span>
+							<div class="gnb_subArea">
+								<div class="gnb_sub">
+									<a href="sub_intro_1.html" title="브랜드 소개">브랜드 소개</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_intro_2_reward.html" title="수상이력">수상이력</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_ready.html" title="오시는 길">오시는 길</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_ready.html" title="여행 가이드">여행 가이드</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_ready.html" title="공지뉴스">공지뉴스</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<h6>스폐셜 오퍼</h6>
+							<a class="gnb_areaA" href="sub_special_1.html" title="스폐셜 오퍼">스폐셜 오퍼</a>
+							<span class="bar">|</span>
+							<div class="gnb_subArea">
+								<div class="gnb_sub">
+									<a href="sub_special_1.html" title="패키지 and 프로모션">패키지 &amp; 프로모션</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_special_2.html" title="더 플라자 이숍">더 플라자 이숍</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<h6>객실</h6>
+							<a class="gnb_areaA" href="sub_room_all.html" title="객실">객실</a>
+							<span class="bar">|</span>
+							<div class="gnb_subArea">
+								<div class="gnb_sub">
+									<a href="sub_room_all.html" title="전체보기">전체보기</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_room_1_deluxe_room.html" title="룸 and 스위트">룸 &amp; 스위트</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_room_7_royal_room.html" title="클럽라운지">클럽라운지</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<h6>다이닝</h6>
+							<a class="gnb_areaA" href="sub_dining_all.html" title="다이닝">다이닝</a>
+							<span class="bar">|</span>
+							<div class="gnb_subArea">
+								<div class="gnb_sub">
+									<a href="sub_dining_all.html" title="전체보기">전체보기</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_dining_all.html" title="레스토랑 and 바">레스토랑 &amp; 바</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_dining_all.html" title="베이커리">베이커리</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<h6>웨딩 &amp; 연회</h6>
+							<a class="gnb_areaA" href="#none" title="웨딩 n 연회">웨딩 &amp; 연회</a>
+							<span class="bar">|</span>
+							<div class="gnb_subArea">
+								<div class="gnb_sub">
+									<a href="#none" title="전체보기">전체보기</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="웨딩">웨딩</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="연회">연회</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="패밀리 파티">패밀리 파티</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="케이터링 서비스">케이터링 서비스</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<h6>부대시설</h6>
+							<a class="gnb_areaA" href="#none" title="부대시설">부대시설</a>
+							<span class="bar">|</span>
+							<div class="gnb_subArea">
+								<div class="gnb_sub">
+									<a href="#none" title="비즈니스 센터">비즈니스 센터</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="휘트니스클럽">휘트니스클럽</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="더벨스파">더벨스파</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="지스텀">지스텀</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="기프트샵">기프트샵</a>
+								</div>
+							</div>
+						</li>
+						<li>
+							<h6>멤버십</h6>
+							<a class="gnb_areaA" href="sub_membership.html" title="멤버십">멤버십</a>
+							<span class="bar">|</span>
+						</li>
+						<li>
+							<h6>온라인 컨시어지</h6>
+							<a class="gnb_areaA" href="sub_online_news.html" title="온라인 컨시어지">온라인 컨시어지</a>
+							<div class="gnb_subArea">
+								<div class="gnb_sub">
+									<a href="#none" title="호텔 연락처">호텔 연락처</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_ready.html" title="층별안내">층별안내</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="자주하는 질문">자주하는 질문</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_ready.html" title="문의하기">문의하기</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="관광 컨시어시">관광 컨시어시</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="sub_ready.html" title="고객의 소리">고객의 소리</a>
+								</div>
+								<div class="gnb_sub">
+									<a href="#none" title="온라인 뉴스레터">온라인 뉴스레터</a>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div id="gnb_subBg">
+				</div>
+				<!--https://search.naver.com/search.naver?sm=nnf_hty&query={query}&x=0&y=0-->
+				<div id="search_area">
+					<form action="https://www.google.co.kr/search" method="get">
+						<fieldset>
+							<legend>검색부분</legend>
+							<input id="search_box" type="text" name="q" autocomplete="off"  title="search" placeholder="search"/>
+							<input id="search_icon" type="button" name="search_icon" title="serach_icon" value="버튼"/>
+							<a href="reservation.html" title="예약" id="reservation">
+								<span class="img">
+									<img src="img/table_icon.svg" alt="예약 이미지"/>
+								</span>
+								<span class="text">
+									예약하기
+								</span>
+							</a>
+						</fieldset>
+					</form>
+				</div>
+			</nav>
+			<div id="mobHeader">
+				<p>
+					<span>─</span>
+					<span>─</span>
+					<span>─</span>
+				</p>
+			</div>
+			<div id="mobHeaderX">
+			</div>
+			<div id="scrollHeader">
+				<p>
+					<span class="scroll_1">─</span>
+					<span class="scroll_2">─</span>
+					<span class="scroll_3">─</span>
+				</p>
+			</div>
+		</header>
+		<div id="container">
+			<div id="visualTop">
+				<div class="homebar">
+					<a href="index.html" title="Home"><i><img src="img/icon_home.png" alt="홈이미지"/></i></a><span>></span><a href="#" title="더 플라자">더 플라자</a><span>></span>멤버십
+				</div>
+			</div>
+			<div id="section">
+				<div id="sectionTop">
+					<h2>멤버십</h2>
+					<p class="hr"></p>
+					<p class="text">럭셔리 부티크 호텔 더 플라자의 다양한 혜택을 담은 멤버십 카드를 만나보세요</p>
+				</div>
+				<div id="sectionBot">
+					<div class="section_area">
+						<div class="section_list">
+							<ul>
+								<li>
+									<a href="#none" title="지스텀 멤버십">지스텀 멤버십</a>
+								</li>
+								<li>
+									<a href="#none" title="메리어트 멤버십">메리어트 멤버십</a>
+								</li>
+							</ul>
+						</div>
+						<div class="section_desc">
+							<div class="desc desc1">
+								<div class="descTop">
+									<div class="topLeft">
+										<h3>
+											부티크 플라워 브랜드 지스텀에서<br/>
+											VIP 고객님을 위해 선보이는<br/>
+											라이프스타일 멤버십입니다.
+										</h3>
+										<p>
+											지스텀의 수석 플로리스트가 진행하는 프라이빗 클래스,<br/>
+											시즌 프로모션 혜택 등 오직 VIP 고객님만 누릴 수 있는<br/>
+											다양한 혜택을 경험하실 수 있습니다.
+										</p>
+									</div>
+									<div class="topRight">
+										<img src="img/card_xystum.png" alt="card"/>
+									</div>
+								</div>
+								<div class="descBot">
+									<table title="플래티넘 멤버십 타입별 연회비">
+									<caption>공동혜택, 지스텀 프리미어 화이트 타입, 지스텀 프리미어 블랙 타입에 관한 테이블입니다.</caption>
+										<tbody>
+											<tr class="title">
+												<th>공동혜택</th>
+												<th>지스텀 프리미어 화이트 타입</th>
+												<th>지스텀 프리미어 블랙 타입</th>
+											</tr>
+											<tr class="desc">
+												<td>
+													<strong>
+														더 플라자 객실, 레스토랑, 스파 등<br/>
+														상시 10% 할인
+													</strong>
+												</td>
+												<td>
+													<strong>100만원 권 카드/10% 추가 적립</strong><br/>
+													기념일 무료 꽃 배송(10만원 상당)
+												</td>
+												<td>
+													<strong>200만원 권 카드/15% 추가 적립</strong><br/>
+													플라워 클래스 1회 무료 초대권<br/>
+													기념일 무료 꽃 배송(10만원 상당)
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<div class="desc desc2">
+								<div class="descTop">
+									<div class="topLeft">
+										<em>메리어트 리워즈는 더 플라자를 포함한</em>
+										<h3>
+											전 세계 메리어트 인터내셔널의<br/>
+											제휴 호텔에서 투숙할 때마다<br/>
+											포인트가 적립되는 무료 가입<br/>
+											프로그램입니다.
+										</h3>
+										<p>
+											누적된 포인트에 따라 세계 각국 5,700여개 메리어트 체인 호텔에서의<br/>
+											무료 숙박 또는 제휴 항공사의 마일리지, 렌터카 서비스, 크루즈 여행 등<br/>
+											약 250여 가지의 특전을 누리실 수 있습니다.<br/>
+											더 플라자에서는 가입만으로 객실 내 무료 인터넷을 즐길 수 있으며,<br/>
+											골드 멤버 이상 더 플라자 레스토랑에서 20% 할인을 받으실 수 있습니다.<br/>
+											(객실 투숙객 한정)
+										</p>
+									</div>
+									<div class="topRight">
+										<img src="img/card_marriott.png" alt="card"/>
+									</div>
+								</div>
+								<div class="descBot">
+									<ul>
+										<li>
+											<a href="#none" title="공동 혜택">
+												<span class="icon">
+													<img src="img/ico_accordion3.png" alt="icon"/>
+												</span>
+												<span class="text">
+													공동 혜택
+												</span>
+												<span class="icon_str">
+													<img src="img/ico_dropdown.png" alt="icon_str"/>
+												</span>
+											</a>
+											<div class="tableWrap">
+												<table title="플래티넘 멤버십 타입별 연회비">
+												<caption>공동혜택, 지스텀 프리미어 화이트 타입, 지스텀 프리미어 블랙 타입에 관한 테이블입니다.</caption>
+													<tbody>
+														<tr>
+															<th>회원 주요 혜택</th>
+															<td>
+																<ul>
+																	<li>
+																		고객 전용 서비스 전화(Hotline)<br/>
+																		<span>전화예약 / 리워즈 사용 투숙 / 리워즈 인증서 신청 가능</span><br/>
+																		<span>800.228.2100 (수신자 부담, 24시간 이용)</span>
+																	</li>
+																	<li>
+																		얼리미트 예약보장<br/>
+																		<span>호텔 측 예약 사항 보장 불가 시, 인근 호텔 투숙 요금 및 회원의 불편에 대한 추가 보상금 지급</span>
+																	</li>
+																	<li>
+																		엘리트 전용 리워즈 : 특별 리워즈 사용 옵션 제공<br/>
+																		<span>(전용 리워즈 확인 및 예약 시 로그인 필요)</span>
+																	</li>
+																	<li>체크아웃 기간 연장 우대 : 객실 상황에 따라 가능</li>
+																	<li>체크아웃 기간 연장 우대 : 객실 상황에 따라 가능</li>
+																	<li>엘리트 전용 행사 : 할인 혜택, 연중 행사 발송</li>
+																	<li>호텔 내 스파 20% 할인 : 할인 혜택</li>
+																	<li>Preference(선호/기호)에 따른 개인맞춤 서비스</li>
+																	<li>eFolio :예약 확인 메일 자동 발송</li>
+																	<li>식음료 10% 할인(THE PLAZA only)</li>
+																</ul>
+															</td>
+														</tr>
+														<tr>
+															<th>포인트 사용</th>
+															<td>
+																<ul>
+																	<li>
+																		포인트 즉시 이동(결제)가능 / 이용 제한일(Blackout date) 없음
+																	</li>
+																	<li>
+																		Pedemption Stay Credit : 포인트를 활용한 무료 숙박 시, Credit 제공
+																	</li>
+																	<li>
+																		Point Advance : 포인트 부족 시, 선결제 가능
+																	</li>
+																	<li>
+																		5박 째 포인트 사용 무료 숙박 가능
+																	</li>
+																</ul>
+															</td>
+														</tr>
+														<tr>
+															<th>포인트 / 마일리지 적립</th>
+															<td>
+																<ul>
+																	<li>
+																		고객 지불 금액 1달러 당 메리어트 리워즈 포인트 최대 10점 적립
+																	</li>
+																	<li>
+																		보너스 및 기본 포인트 적립 : 포인트 또는 항공사 마일리지 적립
+																	</li>
+																	<li>
+																		PointSaversTM<br/>
+																		<span>※ 호텔 투숙 시에만 적립 가능 / 호텔 내 외주업체 비용은 적립 대상에서 제외</span>
+																	</li>
+																</ul>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</li>
+										<li>
+											<a href="#none" title="회원 타입별 특전">
+												<span class="icon">
+													<img src="img/ico_accordion6.png" alt="icon"/>
+												</span>
+												<span class="text">
+													회원 타입별 특전
+												</span>
+												<span class="icon_str">
+													<img src="img/ico_dropdown.png" alt="icon_str"/>
+												</span>
+											</a>
+											<div class="tableWrap">
+												<table title="회원 타입별 특전">
+												<caption>회원 타입별 특전 테이블입니다.</caption>
+													<tbody>
+														<tr>
+															<th>
+																실버 엘리트<br/>
+																(10박 이상)
+															</th>
+															<td>
+																<ul>
+																	<li>
+																		메리어트 리워즈 포인트 보너스 20%<br/>
+																		<span>포인트 적립 시, 기본 포인트에 20% 추가 적립</span>
+																	</li>
+																	<li>
+																		레스토랑 10% 할인<br/>
+																		(THE PLAZA only 15% 할인)
+																	</li>
+																</ul>
+															</td>
+														</tr>
+														<tr>
+															<th>
+																골드 엘리트<br/>
+																(50박 이상)
+															</th>
+															<td>
+																<ul>
+																	<li>
+																		메리어트 리워즈 포인트 보너스 25%<br/>
+																		<span>포인트 적립 시, 기본 포인트에 25% 추가 적립</span>
+																	</li>
+																	<li>
+																		라운지 이용 및 조식 보장 : 라운지에서 본인 및 일행 1명에게 다과 및 조식 제공
+																	</li>
+																	<li>
+																		HertzⓇ#1 골드 회원: Hertz의 1년 무료 회원
+																	</li>
+																	<li>
+																		레스토랑 20% 할인
+																	</li>
+																	<li>
+																		객실 등급 업그레이드: 체크인 시, 추가 비용 없이 프리미엄 객실 업그레이드<br/>
+																		<span>(호텔 객실 상황에 따라 제공)</span>
+																</ul>
+															</td>
+														</tr>
+														<tr>
+															<th>
+																플래티넘 엘리트<br/>
+																(75박 이상)
+															</th>
+															<td>
+																<ul>
+																	<li>
+																		고객 지불 금액 1달러 당 메리어트 리워즈 포인트 최대 10점 적립
+																	</li>
+																	<li>
+																		보너스 및 기본 포인트 적립 : 포인트 또는 항공사 마일리지 적립
+																	</li>
+																	<li>
+																		PointSaversTM<br/>
+																		<span>※ 호텔 투숙 시에만 적립 가능 / 호텔 내 외주업체 비용은 적립 대상에서 제외</span>
+																	</li>
+																</ul>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<footer id="footer">
+			<div id="footerArea">
+				<div class="footerLogo">
+					<p class="bottomLogo1">
+						<a href="https://www.hoteltheplaza.com/kr/" title="footer logo1">
+							<img src="img/footer_logo1.png" alt="footer logo1"/>
+						</a>
+					</p>
+					<p class="bottomLogo2">
+						<a href="https://autograph-hotels.marriott.com/" title="footer logo2">
+							<img src="img/footer_logo2.png" alt="footer logo2"/>
+						</a>
+					</p>
+					<p class="bottomLogo2">
+						<a href="https://www.marriott.co.kr/rewards/rewards-program.mi" title="footer logo3">
+							<img src="img/footer_logo3.png" alt="footer logo3"/>
+						</a>
+					</p>
+
+				</div>
+				<div class="footerDesc">
+					<div class="footerDesc_fac">
+						<ul class="desc">
+							<li>
+								<a href="https://www.hoteltheplaza.com/kr/footer/sitemap.jsp" title="사이트맵"><span class="text">사이트맵</span></a><span class="bar">|</span>
+							</li>
+							<li>
+								<a href="https://www.hoteltheplaza.com/kr/footer/termsofuse.jsp" title="이용약관"><span class="text">이용약관</span></a><span class="bar">|</span>
+							</li>
+							<li>
+								<a href="https://www.hoteltheplaza.com/kr/footer/personal.jsp" title="개인정보처리방침"><strong class="text">개인정보처리방침</strong></a><span class="bar">|</span>
+							</li>
+							<li>
+								<a href="https://www.hoteltheplaza.com/kr/footer/privacy.jsp" title="영상정보처리기기 운영·관리 방침"><strong class="text">사이트맵</strong></a><span class="bar">|</span>
+							</li>
+							<li>
+								<a href="https://www.hoteltheplaza.com/kr/footer/email_security.jsp" title="이메일무단수집금지"><span class="text">이메일무단수집금지</span></a><span class="bar">|</span>
+							</li>
+							<li>
+								<a href="https://www.hwrc.co.kr/index.asp" title="채용정보"><span class="text">채용정보</span></a><span class="bar">|</span>
+							</li>
+							<li>
+								<a href="https://www.hoteltheplaza.com/_resource/pdf/Sales_Kit_KOR.pdf" title="온라인 브로셔"><span class="text">온라인 브로셔</span></a>
+							</li>
+						</ul>
+						<ul class="sns">
+							<li>
+								<a href="https://www.facebook.com/theplaza.seoul" title="facebook">
+									<span class="icon"><img src="img/facebook.svg" alt="facebook 아이콘"/></span>
+								</a>
+							</li>
+							<li>
+								<a href="https://www.instagram.com/theplazaseoul/" title="instagram">
+									<span class="icon"><img src="img/instagram.svg" alt="instagram 아이콘"/></span>
+								</a>
+							</li>
+							<li>
+								<a href="https://www.tripadvisor.co.kr/Hotel_Review-g294197-d306139-Reviews-THE_PLAZA_Seoul_Autograph_Collection-Seoul.html" title="tripadvisor">
+									<span class="icon"><img src="img/tripadvisor-logotype.svg" alt="tripadvisor 아이콘"/></span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div id="footerCopy">
+				<div class="copyArea">
+					<address class="adress">
+						서울특별시 중구 소공로 119 (우) 04525 TEL 02.771.2200 FAX 02.755.8897 
+					</address>
+					<address class="copy">
+						Copyright © THE PLAZA All Rights Reserved
+					</address>
+				</div>
+			</div>
+		</footer>
+	</div>
+  
+ </body>
+</html>
